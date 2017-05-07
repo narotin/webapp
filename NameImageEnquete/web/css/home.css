@@ -139,6 +139,13 @@ ul#leftmenu-_body li a:hover {
 /*============================================
 中央コンテンツ
 ============================================*/
+#btn form{
+    display: inline;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
 div#news {
     width:785px; margin-right:5px; padding-top:10px; /*幅の指定と位置調整*/
     float:left;					/*カラムを左寄せにする*/
