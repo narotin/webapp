@@ -11,10 +11,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <body>
+        <canvas id="myChart" width="100" height="100"></canvas>
         <!-- ページ全体 -->
         <div id="pagebody">
             <head>
                 <link rel="stylesheet" type="text/css" href="./css/home.css" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
                 <title>title</title>
             </head>
 
@@ -34,9 +36,9 @@
 
             <!-- トップメニュー下ライン -->   
             <div id="topmenu-line"></div>
-
             <!-- 左サブメニュー -->
             <div id="leftmenu">
+
                 <div id="leftmenu-header">目的で探す</div>
                 <ul id="leftmenu-body">
                     <li><a href="xxx.html">何か</a></li>
@@ -78,6 +80,7 @@
                     <% }%>
                     <!-- 投票ボックス -->
                     <td>
+                        <canvas id="myChart2" width="1" height="1"></canvas>
                         <dev id="btn">
                             <form action="★サーブレット" method="post">
                                 <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
@@ -127,6 +130,7 @@
                     <p>
                         けろけろ、けろけろ、けろけーろ。（中略）・・と、それはもう大変な喜びようだとか。
                     </p>
+                    <canvas id="myChart" width="100" height="100"></canvas>
                     <p><img src="images/ss01.gif" alt="かえるサイトの画面" width="200" height="155" /></p>
                 </div>
 
@@ -134,5 +138,31 @@
                 <div id="footer"><address>Copyright (c) HTMQ All Rights Reserved.</address></div>
             </div>
         </div>
+        <script>
+
+            var ctx2 = document.getElementById("myChart2").getContext('2d');
+            var myChart2 = makeChart(10, 20);
+
+            function makeChart(x, y) {
+                return new Chart(ctx2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ["M", "T", "W", "T", "F", "S", "S"],
+                        datasets: [{
+                                backgroundColor: [
+                                    "#2ecc71",
+                                    "#3498db",
+                                    "#95a5a6",
+                                    "#9b59b6",
+                                    "#f1c40f",
+                                    "#e74c3c",
+                                    "#34495e"
+                                ],
+                                data: [x, x, x, y, y, y, y]
+                            }]
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
