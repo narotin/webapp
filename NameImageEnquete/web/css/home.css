@@ -141,7 +141,7 @@ ul#leftmenu-_body li a:hover {
 ============================================*/
 div#center-contents {
     width:770px;			/*幅の指定*/
-    height: 410px;
+    height: 470px;
     margin:10px 5px 10px 5px;	/*位置調整（IE6のバグに注意）*/
     float:left;	
     border-radius: 20px; 
@@ -150,7 +150,7 @@ div#center-contents {
 
 div#center-left {
     width:350px;			/*幅の指定*/
-    height: 390px;
+    height: 450px;
     margin:10px 5px 10px 10px;	/*位置調整（IE6のバグに注意）*/
     float:left;	
     position:relative ;
@@ -166,9 +166,20 @@ div#center-left-upper {
     background-color:#FFFFE0
 }
 
-div#center-left-lower {
+div#center-left-middle {
     width:330px;			/*幅の指定*/
     height: 90px;
+    margin:10px 10px 10px 10px;	/*位置調整（IE6のバグに注意）*/
+    position:absolute;
+    bottom:53px;
+    border:#EEEEEE  double 3px;
+    background-color:#FFFFE0
+
+}
+
+div#center-left-lower {
+    width:330px;			/*幅の指定*/
+    height: 35px;
     margin:10px 10px 10px 10px;	/*位置調整（IE6のバグに注意）*/
     position:absolute;
     bottom:0px;
@@ -179,7 +190,7 @@ div#center-left-lower {
 
 div#center-right {
     width:400px;			/*幅の指定*/
-    height: 390px;
+    height: 450px;
     margin:10px 5px 10px 0px;	/*位置調整（IE6のバグに注意）*/
     float:right;	
     position:relative ;
@@ -188,7 +199,7 @@ div#center-right {
 
 div#center-right-upper {
     width:375px;			/*幅の指定*/
-    height: 250px;
+    height: 360px;
     margin:10px 5px 10px 10px;	/*位置調整（IE6のバグに注意）*/
     background-color:#FFF0F5; /*桃色 */
 }
@@ -288,6 +299,16 @@ table#one-comment td {
     vertical-align: top;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+}
+
+/*============================================
+コメントリンク
+============================================*/
+#comment-link {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 180px;
+    font-size:18px;
 }
 
 /*============================================

@@ -103,11 +103,11 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="center-left-lower">
+                    <div id="center-left-middle">
                         <table id="one-comment" border="1">
                             <thead>
                                 <tr>
-                                    <th scope="cols">一言コメント</th>
+                                    <th scope="cols">投稿者一言コメント</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -116,6 +116,11 @@
                                 </tr>
                             </tbody>
                         </table>           
+                    </div>
+                    <div id="center-left-lower">
+                        <div id="comment-link">
+                            <a href="★サーブレット" target="_blank">コメントを見る(1件)</a>
+                        </div>  
                     </div>
                 </div>
 
@@ -240,8 +245,8 @@
         <script>
 
             var ctx2 = document.getElementById("myChart2").getContext('2d');
-            ctx2.canvas.width = 400;
-            ctx2.canvas.height = 300;
+            ctx2.canvas.width = 380;
+            ctx2.canvas.height = 355;
             var myChart2 = makeChart(10, 20);
             function makeChart(x, y) {
                 return new Chart(ctx2, {
