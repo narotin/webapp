@@ -11,7 +11,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <body>
-        <canvas id="myChart" width="100" height="100"></canvas>
         <!-- ページ全体 -->
         <div id="pagebody">
             <head>
@@ -53,7 +52,108 @@
                     <li><a href="xxx.html">何か</a></li>
                     <li><a href="xxx.html">何か</a></li>
                     <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
+                    <li><a href="xxx.html">何か</a></li>
                 </ul>
+            </div>
+
+            <!-- 中央コンテンツ -->
+            <div id="center-contents">
+                <!-- 中央コンテンツ　左 -->
+                <div id="center-left">
+                    <div id="center-left-upper">
+                        <table id="intro" border="1">
+                            <thead>
+                                <tr>
+                                    <th scope="cols">項目</th>
+                                    <th scope="cols">内容</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">ID</th>
+                                    <td>123456</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">名前</th>
+                                    <td>奈良田奈良田奈良田奈</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">ふりがな</th>
+                                    <td>ならたならたならたな</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">性別</th>
+                                    <td>男</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">登録日</th>
+                                    <td>2017/04/05 13:11:22</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="center-left-lower">
+                        <table id="one-comment" border="1">
+                            <thead>
+                                <tr>
+                                    <th scope="cols">一言コメント</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>あいうえおかきくけこさしすせそたちつてと</td>
+                                </tr>
+                            </tbody>
+                        </table>           
+                    </div>
+                </div>
+
+                <!-- 中央コンテンツ 右 -->
+                <div id="center-right">
+                    <div id="center-right-upper">
+                        <canvas id="myChart2"></canvas>
+                    </div>
+                    <div id="center-right-lower">
+                        <dev id="btn">
+                            <form action="★サーブレット" method="post">
+                                <input type="hidden" name="enquete_id" value=1></input>
+                                <input type="hidden" name="number" value=1></input>
+                                <input type="submit" value="とても良い"></input>
+                            </form>
+                            <form action="★サーブレット" method="post">
+                                <input type="hidden" name="enquete_id" value=1></input>
+                                <input type="hidden" name="number" value=1></input>
+                                <input type="submit" value="良い"></input>
+                            </form>
+                            <form action="★サーブレット" method="post">
+                                <input type="hidden" name="enquete_id" value=1></input>
+                                <input type="hidden" name="number" value=1></input>
+                                <input type="submit" value="普通"></input>
+                            </form>
+                            <form action="★サーブレット" method="post">
+                                <input type="hidden" name="enquete_id" value=1></input>
+                                <input type="hidden" name="number" value=1></input>
+                                <input type="submit" value="悪い"></input>
+                            </form>
+                            <form action="★サーブレット" method="post">
+                                <input type="hidden" name="enquete_id" value=1></input>
+                                <input type="hidden" name="number" value=1></input>
+                                <input type="submit" value="とても悪い"></input>
+                            </form>
+                        </dev>
+                    </div>
+                </div>
             </div>
 
             <!-- 中央コンテンツ -->
@@ -80,7 +180,6 @@
                     <% }%>
                     <!-- 投票ボックス -->
                     <td>
-                        <canvas id="myChart2" width="1" height="1"></canvas>
                         <dev id="btn">
                             <form action="★サーブレット" method="post">
                                 <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
@@ -141,25 +240,28 @@
         <script>
 
             var ctx2 = document.getElementById("myChart2").getContext('2d');
+            ctx2.canvas.width = 400;
+            ctx2.canvas.height = 300;
             var myChart2 = makeChart(10, 20);
-
             function makeChart(x, y) {
                 return new Chart(ctx2, {
                     type: 'doughnut',
                     data: {
-                        labels: ["M", "T", "W", "T", "F", "S", "S"],
+                        labels: ["とても良い", "良い", "普通", "悪い", "とても悪い"],
                         datasets: [{
                                 backgroundColor: [
-                                    "#2ecc71",
-                                    "#3498db",
-                                    "#95a5a6",
-                                    "#9b59b6",
-                                    "#f1c40f",
-                                    "#e74c3c",
-                                    "#34495e"
+                                    "#6295bf",
+                                    "#69D2E7",
+                                    "#E0E4CC",
+                                    "#F38630",
+                                    "#FA6900",
                                 ],
-                                data: [x, x, x, y, y, y, y]
+                                data: [x, x, x, y, y]
+
                             }]
+                    },
+                    options: {
+                        responsive: false
                     }
                 });
             }

@@ -139,6 +139,69 @@ ul#leftmenu-_body li a:hover {
 /*============================================
 中央コンテンツ
 ============================================*/
+div#center-contents {
+    width:770px;			/*幅の指定*/
+    height: 410px;
+    margin:10px 5px 10px 5px;	/*位置調整（IE6のバグに注意）*/
+    float:left;	
+    border-radius: 20px; 
+    background-color:#FFF0F5; /*桃色 */
+}
+
+div#center-left {
+    width:350px;			/*幅の指定*/
+    height: 390px;
+    margin:10px 5px 10px 10px;	/*位置調整（IE6のバグに注意）*/
+    float:left;	
+    position:relative ;
+    background-color:#FFF0F5; /*桃色 */
+}
+
+div#center-left-upper {
+    width:330px;			/*幅の指定*/
+    height: 260px;
+    margin:10px 10px 10px 10px;	/*位置調整（IE6のバグに注意）*/
+    border:#EEEEEE  double 3px;
+    vertical-align: top;
+    background-color:#FFFFE0
+}
+
+div#center-left-lower {
+    width:330px;			/*幅の指定*/
+    height: 90px;
+    margin:10px 10px 10px 10px;	/*位置調整（IE6のバグに注意）*/
+    position:absolute;
+    bottom:0px;
+    border:#EEEEEE  double 3px;
+    background-color:#FFFFE0
+
+}
+
+div#center-right {
+    width:400px;			/*幅の指定*/
+    height: 390px;
+    margin:10px 5px 10px 0px;	/*位置調整（IE6のバグに注意）*/
+    float:right;	
+    position:relative ;
+    background-color:#FFF0F5; /*桃色 */
+}
+
+div#center-right-upper {
+    width:375px;			/*幅の指定*/
+    height: 250px;
+    margin:10px 5px 10px 10px;	/*位置調整（IE6のバグに注意）*/
+    background-color:#FFF0F5; /*桃色 */
+}
+
+div#center-right-lower {
+    width:375px;			/*幅の指定*/
+    height: 60px;
+    margin:10px 5px 10px 10px;	/*位置調整（IE6のバグに注意）*/
+    position:absolute;
+    bottom:0px;
+    background-color:#EEEEEE
+}
+
 #btn form{
     display: inline;
     border: none;
@@ -146,23 +209,86 @@ ul#leftmenu-_body li a:hover {
     padding: 0px;
 }
 
-div#news {
-    width:785px; margin-right:5px; padding-top:10px; /*幅の指定と位置調整*/
-    float:left;					/*カラムを左寄せにする*/
-    background-image:url("images/bar_news.gif");	/*中央カラムの背景画像*/
-    background-repeat:no-repeat;			/*背景画像を繰り返さない*/
+#btn form input{
+    width:66px;			/*幅の指定*/
+    height: 50px;
+    border-width:2px;
+    margin:5px 3px 5px 3px;	/*位置調整（IE6のバグに注意）*/
+    text-align: center;
+    font-size:11pt;
 }
 
-/*見出し・段落・水平線のスタイル指定*/
-h2 {
-    font-size:100%; margin-bottom:10px; padding-left:25px;
-    font-size:95%; border-bottom:solid 1px #cccccc;
-    background-image:url("images/icon.gif");
-    background-repeat:no-repeat; background-position:left center;
+/*============================================
+自己紹介
+============================================*/
+table#intro {
+    font-size:15px;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
 }
-h3 {font-size:90%; margin-left:5px;}
-p {font-size:90%; margin:10px 0px 10px 10px; text-indent:10px;}
 
+table#intro thead th {
+    padding: 10px;
+    font-weight: bold;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #c00;
+    background: #dcdcd1;
+}
+table#intro tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #ececec;
+}
+table#intro td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+/*============================================
+一言コメント
+============================================*/
+table#one-comment {
+    font-size:15px;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+}
+
+table#one-comment thead th {
+    padding: 10px;
+    font-weight: bold;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #036;
+    background: #dcdcd1;
+}
+table#one-comment tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #ececec;
+}
+table#one-comment td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
 
 /*============================================
 フッタ
