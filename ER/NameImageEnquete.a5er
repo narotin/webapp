@@ -71,12 +71,12 @@ Left=100
 Top=800
 Field="投票ID","vote_id","bigserial","NOT NULL",0,"","",$000000FF,""
 Field="アンケートID","enquete_id","bigint","NOT NULL",,"","",$FFFFFFFF,""
-Field="番号","number","smallint","NOT NULL",,"","キラキラポイント:1\n元気ポイント:2\nさわやかポイント:3\n明るいポイント:4\nかわいいポイント:5\n美しいポイント:6\n古風ポイント:7",$FFFFFFFF,""
+Field="番号","number","smallint","NOT NULL",,"","1：とても良い\n2:良い\n3:普通\n4:悪い\n5:とても悪い",$FFFFFFFF,""
 Field="投票日","voted","@DATETIME","NOT NULL",,"","",$FFFFFFFF,"DEFAULT CURRENT_TIMESTAMP"
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20170507232630
+ModifiedDateTime=20170514163255
 Position="MAIN",100,800,823,201
 
 [Relation]
@@ -132,10 +132,11 @@ Field="アンケートID","enquete_id","bigserial","NOT NULL",0,"","",$000000FF,
 Field="名前(漢字)","name_kanji","@VARCHAR(10)","NOT NULL",,"","",$FFFFFFFF,""
 Field="名前(ふりがな)","name_hurigana","@VARCHAR(10)","NOT NULL",,"","",$FFFFFFFF,""
 Field="性別","sex","smallint","NOT NULL",,"","",$FFFFFFFF,""
+Field="一言コメント","short_comment","@VARCHAR(50)",,,"","",$FFFFFFFF,""
 Field="作成日","created","@DATETIME","NOT NULL",,"","",$FFFFFFFF,"DEFAULT CURRENT_TIMESTAMP"
 Field="削除日","deleted","@DATETIME",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20170507223914
+ModifiedDateTime=20170514163118
 Position="MAIN",100,50,905,283

@@ -42,7 +42,24 @@ public class HomeServlet extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
 
             // PostgreSQL JDBC 問い合わせ SQL 作成
-            String sql = "SELECT enquete.enquete_id, name_kanji, name_hurigana, sex, count(vote.vote_id), created   FROM enquete LEFT JOIN vote ON enquete.enquete_id=vote.enquete_id GROUP BY enquete.enquete_id ORDER BY created DESC";
+            String sql = "SELECT \n"
+                    + "enquete.enquete_id\n"
+                    + ", name_kanji\n"
+                    + ", name_hurigana\n"
+                    + ", sex \n"
+                    + ", short_comment\n"
+                    + ", sum(case when number = 1 then 1 else 0 end) as vote1\n"
+                    + ", sum(case when number = 2 then 1 else 0 end) as vote2\n"
+                    + ", sum(case when number = 3 then 1 else 0 end) as vote3\n"
+                    + ", sum(case when number = 4 then 1 else 0 end) as vote4\n"
+                    + ", sum(case when number = 5 then 1 else 0 end) as vote5\n"
+                    + ", coalesce(sub.count,'0') as comment_count\n"
+                    + ", enquete.created\n"
+                    + "FROM enquete \n"
+                    + "LEFT JOIN vote ON enquete.enquete_id=vote.enquete_id\n"
+                    + "LEFT JOIN (SELECT enquete_id, count(comment) FROM comment GROUP BY comment.enquete_id) sub ON enquete.enquete_id = sub.enquete_id\n"
+                    + "GROUP BY enquete.enquete_id, sub.count ORDER BY created DESC";
+
             PostgresAccessor pa = new PostgresAccessor();
             ArrayList<String> array = pa.read(sql, false);
 
@@ -51,21 +68,26 @@ public class HomeServlet extends HttpServlet {
             // 第2:name_kanji
             // 第3:name_hurigana
             // 第4:sex
-            // 第5:enquete_id毎のコメント数
-            // 第6:created
+            // 第5:short_comment
+            // 第6:vote1
+            // 第7:vote2
+            // 第8:vote3
+            // 第9:vote4
+            // 第10:vote5
+            // 第11:comment_count
+            // 第12:created
             ArrayList<String> result = new ArrayList<>();
             for (String str : array) {
                 StringBuilder sb1 = new StringBuilder();
                 String[] value = str.split(",", 0);
-                for (int i = 0; i < 6; i++) {
-
+                for (int i = 0; i < 12; i++) {
                     // カンマ区切り
                     if (sb1.length() > 0) {
                         sb1.append(SEPARATOR);
                     }
 
                     //日付のフォーマット変更
-                    if (i == 5) {
+                    if (i == 11) {
                         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         // マイクロ秒を削る
                         String[] withoutMicro = value[i].split("\\.", 0);

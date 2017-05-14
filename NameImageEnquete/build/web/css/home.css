@@ -98,7 +98,7 @@ ul#topmenu a {
 ============================================*/
 div#leftmenu {
     width:200px;			/*幅の指定*/
-    margin:0px 10px 10px 0px;	/*位置調整（IE6のバグに注意）*/
+    margin:0px 0px 10px 10px;	/*位置調整（IE6のバグに注意）*/
     display:inline;			/*IE6のマージン算出のバグ対策*/
     float:left;			/*サブメニューのカラムを左寄せにする*/
 }
@@ -142,8 +142,8 @@ ul#leftmenu-_body li a:hover {
 div#center-contents {
     width:770px;			/*幅の指定*/
     height: 520px;
-    margin:10px 5px 10px 5px;	/*位置調整（IE6のバグに注意）*/
-    float:left;	
+    margin:10px 10px 10px 0px;	/*位置調整（IE6のバグに注意）*/
+    float:right;	
     border-radius: 20px; 
     background-color:#FFF0F5; /*桃色 */
 }
@@ -179,7 +179,7 @@ div#center-left-middle {
 
 div#center-left-lower {
     width:330px;			/*幅の指定*/
-    height: 35px;
+    height: 30px;
     margin:10px 10px 10px 10px;	/*位置調整（IE6のバグに注意）*/
     position:absolute;
     bottom:0px;
@@ -308,7 +308,6 @@ table#one-comment td {
 #comment-link {
     text-align: center;
     vertical-align: middle;
-    line-height: 180px;
     font-size:18px;
 }
 
