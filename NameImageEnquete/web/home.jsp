@@ -149,7 +149,7 @@
                                 <p><%= Integer.parseInt(value[5]) + Integer.parseInt(value[6]) + Integer.parseInt(value[7]) + Integer.parseInt(value[8]) + Integer.parseInt(value[9])%>票</p>
                             </div>
                         </dev>  
-                        <canvas id=myChart1></canvas>
+                        <canvas id=<%= "myChart" + (i + 1)%>></canvas>
                     </div>
                     <div id="center-right-lower">
                         <dev id="btn">
@@ -186,21 +186,19 @@
 
             <!-- フッタ -->
             <div id="footer"><address>Copyright (c) HTMQ All Rights Reserved.</address></div>
-            
+
             <script>
-                var ctx1 = document.getElementById("myChart1").getContext('2d');
-                var ctx2 = document.getElementById("myChart1").getContext('2d');
-                var ctx3 = document.getElementById("myChart1").getContext('2d');
-                var ctx4 = document.getElementById("myChart1").getContext('2d');
-                var ctx5 = document.getElementById("myChart1").getContext('2d');
-                var ctx6 = document.getElementById("myChart1").getContext('2d');
-                var ctx7 = document.getElementById("myChart1").getContext('2d');
-                var ctx8 = document.getElementById("myChart1").getContext('2d');
-                var ctx9 = document.getElementById("myChart1").getContext('2d');
-                var ctx10 = document.getElementById("myChart1").getContext('2d');
-                ctx1.canvas.width = 375;
-                ctx1.canvas.height = 420;
-                var myChart1 = makeChart(ctx1, 1, 2, 3, 4, 5);
+                <%
+                    for (int i = 0; i < 10; i++) {
+                        String[] value = array.get(i).split(",", 0);
+                %>
+                var <%= "ctx" + (i + 1)%> = document.getElementById("<%= "myChart" + (i + 1)%>").getContext('2d');
+
+                <%= "ctx" + (i + 1)%>.canvas.width = 375;
+                <%= "ctx" + (i + 1)%>.canvas.height = 420;
+
+                var <%= "myChart" + (i + 1)%> = makeChart(<%= "ctx" + (i + 1)%>, <%= value[5]%>, <%= value[6]%>, <%= value[7]%>, <%= value[8]%>, <%=value[9]%>);
+                <% }%>
 
                 function makeChart(ctx, vote1, vote2, vote3, vote4, vote5) {
                     return new Chart(ctx, {
