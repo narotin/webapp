@@ -141,7 +141,7 @@ ul#leftmenu-_body li a:hover {
 ============================================*/
 div#center-contents {
     width:770px;			/*幅の指定*/
-    height: 470px;
+    height: 520px;
     margin:10px 5px 10px 5px;	/*位置調整（IE6のバグに注意）*/
     float:left;	
     border-radius: 20px; 
@@ -150,7 +150,7 @@ div#center-contents {
 
 div#center-left {
     width:350px;			/*幅の指定*/
-    height: 450px;
+    height: 500px;
     margin:10px 5px 10px 10px;	/*位置調整（IE6のバグに注意）*/
     float:left;	
     position:relative ;
@@ -168,7 +168,7 @@ div#center-left-upper {
 
 div#center-left-middle {
     width:330px;			/*幅の指定*/
-    height: 90px;
+    height: 135px;
     margin:10px 10px 10px 10px;	/*位置調整（IE6のバグに注意）*/
     position:absolute;
     bottom:53px;
@@ -190,7 +190,7 @@ div#center-left-lower {
 
 div#center-right {
     width:400px;			/*幅の指定*/
-    height: 450px;
+    height: 500px;
     margin:10px 5px 10px 0px;	/*位置調整（IE6のバグに注意）*/
     float:right;	
     position:relative ;
@@ -199,7 +199,7 @@ div#center-right {
 
 div#center-right-upper {
     width:375px;			/*幅の指定*/
-    height: 360px;
+    height: 405px;
     margin:10px 5px 10px 10px;	/*位置調整（IE6のバグに注意）*/
     background-color:#FFF0F5; /*桃色 */
 }
@@ -295,6 +295,7 @@ table#one-comment tbody th {
 }
 table#one-comment td {
     width: 350px;
+    height:70px;
     padding: 10px;
     vertical-align: top;
     border-right: 1px solid #ccc;
@@ -309,6 +310,23 @@ table#one-comment td {
     vertical-align: middle;
     line-height: 180px;
     font-size:18px;
+}
+
+/*============================================
+グラフ
+============================================*/
+dev#total {
+    position: relative;
+    margin: 0 auto;
+    top: 210px;
+    font-size:30px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+#myChart2 {
+    position: absolute;
+    top: 0px;
 }
 
 /*============================================

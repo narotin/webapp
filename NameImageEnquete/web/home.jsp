@@ -112,7 +112,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>あいうえおかきくけこさしすせそたちつてと</td>
+                                    <td>あいうえお</td>
                                 </tr>
                             </tbody>
                         </table>           
@@ -127,6 +127,11 @@
                 <!-- 中央コンテンツ 右 -->
                 <div id="center-right">
                     <div id="center-right-upper">
+                        <dev id="total">
+                            <div align="center">
+                                <p>10000票</p>
+                            </div>
+                        </dev>
                         <canvas id="myChart2"></canvas>
                     </div>
                     <div id="center-right-lower">
@@ -245,8 +250,8 @@
         <script>
 
             var ctx2 = document.getElementById("myChart2").getContext('2d');
-            ctx2.canvas.width = 380;
-            ctx2.canvas.height = 355;
+            ctx2.canvas.width = 375;
+            ctx2.canvas.height = 420;
             var myChart2 = makeChart(10, 20);
             function makeChart(x, y) {
                 return new Chart(ctx2, {
@@ -259,10 +264,16 @@
                                     "#69D2E7",
                                     "#E0E4CC",
                                     "#F38630",
-                                    "#FA6900",
+                                    "#FA6900"
+                                ],
+                                hoverBackgroundColor: [
+                                    "#6295bf",
+                                    "#69D2E7",
+                                    "#E0E4CC",
+                                    "#F38630",
+                                    "#FA6900"
                                 ],
                                 data: [x, x, x, y, y]
-
                             }]
                     },
                     options: {
