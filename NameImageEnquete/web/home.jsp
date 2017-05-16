@@ -153,29 +153,29 @@
                     </div>
                     <div id="center-right-lower">
                         <dev id="btn">
-                            <form action="★サーブレット" method="post">
-                                <input type="hidden" name="enquete_id" value=1></input>
+                            <form action="./VoteServlet" method="post">
+                                <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                 <input type="hidden" name="number" value=1></input>
                                 <input type="submit" value="とても良い"></input>
                             </form>
-                            <form action="★サーブレット" method="post">
-                                <input type="hidden" name="enquete_id" value=1></input>
-                                <input type="hidden" name="number" value=1></input>
+                            <form action="./VoteServlet"method="post">
+                                <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
+                                <input type="hidden" name="number" value=2></input>
                                 <input type="submit" value="良い"></input>
                             </form>
-                            <form action="★サーブレット" method="post">
-                                <input type="hidden" name="enquete_id" value=1></input>
-                                <input type="hidden" name="number" value=1></input>
+                            <form action="./VoteServlet" method="post">
+                                <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
+                                <input type="hidden" name="number" value=3></input>
                                 <input type="submit" value="普通"></input>
                             </form>
-                            <form action="★サーブレット" method="post">
-                                <input type="hidden" name="enquete_id" value=1></input>
-                                <input type="hidden" name="number" value=1></input>
+                            <form action="./VoteServlet" method="post">
+                                <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
+                                <input type="hidden" name="number" value=4></input>
                                 <input type="submit" value="悪い"></input>
                             </form>
-                            <form action="★サーブレット" method="post">
-                                <input type="hidden" name="enquete_id" value=1></input>
-                                <input type="hidden" name="number" value=1></input>
+                            <form action="./VoteServlet" method="post">
+                                <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
+                                <input type="hidden" name="number" value=5></input>
                                 <input type="submit" value="とても悪い"></input>
                             </form>
                         </dev>

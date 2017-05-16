@@ -7,6 +7,7 @@ package com.servlet;
 
 import com.dao.postgres.PostgresAccessor;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -104,13 +105,13 @@ public class HomeServlet extends HttpServlet {
             // requestに設定
             request.setAttribute("enqueteList", result);
 
-            //TODO PostgreSQLからデータ取得
-            //フォワード
+            // フォワード
             RequestDispatcher dispatch = request.getRequestDispatcher("home.jsp");
             dispatch.forward(request, response);
 
-        } catch (ParseException ex) {
+        } catch (ParseException | ClassNotFoundException | SQLException  ex) {
             Logger.getLogger(HomeServlet.class.getName()).log(Level.SEVERE, null, ex);
+            // TODO エラー時はエラー用のページに飛ばしたい
         }
     }
 

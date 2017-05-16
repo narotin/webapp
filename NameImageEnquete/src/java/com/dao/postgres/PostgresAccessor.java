@@ -5,7 +5,6 @@
  */
 package com.dao.postgres;
 
-import com.servlet.TestServlet;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -23,23 +22,26 @@ import java.util.logging.Logger;
 public class PostgresAccessor {
 
     public static final String SEPARATOR = ",";
+    public static final String DRIVER = "org.postgresql.Driver";
+    public static final String DSN = "jdbc:postgresql://192.168.130.104:5432/postgres?user=postgres&password=postgres";
 
     /**
      *
      * @param sql sql文を指定
      * @param headerExist hedaderをreturnのListに含めるかの判定
      * @return
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
-    public ArrayList<String> read(String sql, boolean headerExist) {
+    public ArrayList<String> read(String sql, boolean headerExist) throws SQLException, ClassNotFoundException {
         ArrayList<String> header = null;
         ArrayList<String> contents = null;
         try {
             // PostgreSQL JDBC ドライバロード
-            Class.forName("org.postgresql.Driver");
+            Class.forName(DRIVER);
 
             // PostgreSQL JDBC 接続
-            String dsn = "jdbc:postgresql://192.168.130.104:5432/postgres?user=postgres&password=postgres";
-            try (Connection con = DriverManager.getConnection(dsn)) {
+            try (Connection con = DriverManager.getConnection(DSN)) {
                 try (Statement st = con.createStatement()) {
                     // PostgreSQL JDBC レコードセットオープン
                     try (ResultSet rs = st.executeQuery(sql)) {
@@ -82,8 +84,32 @@ public class PostgresAccessor {
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(TestServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PostgresAccessor.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
         }
         return contents;
+    }
+
+    /**
+     *
+     * @param sql sql文を指定
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
+     */
+    public void write(String sql) throws SQLException, ClassNotFoundException {
+        try {
+            // PostgreSQL JDBC ドライバロード
+            Class.forName(DRIVER);
+
+            // PostgreSQL JDBC 接続
+            try (Connection con = DriverManager.getConnection(DSN)) {
+                try (Statement stmt = con.createStatement()) {
+                    stmt.executeUpdate(sql);
+                }
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(PostgresAccessor.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        }
     }
 }

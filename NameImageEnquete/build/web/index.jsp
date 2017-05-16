@@ -6,6 +6,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:forward page="/HomeServlet" />
+        <jsp:forward page="./HomeServlet" />
     </body>
 </html>
