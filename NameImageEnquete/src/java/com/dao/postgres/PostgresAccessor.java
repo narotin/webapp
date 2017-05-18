@@ -92,6 +92,41 @@ public class PostgresAccessor {
 
     /**
      *
+     * @param tableName
+     * @return
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
+     */
+    public int count(String tableName) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM " + tableName;
+        int numberOfRow;
+        try {
+            // PostgreSQL JDBC ドライバロード
+            Class.forName(DRIVER);
+
+            // PostgreSQL JDBC 接続
+            try (Connection con = DriverManager.getConnection(DSN)) {
+                try (Statement st = con.createStatement(
+                       ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                       ResultSet.CONCUR_READ_ONLY)) {
+                    // PostgreSQL JDBC レコードセットオープン
+                    try (ResultSet rs = st.executeQuery(sql)) {
+                        // 行数取得
+                        rs.last();
+                        numberOfRow = rs.getRow();
+                    }
+                }
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(PostgresAccessor.class
+                    .getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        }
+        return numberOfRow;
+    }
+
+    /**
+     *
      * @param sql sql文を指定
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
@@ -108,7 +143,8 @@ public class PostgresAccessor {
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(PostgresAccessor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PostgresAccessor.class
+                    .getName()).log(Level.SEVERE, null, ex);
             throw ex;
         }
     }

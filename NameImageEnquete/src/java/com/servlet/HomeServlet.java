@@ -102,14 +102,17 @@ public class HomeServlet extends HttpServlet {
                 result.add(sb1.toString());
             }
 
+            int numberOfRow = pa.count("enquete");
+
             // requestに設定
             request.setAttribute("enqueteList", result);
+            request.setAttribute("enqueteCount", numberOfRow);
 
             // フォワード
             RequestDispatcher dispatch = request.getRequestDispatcher("home.jsp");
             dispatch.forward(request, response);
 
-        } catch (ParseException | ClassNotFoundException | SQLException  ex) {
+        } catch (ParseException | ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeServlet.class.getName()).log(Level.SEVERE, null, ex);
             // TODO エラー時はエラー用のページに飛ばしたい
         }

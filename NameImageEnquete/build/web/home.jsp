@@ -6,6 +6,7 @@
     // Servletデータ
     request.setCharacterEncoding("UTF-8");
     ArrayList<String> array = (ArrayList) request.getAttribute("enqueteList");
+    int count = (Integer)request.getAttribute("enqueteCount");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -85,7 +86,7 @@
                 <p><h2>入力フォーム</h2></p>
                 <!--　このような表現はかきかえる CSSで表現する -->
                 <p><br></br></p>
-                <form method="post" action="★サーブレット" class="contact">
+                <form method="post" action="./FormServlet" class="contact">
                     <table>
                         <tbody>
                             <tr>
@@ -125,7 +126,7 @@
 
             <div id="vote">
                 <p><h2>投票</h2></p>
-                
+
                 <%
                     for (int i = 0; i < 10; i++) {
                         // 整形
@@ -241,7 +242,13 @@
                     </div>
                 </div>
                 <% }%>
+
+                <!-- ページング -->
+                <div id=paging>
+                    <%= count%>
+                </div>
             </div>
+
             <!-- フッタ -->
             <div id="footer"><address>Copyright (c) HTMQ All Rights Reserved.</address></div>
 
@@ -250,42 +257,42 @@
                     for (int i = 0; i < 10; i++) {
                         String[] value = array.get(i).split(",", 0);
                 %>
-                var <%= "ctx" + (i + 1)%> = document.getElementById("<%= "myChart" + (i + 1)%>").getContext('2d');
+                                    var <%= "ctx" + (i + 1)%> = document.getElementById("<%= "myChart" + (i + 1)%>").getContext('2d');
 
                 <%= "ctx" + (i + 1)%>.canvas.width = 375;
                 <%= "ctx" + (i + 1)%>.canvas.height = 420;
 
-                var <%= "myChart" + (i + 1)%> = makeChart(<%= "ctx" + (i + 1)%>, <%= value[5]%>, <%= value[6]%>, <%= value[7]%>, <%= value[8]%>, <%=value[9]%>);
+                                    var <%= "myChart" + (i + 1)%> = makeChart(<%= "ctx" + (i + 1)%>, <%= value[5]%>, <%= value[6]%>, <%= value[7]%>, <%= value[8]%>, <%=value[9]%>);
                 <% }%>
 
-                function makeChart(ctx, vote1, vote2, vote3, vote4, vote5) {
-                    return new Chart(ctx, {
-                        type: 'doughnut',
-                        data: {
-                            labels: ["とても良い", "良い", "普通", "悪い", "とても悪い"],
-                            datasets: [{
-                                    backgroundColor: [
-                                        "#6295bf",
-                                        "#69D2E7",
-                                        "#E0E4CC",
-                                        "#F38630",
-                                        "#FA6900"
-                                    ],
-                                    hoverBackgroundColor: [
-                                        "#6295bf",
-                                        "#69D2E7",
-                                        "#E0E4CC",
-                                        "#F38630",
-                                        "#FA6900"
-                                    ],
-                                    data: [vote1, vote2, vote3, vote4, vote5]
-                                }]
-                        },
-                        options: {
-                            responsive: false
-                        }
-                    });
-                }
+                                    function makeChart(ctx, vote1, vote2, vote3, vote4, vote5) {
+                                        return new Chart(ctx, {
+                                            type: 'doughnut',
+                                            data: {
+                                                labels: ["とても良い", "良い", "普通", "悪い", "とても悪い"],
+                                                datasets: [{
+                                                        backgroundColor: [
+                                                            "#6295bf",
+                                                            "#69D2E7",
+                                                            "#E0E4CC",
+                                                            "#F38630",
+                                                            "#FA6900"
+                                                        ],
+                                                        hoverBackgroundColor: [
+                                                            "#6295bf",
+                                                            "#69D2E7",
+                                                            "#E0E4CC",
+                                                            "#F38630",
+                                                            "#FA6900"
+                                                        ],
+                                                        data: [vote1, vote2, vote3, vote4, vote5]
+                                                    }]
+                                            },
+                                            options: {
+                                                responsive: false
+                                            }
+                                        });
+                                    }
             </script>
         </div>
     </body>

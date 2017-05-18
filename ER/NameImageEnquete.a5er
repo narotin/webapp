@@ -138,5 +138,5 @@ Field="削除日","deleted","@DATETIME",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20170514163118
-Position="MAIN",100,50,905,283
+ModifiedDateTime=20170514182718
+Position="MAIN",100,50,905,323
