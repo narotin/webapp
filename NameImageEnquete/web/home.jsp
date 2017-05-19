@@ -3,10 +3,12 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    // Servletデータ
+    // Servletから取得するデータ
     request.setCharacterEncoding("UTF-8");
     ArrayList<String> array = (ArrayList) request.getAttribute("enqueteList");
-    int count = (Integer)request.getAttribute("enqueteCount");
+    int records = (Integer) request.getAttribute("records");
+    int pages = (Integer) request.getAttribute("pages");
+    int pageNumber = (Integer) request.getAttribute("pageNumber");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -245,7 +247,61 @@
 
                 <!-- ページング -->
                 <div id=paging>
-                    <%= count%>
+                    <%
+                        int link1 = pageNumber - 2;
+                        int link2 = pageNumber - 1;
+                        int link3 = pageNumber;
+                        int link4 = pageNumber + 1;
+                        int link5 = pageNumber + 2;
+
+                        while (link1 <= 0) {
+                            link1++;
+                            link2++;
+                            link3++;
+                            link4++;
+                            link5++;
+                        }
+
+                        if (pages >= link1) {
+                            if (link1 == pageNumber) {
+                                out.print("<a href=\"./HomeServlet?pageNumber=" + link1 + "\" class=\"current\">" + link1 + "</a>");
+                            } else {
+                                out.print("<a href=\"./HomeServlet?pageNumber=" + link1 + "\" class=\"not-current\">" + link1 + "</a>");
+                            }
+                        }
+
+                        if (pages >= link2) {
+                            if (link2 == pageNumber) {
+                                out.print("<a href=\"./HomeServlet?pageNumber=" + link2 + "\" class=\"current\"> " + link2 + "</a>");
+                            } else {
+                                out.print("<a href=\"./HomeServlet?pageNumber=" + link2 + "\" class=\"not-current\">" + link2 + "</a>");
+                            }
+                        }
+
+                        if (pages >= link3) {
+                            if (link3 == pageNumber) {
+                                out.print("<a href=\"./HomeServlet?pageNumber=" + link3 + "\" class=\"current\">" + link3 + "</a>");
+                            } else {
+                                out.print("<a href=\"./HomeServlet?pageNumber=" + link3 + "\" class=\"not-current\">" + link3 + "</a>");
+                            }
+                        }
+
+                        if (pages >= link4) {
+                            if (link4 == pageNumber) {
+                                out.print("<a href=\"./HomeServlet?pageNumber=" + link4 + "\" class=\"current\">" + link4 + "</a>");
+                            } else {
+                                out.print("<a href=\"./HomeServlet?pageNumber=" + link4 + "\" class=\"not-current\">" + link4 + "</a>");
+                            }
+                        }
+
+                        if (pages >= link5) {
+                            if (link5 == pageNumber) {
+                                out.print("<a href=\"./HomeServlet?pageNumber=" + link5 + "\"class=\"current\">" + link5 + "</a>");
+                            } else {
+                                out.print("<a href=\"./HomeServlet?pageNumber=" + link5 + "\" class=\"not-current\">" + link5 + "</a>");
+                            }
+                        }
+                    %>
                 </div>
             </div>
 
@@ -253,46 +309,45 @@
             <div id="footer"><address>Copyright (c) HTMQ All Rights Reserved.</address></div>
 
             <script>
-                <%
-                    for (int i = 0; i < 10; i++) {
+                <%                    for (int i = 0; i < 10; i++) {
                         String[] value = array.get(i).split(",", 0);
                 %>
-                                    var <%= "ctx" + (i + 1)%> = document.getElementById("<%= "myChart" + (i + 1)%>").getContext('2d');
+                var <%= "ctx" + (i + 1)%> = document.getElementById("<%= "myChart" + (i + 1)%>").getContext('2d');
 
                 <%= "ctx" + (i + 1)%>.canvas.width = 375;
                 <%= "ctx" + (i + 1)%>.canvas.height = 420;
 
-                                    var <%= "myChart" + (i + 1)%> = makeChart(<%= "ctx" + (i + 1)%>, <%= value[5]%>, <%= value[6]%>, <%= value[7]%>, <%= value[8]%>, <%=value[9]%>);
+                var <%= "myChart" + (i + 1)%> = makeChart(<%= "ctx" + (i + 1)%>, <%= value[5]%>, <%= value[6]%>, <%= value[7]%>, <%= value[8]%>, <%=value[9]%>);
                 <% }%>
 
-                                    function makeChart(ctx, vote1, vote2, vote3, vote4, vote5) {
-                                        return new Chart(ctx, {
-                                            type: 'doughnut',
-                                            data: {
-                                                labels: ["とても良い", "良い", "普通", "悪い", "とても悪い"],
-                                                datasets: [{
-                                                        backgroundColor: [
-                                                            "#6295bf",
-                                                            "#69D2E7",
-                                                            "#E0E4CC",
-                                                            "#F38630",
-                                                            "#FA6900"
-                                                        ],
-                                                        hoverBackgroundColor: [
-                                                            "#6295bf",
-                                                            "#69D2E7",
-                                                            "#E0E4CC",
-                                                            "#F38630",
-                                                            "#FA6900"
-                                                        ],
-                                                        data: [vote1, vote2, vote3, vote4, vote5]
-                                                    }]
-                                            },
-                                            options: {
-                                                responsive: false
-                                            }
-                                        });
-                                    }
+                function makeChart(ctx, vote1, vote2, vote3, vote4, vote5) {
+                    return new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ["とても良い", "良い", "普通", "悪い", "とても悪い"],
+                            datasets: [{
+                                    backgroundColor: [
+                                        "#6295bf",
+                                        "#69D2E7",
+                                        "#E0E4CC",
+                                        "#F38630",
+                                        "#FA6900"
+                                    ],
+                                    hoverBackgroundColor: [
+                                        "#6295bf",
+                                        "#69D2E7",
+                                        "#E0E4CC",
+                                        "#F38630",
+                                        "#FA6900"
+                                    ],
+                                    data: [vote1, vote2, vote3, vote4, vote5]
+                                }]
+                        },
+                        options: {
+                            responsive: false
+                        }
+                    });
+                }
             </script>
         </div>
     </body>

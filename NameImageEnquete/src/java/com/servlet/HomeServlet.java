@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 public class HomeServlet extends HttpServlet {
 
     public static final String SEPARATOR = ",";
+    public static final int RECORDS_PER_PAGE = 10;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,6 +40,13 @@ public class HomeServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String pageNumber = request.getParameter("pageNumber");
+        if (pageNumber == null || pageNumber.length() == 0) {
+            pageNumber = "1";
+        }
+        int offset = (Integer.parseInt(pageNumber) - 1) * RECORDS_PER_PAGE;
+
         try {
             response.setContentType("text/html;charset=UTF-8");
 
@@ -59,7 +67,9 @@ public class HomeServlet extends HttpServlet {
                     + "FROM enquete \n"
                     + "LEFT JOIN vote ON enquete.enquete_id=vote.enquete_id\n"
                     + "LEFT JOIN (SELECT enquete_id, count(comment) FROM comment GROUP BY comment.enquete_id) sub ON enquete.enquete_id = sub.enquete_id\n"
-                    + "GROUP BY enquete.enquete_id, sub.count ORDER BY created DESC";
+                    + "GROUP BY enquete.enquete_id, sub.count ORDER BY created DESC\n"
+                    + "LIMIT " + RECORDS_PER_PAGE + "\n"
+                    + "OFFSET " + offset;
 
             PostgresAccessor pa = new PostgresAccessor();
             ArrayList<String> array = pa.read(sql, false);
@@ -102,11 +112,18 @@ public class HomeServlet extends HttpServlet {
                 result.add(sb1.toString());
             }
 
-            int numberOfRow = pa.count("enquete");
+            int records = pa.count("enquete");
+            int pages = (int) Math.ceil((double) pa.count("enquete") / RECORDS_PER_PAGE);
 
-            // requestに設定
+            /* requestに設定 */
+            // 全データ
             request.setAttribute("enqueteList", result);
-            request.setAttribute("enqueteCount", numberOfRow);
+            // レコード数
+            request.setAttribute("records", records);
+            // ページ数
+            request.setAttribute("pages", pages);
+            // ページ番号
+            request.setAttribute("pageNumber", Integer.parseInt(pageNumber));
 
             // フォワード
             RequestDispatcher dispatch = request.getRequestDispatcher("home.jsp");
