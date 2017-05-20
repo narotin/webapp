@@ -2,11 +2,11 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%
     // Servletから取得するデータ
     request.setCharacterEncoding("UTF-8");
     ArrayList<String> array = (ArrayList) request.getAttribute("enqueteList");
-    int records = (Integer) request.getAttribute("records");
     int pages = (Integer) request.getAttribute("pages");
     int pageNumber = (Integer) request.getAttribute("pageNumber");
 %>
@@ -22,26 +22,26 @@
     <body>
         <!-- ページ全体 -->
         <div id="pagebody">
-            <!-- ヘッダ -->
-            <div id="header"><h1><a href="index.xhtml">名前アンケート</a></h1></div>
+            <!-- タイトル -->
+            <div id="title"><h1><a href="./HomeServlet">きらきらねーむ.net</a></h1></div>
 
             <!-- トップメニュー上ライン -->   
-            <div id="topmenu-line"></div>
+            <div class="topmenu-line"></div>
 
             <!-- トップメニュー -->
             <ul id="topmenu">
-                <li id="topmenu01"><a href="index.xhtml">ホーム</a></li>
-                <li id="topmenu02"><a href="★サーブレット">機能1</a></li>
-                <li id="topmenu03"><a href="★サーブレット">機能2</a></li>
-                <li id="topmenu04"><a href="★サーブレット">機能3</a></li>
+                <li id="topmenu01"><a href="./HomeServlet">ホーム</a></li>
+                <li id="topmenu02"><a href="★サーブレット">投稿フォーム</a></li>
+                <li id="topmenu03"><a href="★サーブレット">ランキング</a></li>
+                <li id="topmenu04"><a href="★サーブレット">名前検索</a></li>
+                <li id="topmenu05"><a href="★サーブレット">最新コメント</a></li>
             </ul>
 
             <!-- トップメニュー下ライン -->   
-            <div id="topmenu-line"></div>
+            <div class="topmenu-line"></div>
 
             <!-- 左サブメニュー -->
             <div id="leftmenu">
-
                 <div id="leftmenu-header">目的で探す</div>
                 <ul id="leftmenu-body">
                     <li><a href="xxx.html">何か</a></li>
@@ -72,16 +72,18 @@
             </div>
 
             <!-- 中央コンテンツ -->
-            <div id="gaiyou">
+            <div id="overview">
                 <p><h2>概要</h2></p>
-                <p><h3>ここに概要書く。</h3></p>
-                <p><h3>ここに概要書く。</h3></p>
-                <p><h3>ここに概要書く。</h3></p>
-                <p><h3>ここに概要書く。</h3></p>
-                <p><h3>ここに概要書く。</h3></p>
-                <p><h3>ここに概要書く。</h3></p>
-                <p><h3>ここに概要書く。</h3></p>
-                <p><h3>ここに概要書く。</h3></p>
+                <div id="overview-contents">
+                    <p>キラキラネーム(別名:DQNネーム)とは，一般常識から著しく外れているとされる珍しい名前に対する表現です。
+                        上記の説明からわかるように，あまり良い意味合いで使われていないため，生まれてくる子供の名前がキラキラネームとならないように配慮する親が増えています。</p>
+                    <p>しかし，キラキラネームの境界線が曖昧なため，実際に名づけようとした名前が第三者から見てキラキラネームと思われていないか心配になるケースがあります。</p>
+                    <br />
+                    <p>そこで，本サイトでは上記のケースを解決するサービスを提供します。</p>
+                    <p>名前を本サイトに投稿することで，投票やコメント形式で第三者からの意見を簡単に収集することができます。
+                       また，蓄積された情報を検索することで子供の名づけの参考にすることもできます。</p>
+                    <p>是非，この機会にご活用ください。</p>
+                </div>
             </div>
 
             <div id="input-form">

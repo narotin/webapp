@@ -112,14 +112,11 @@ public class HomeServlet extends HttpServlet {
                 result.add(sb1.toString());
             }
 
-            int records = pa.count("enquete");
             int pages = (int) Math.ceil((double) pa.count("enquete") / RECORDS_PER_PAGE);
 
             /* requestに設定 */
             // 全データ
             request.setAttribute("enqueteList", result);
-            // レコード数
-            request.setAttribute("records", records);
             // ページ数
             request.setAttribute("pages", pages);
             // ページ番号
