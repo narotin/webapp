@@ -130,7 +130,7 @@
                 <p><h2>投票</h2></p>
 
                 <%
-                    for (int i = 0; i < 10; i++) {
+                    for (int i = 0; i < array.size(); i++) {
                         // 整形
                         // 第1:enquete_id
                         // 第2:name_kanji
@@ -309,7 +309,7 @@
             <div id="footer"><address>Copyright (c) HTMQ All Rights Reserved.</address></div>
 
             <script>
-                <%                    for (int i = 0; i < 10; i++) {
+                <%                    for (int i = 0; i < array.size(); i++) {
                         String[] value = array.get(i).split(",", 0);
                 %>
                 var <%= "ctx" + (i + 1)%> = document.getElementById("<%= "myChart" + (i + 1)%>").getContext('2d');
