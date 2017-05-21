@@ -81,56 +81,13 @@
                     <br />
                     <p>そこで，本サイトでは上記のケースを解決するサービスを提供します。</p>
                     <p>名前を本サイトに投稿することで，投票やコメント形式で第三者からの意見を簡単に収集することができます。
-                       また，蓄積された情報を検索することで子供の名づけの参考にすることもできます。</p>
+                        また，蓄積された情報を検索することで子供の名づけの際に参考にすることもできます。</p>
                     <p>是非，この機会にご活用ください。</p>
                 </div>
             </div>
 
-            <div id="input-form">
-                <p><h2>入力フォーム</h2></p>
-                <!--　このような表現はかきかえる CSSで表現する -->
-                <p><br></br></p>
-                <form method="post" action="./FormServlet" class="contact">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th><label for="name-kanji">名前(漢字)</label></th>
-                                <td class="required"><img src="./images/required.gif" alt="必須" width="26" height="15"></td>
-                                <td><br><input type="text" name="name-kanji" id="name-kanji" size="50"></br>
-                                    <span class="supplement">例) 楓</span></td>
-                            </tr>
-
-                            <tr>
-                                <th><label for="name-hurigana">名前(ふりがな)</label></th>
-                                <td class="required"><img src="./images/required.gif" alt="必須" width="26" height="15"></td>
-                                <td><br><input type="text" name="name-hurigana" id="name-hurigana" size="50"></br>
-                                    <span class="supplement">例) かえで</span></td>
-                            </tr>
-
-                            <tr>
-                                <th><label for="sex">性別</label></th>
-                                <td class="required"><img src="./images/required.gif" alt="必須" width="26" height="15"></td>
-                                <td><select name="sex" id="sex">
-                                        <option value="">性別の選択</option>
-                                        <option value="1">男</option>
-                                        <option value="2">女</option>
-                                    </select></td>
-                            </tr>
-
-                            <tr>
-                                <th><label for="input-one-comment">一言コメント</label></th>
-                                <td class="arbitrary"></td>
-                                <td><textarea name="input-one-comment" id="input-one-comment" rows="5" cols="40"></textarea></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="button"><input type="submit" value="送信"></p>
-                </form>
-            </div>
-
             <div id="vote">
                 <p><h2>投票</h2></p>
-
                 <%
                     for (int i = 0; i < array.size(); i++) {
                         // 整形
@@ -142,16 +99,14 @@
                         // 第6:vote1
                         // 第7:vote2
                         // 第8:vote3
-                        // 第9:vote4
-                        // 第10:vote5
-                        // 第11:comment_count
-                        // 第12:created
+                        // 第9:comment_count
+                        // 第10:created
                         String[] value = array.get(i).split(",", 0);
                 %>
-                <div id="center-contents">
+                <div id="vote-center-contents">
                     <!-- 中央コンテンツ　左 -->
-                    <div id="center-left">
-                        <div id="center-left-upper">
+                    <div id="vote-center-left">
+                        <div id="vote-center-left-upper">
                             <table id="intro" border="1">
                                 <thead>
                                     <tr>
@@ -178,12 +133,12 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">登録日</th>
-                                        <td><%= value[11]%></td>
+                                        <td><%= value[9]%></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div id="center-left-middle">
+                        <div id="vote-center-left-middle">
                             <table id="one-comment" border="1">
                                 <thead>
                                     <tr>
@@ -197,49 +152,39 @@
                                 </tbody>
                             </table>           
                         </div>
-                        <div id="center-left-lower">
+                        <div id="vote-center-left-lower">
                             <div id="comment-link">
-                                <a href="★サーブレット" target="_blank">コメントする(<%= value[10]%>件)</a>
+                                <a href="★サーブレット" target="_blank">コメントする(<%= value[8]%>件)</a>
                             </div>  
                         </div>
                     </div>
 
                     <!-- 中央コンテンツ 右 -->
-                    <div id="center-right">
-                        <div id="center-right-upper">
+                    <div id="vote-center-right">
+                        <div id="vote-center-right-upper">
                             <dev id="total">
                                 <div align="center">
-                                    <p><%= Integer.parseInt(value[5]) + Integer.parseInt(value[6]) + Integer.parseInt(value[7]) + Integer.parseInt(value[8]) + Integer.parseInt(value[9])%>票</p>
+                                    <p><%= Integer.parseInt(value[5]) + Integer.parseInt(value[6]) + Integer.parseInt(value[7])%>票</p>
                                 </div>
                             </dev>  
                             <canvas id=<%= "myChart" + (i + 1)%>></canvas>
                         </div>
-                        <div id="center-right-lower">
+                        <div id="vote-center-right-lower">
                             <dev id="btn">
                                 <form action="./VoteServlet" method="post">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=1></input>
-                                    <input type="submit" value="とても良い"></input>
+                                    <input type="submit" value="キラキラネームでない"></input>
                                 </form>
                                 <form action="./VoteServlet"method="post">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=2></input>
-                                    <input type="submit" value="良い"></input>
+                                    <input type="submit" value="どちらともいえない"></input>
                                 </form>
                                 <form action="./VoteServlet" method="post">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=3></input>
-                                    <input type="submit" value="普通"></input>
-                                </form>
-                                <form action="./VoteServlet" method="post">
-                                    <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
-                                    <input type="hidden" name="number" value=4></input>
-                                    <input type="submit" value="悪い"></input>
-                                </form>
-                                <form action="./VoteServlet" method="post">
-                                    <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
-                                    <input type="hidden" name="number" value=5></input>
-                                    <input type="submit" value="とても悪い"></input>
+                                    <input type="submit" value="キラキラネームである"></input>
                                 </form>
                             </dev>
                         </div>
@@ -247,8 +192,7 @@
                 </div>
                 <% }%>
 
-                <!-- ページング -->
-                <div id=paging>
+                <div id="paging">
                     <%
                         int link1 = pageNumber - 2;
                         int link2 = pageNumber - 1;
@@ -264,51 +208,73 @@
                             link5++;
                         }
 
+                        if (pageNumber != 1) {
+                            out.println("<div class=\"special-page-box\">");
+                            out.println("<a href=\"./HomeServlet?pageNumber=1\" class=\"page-link\">" + "最初　<<" + "</a>");
+                            out.println("</div>");
+                        }
+
                         if (pages >= link1) {
                             if (link1 == pageNumber) {
-                                out.print("<a href=\"./HomeServlet?pageNumber=" + link1 + "\" class=\"current\">" + link1 + "</a>");
+                                out.println("<div class=\"current-page-box\">");
                             } else {
-                                out.print("<a href=\"./HomeServlet?pageNumber=" + link1 + "\" class=\"not-current\">" + link1 + "</a>");
+                                out.println("<div class=\"page-box\">");
                             }
+                            out.println("<a href=\"./HomeServlet?pageNumber=" + link1 + "\" class=\"page-link\">" + link1 + "</a>");
+                            out.println("</div>");
                         }
 
                         if (pages >= link2) {
                             if (link2 == pageNumber) {
-                                out.print("<a href=\"./HomeServlet?pageNumber=" + link2 + "\" class=\"current\"> " + link2 + "</a>");
+                                out.println("<div class=\"current-page-box\">");
                             } else {
-                                out.print("<a href=\"./HomeServlet?pageNumber=" + link2 + "\" class=\"not-current\">" + link2 + "</a>");
+                                out.println("<div class=\"page-box\">");
                             }
+                            out.println("<a href=\"./HomeServlet?pageNumber=" + link2 + "\" class=\"page-link\">" + link2 + "</a>");
+                            out.println("</div>");
                         }
 
                         if (pages >= link3) {
                             if (link3 == pageNumber) {
-                                out.print("<a href=\"./HomeServlet?pageNumber=" + link3 + "\" class=\"current\">" + link3 + "</a>");
+                                out.println("<div class=\"current-page-box\">");
                             } else {
-                                out.print("<a href=\"./HomeServlet?pageNumber=" + link3 + "\" class=\"not-current\">" + link3 + "</a>");
+                                out.println("<div class=\"page-box\">");
                             }
+                            out.println("<a href=\"./HomeServlet?pageNumber=" + link3 + "\" class=\"page-link\">" + link3 + "</a>");
+                            out.println("</div>");
                         }
 
                         if (pages >= link4) {
                             if (link4 == pageNumber) {
-                                out.print("<a href=\"./HomeServlet?pageNumber=" + link4 + "\" class=\"current\">" + link4 + "</a>");
+                                out.println("<div class=\"current-page-box\">");
                             } else {
-                                out.print("<a href=\"./HomeServlet?pageNumber=" + link4 + "\" class=\"not-current\">" + link4 + "</a>");
+                                out.println("<div class=\"page-box\">");
                             }
+                            out.println("<a href=\"./HomeServlet?pageNumber=" + link4 + "\" class=\"page-link\">" + link4 + "</a>");
+                            out.println("</div>");
                         }
 
                         if (pages >= link5) {
                             if (link5 == pageNumber) {
-                                out.print("<a href=\"./HomeServlet?pageNumber=" + link5 + "\"class=\"current\">" + link5 + "</a>");
+                                out.println("<div class=\"current-page-box\">");
                             } else {
-                                out.print("<a href=\"./HomeServlet?pageNumber=" + link5 + "\" class=\"not-current\">" + link5 + "</a>");
+                                out.println("<div class=\"page-box\">");
                             }
+                            out.println("<a href=\"./HomeServlet?pageNumber=" + link5 + "\" class=\"page-link\">" + link5 + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pageNumber != pages) {
+                            out.println("<div class=\"special-page-box\">");
+                            out.println("<a href=\"./HomeServlet?pageNumber=" + pages + "\" class=\"page-link\">" + ">>　最後" + "</a>");
+                            out.println("</div>");
                         }
                     %>
                 </div>
             </div>
 
             <!-- フッタ -->
-            <div id="footer"><address>Copyright (c) HTMQ All Rights Reserved.</address></div>
+            <div id="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>
 
             <script>
                 <%                    for (int i = 0; i < array.size(); i++) {
@@ -319,30 +285,26 @@
                 <%= "ctx" + (i + 1)%>.canvas.width = 375;
                 <%= "ctx" + (i + 1)%>.canvas.height = 420;
 
-                var <%= "myChart" + (i + 1)%> = makeChart(<%= "ctx" + (i + 1)%>, <%= value[5]%>, <%= value[6]%>, <%= value[7]%>, <%= value[8]%>, <%=value[9]%>);
+                var <%= "myChart" + (i + 1)%> = makeChart(<%= "ctx" + (i + 1)%>, <%= value[5]%>, <%= value[6]%>, <%= value[7]%>);
                 <% }%>
 
-                function makeChart(ctx, vote1, vote2, vote3, vote4, vote5) {
+                function makeChart(ctx, vote1, vote2, vote3) {
                     return new Chart(ctx, {
                         type: 'doughnut',
                         data: {
-                            labels: ["とても良い", "良い", "普通", "悪い", "とても悪い"],
+                            labels: ["キラキラネームでない", "どちらともいえない", "キラキラネームである"],
                             datasets: [{
                                     backgroundColor: [
                                         "#6295bf",
-                                        "#69D2E7",
                                         "#E0E4CC",
-                                        "#F38630",
                                         "#FA6900"
                                     ],
                                     hoverBackgroundColor: [
                                         "#6295bf",
-                                        "#69D2E7",
                                         "#E0E4CC",
-                                        "#F38630",
                                         "#FA6900"
                                     ],
-                                    data: [vote1, vote2, vote3, vote4, vote5]
+                                    data: [vote1, vote2, vote3]
                                 }]
                         },
                         options: {

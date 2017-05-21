@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/workspace/netbeans/NameImageEnquete/web/images/header.jpg</file>
+            <file>file:/C:/workspace/netbeans/NameImageEnquete/src/java/com/servlet/VoteServlet.java</file>
+            <file>file:/C:/workspace/netbeans/NameImageEnquete/web/WEB-INF/web.xml</file>
+            <file>file:/C:/workspace/netbeans/NameImageEnquete/src/java/com/servlet/HomeServlet.java</file>
+            <file>file:/C:/workspace/netbeans/NameImageEnquete/web/form.jsp</file>
+            <file>file:/C:/workspace/netbeans/NameImageEnquete/src/java/com/servlet/FormServlet.java</file>
+            <file>file:/C:/workspace/netbeans/NameImageEnquete/src/java/com/dao/postgres/PostgresAccessor.java</file>
             <file>file:/C:/workspace/netbeans/NameImageEnquete/web/css/home.css</file>
             <file>file:/C:/workspace/netbeans/NameImageEnquete/web/home.jsp</file>
         </group>
