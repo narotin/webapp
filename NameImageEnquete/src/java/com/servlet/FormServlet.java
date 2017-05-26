@@ -5,13 +5,10 @@
  */
 package com.servlet;
 
-import com.dao.postgres.PostgresAccessor;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Naro
  */
-@WebServlet(name = "FormServlet", urlPatterns = {"/FormServlet"})
 public class FormServlet extends HttpServlet {
 
     /**
@@ -34,26 +30,11 @@ public class FormServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String nameKanji = request.getParameter("name-kanji");
-            String nameHurigana = request.getParameter("name-hurigana");
-            String sex = request.getParameter("sex");
-            String inputOneComment = request.getParameter("input-one-comment");
-
-            // PostgreSQL JDBC 問い合わせ SQL 作成
-            String sql = "INSERT INTO \"public\".enquete(name_kanji, name_hurigana, sex, short_comment) VALUES ('" + nameKanji + "','" + nameHurigana + "'," + sex + ",'" + inputOneComment + "')";
-
-            PostgresAccessor pa = new PostgresAccessor();
-            pa.write(sql);
-
-            // フォワード
-            // TODO homeに戻っていいのか
-            response.sendRedirect("/NameImageEnquete");
-
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(VoteServlet.class.getName()).log(Level.SEVERE, null, ex);
-            // TODO　エラー時はエラー用のページに飛ばしたい
-        }
+        response.setContentType("text/html;charset=UTF-8");
+        
+        // フォワード
+        RequestDispatcher dispatch = request.getRequestDispatcher("form.jsp");
+        dispatch.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

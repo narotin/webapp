@@ -23,7 +23,7 @@
             <!-- トップメニュー -->
             <ul id="topmenu">
                 <li id="topmenu01"><a href="./HomeServlet">ホーム</a></li>
-                <li id="topmenu02"><a href="★サーブレット">投稿フォーム</a></li>
+                <li id="topmenu02"><a href="./FormServlet">投稿フォーム</a></li>
                 <li id="topmenu03"><a href="★サーブレット">ランキング</a></li>
                 <li id="topmenu04"><a href="★サーブレット">名前検索</a></li>
                 <li id="topmenu05"><a href="★サーブレット">最新コメント</a></li>
@@ -64,11 +64,11 @@
             </div>
 
             <!-- 中央コンテンツ -->
-            <div id="form">
+            <div id="input-form">
                 <p><h2>入力フォーム</h2></p>
                 <!--　このような表現はかきかえる CSSで表現する -->
                 </ br>
-                <form method="post" action="./FormServlet" class="contact">
+                <form method="post" action="./SendFormInfoServle" class="contact">
                     <table>
                         <tbody>
                             <tr>
@@ -94,7 +94,6 @@
                                         <option value="2">女</option>
                                     </select></td>
                             </tr>
-
                             <tr>
                                 <th><label for="input-one-comment">一言コメント</label></th>
                                 <td class="arbitrary"></td>

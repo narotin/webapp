@@ -300,8 +300,7 @@ h2:after {
 /*============================================
 入力フォーム
 ============================================*/
-
-div#input-form {
+#input-form {
     width:770px;			/*幅の指定*/
     height: 480px;
     margin:10px 10px 10px 0px;	/*位置調整（IE6のバグに注意）*/
@@ -312,7 +311,6 @@ form.contact {
     width: 700px; /* フォームエリアの幅 */
     margin-left: auto;
     margin-right: auto;
-    font-size: 80%;
 }
 /* --- フォームエリア内の段落 --- */
 form.contact p {
@@ -384,10 +382,12 @@ form.contact textarea {
 
 /* --- ボタン --- */
 form.contact p.button {
+    width:123px;	
+    height: 50px;
+    border-width:2px;
     margin: 20px 0 0; /* ボタンのマージン（上、左右、下） */
     text-align: center;
 }
-
 /*============================================
 自己紹介
 ============================================*/

@@ -16,7 +16,15 @@
     <servlet>
         <servlet-name>VoteServlet</servlet-name>
         <servlet-class>com.servlet.VoteServlet</servlet-class>
-    </servlet>      
+    </servlet>
+    <servlet>
+        <servlet-name>SendFormInfoServle</servlet-name>
+        <servlet-class>com.servlet.SendFormInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FormServlet</servlet-name>
+        <servlet-class>com.servlet.FormServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -28,6 +36,14 @@
     <servlet-mapping>
         <servlet-name>VoteServlet</servlet-name>
         <url-pattern>/VoteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendFormInfoServle</servlet-name>
+        <url-pattern>/SendFormInfoServle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FormServlet</servlet-name>
+        <url-pattern>/FormServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
