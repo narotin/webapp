@@ -68,7 +68,10 @@
             <!-- 中央コンテンツ -->
             <div id="input-form">
                 <p><h2>入力フォーム</h2></p>
-                </ br>
+                <div id="input-form-contents">
+                    <p>下記の入力フォームに子供に名付けたい名前を書いて投稿しよう！</p>
+                    <p>第三者からの意見を簡単に収集できます。</p>
+                </div>
                 <form name="form1" method="post" action="./SendFormInfoServle" class="contact" onsubmit="return checkInputForm()">
                     <table>
                         <tr>

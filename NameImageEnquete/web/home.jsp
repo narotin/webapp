@@ -89,7 +89,7 @@
             </div>
 
             <div id="vote">
-                <p><h2>投票</h2></p>
+                <p><h2>最新の投票</h2></p>
                 <%
                     for (int i = 0; i < array.size(); i++) {
                         // 整形

@@ -114,6 +114,10 @@ public class HomeServlet extends HttpServlet {
 
             int pages = (int) Math.ceil((double) pa.count("enquete") / RECORDS_PER_PAGE);
 
+            if(pages == 0){
+                pages = 1;
+            }
+            
             /* requestに設定 */
             // 全データ
             request.setAttribute("enqueteList", result);

@@ -3,10 +3,17 @@
 ============================================*/
 #input-form {
     width:770px;
-    height: 480px;
-    margin:10px 10px 10px 0px;
+    height: 630px;
+    margin:10px 15px 10px 0px;
     float:right;
 }
+
+#input-form-contents {
+    width:745px;
+    height: 70px;
+    float:right;
+}
+
 /* --- フォームエリア --- */
 form.contact {
     width: 700px; /* フォームエリアの幅 */
