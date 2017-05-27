@@ -8,6 +8,7 @@ package com.servlet;
 import com.dao.postgres.PostgresAccessor;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -42,10 +43,14 @@ public class VoteServlet extends HttpServlet {
             String number = request.getParameter("number");
 
             // PostgreSQL JDBC 問い合わせ SQL 作成
-            String sql = "INSERT INTO \"public\".vote(enquete_id, number) VALUES (" + enqueteId + "," + number + ")";
+            String preSql = "INSERT INTO \"public\".vote(enquete_id, number) VALUES (" + "?" + "," + "?" + ")";
+
+            ArrayList<String> holder = new ArrayList<>();
+            holder.add(enqueteId);
+            holder.add(number);
 
             PostgresAccessor pa = new PostgresAccessor();
-            pa.write(sql);
+            pa.write(preSql, holder, "Vote");
 
             // フォワード
             // TODO homeに戻っていいのか

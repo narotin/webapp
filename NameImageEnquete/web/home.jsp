@@ -18,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="./css/common.css" />
         <link rel="stylesheet" type="text/css" href="./css/home.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     </head>
 
     <body>
@@ -131,7 +131,17 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">性別</th>
-                                        <td><%= value[3]%></td>
+                                        <td>
+                                            <%
+                                                if (value[3].equals("1")) {
+                                                    out.println("男");
+                                                } else if (value[3].equals("2")) {
+                                                    out.println("女");
+                                                } else {
+                                                    out.println("その他");
+                                                }
+                                            %>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">登録日</th>

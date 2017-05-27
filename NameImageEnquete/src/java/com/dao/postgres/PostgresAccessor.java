@@ -7,11 +7,13 @@ package com.dao.postgres;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,13 +29,15 @@ public class PostgresAccessor {
 
     /**
      *
-     * @param sql sql文を指定
+     * @param preSql sql文を指定
+     * @param holder
      * @param headerExist hedaderをreturnのListに含めるかの判定
+     * @param type
      * @return
      * @throws java.sql.SQLException
      * @throws java.lang.ClassNotFoundException
      */
-    public ArrayList<String> read(String sql, boolean headerExist) throws SQLException, ClassNotFoundException {
+    public ArrayList<String> read(String preSql, List<String> holder, String type, boolean headerExist) throws SQLException, ClassNotFoundException {
         ArrayList<String> header = null;
         ArrayList<String> contents = null;
         try {
@@ -42,9 +46,16 @@ public class PostgresAccessor {
 
             // PostgreSQL JDBC 接続
             try (Connection con = DriverManager.getConnection(DSN)) {
-                try (Statement st = con.createStatement()) {
+                try (PreparedStatement preSt = con.prepareStatement(preSql)) {
+
+                    //typeに応じて，セットする文字列を変える
+                    if (type.equals("Home")) {
+                        preSt.setInt(1, Integer.parseInt(holder.get(0)));
+                        preSt.setInt(2, Integer.parseInt(holder.get(1)));
+                    }
+
                     // PostgreSQL JDBC レコードセットオープン
-                    try (ResultSet rs = st.executeQuery(sql)) {
+                    try (ResultSet rs = preSt.executeQuery()) {
                         contents = new ArrayList<>();
                         // 出力
                         while (rs.next()) {
@@ -107,8 +118,8 @@ public class PostgresAccessor {
             // PostgreSQL JDBC 接続
             try (Connection con = DriverManager.getConnection(DSN)) {
                 try (Statement st = con.createStatement(
-                       ResultSet.TYPE_SCROLL_INSENSITIVE, 
-                       ResultSet.CONCUR_READ_ONLY)) {
+                        ResultSet.TYPE_SCROLL_INSENSITIVE,
+                        ResultSet.CONCUR_READ_ONLY)) {
                     // PostgreSQL JDBC レコードセットオープン
                     try (ResultSet rs = st.executeQuery(sql)) {
                         // 行数取得
@@ -131,15 +142,26 @@ public class PostgresAccessor {
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
      */
-    public void write(String sql) throws SQLException, ClassNotFoundException {
+    public void write(String preSql, List<String> holder, String type) throws SQLException, ClassNotFoundException {
         try {
             // PostgreSQL JDBC ドライバロード
             Class.forName(DRIVER);
 
             // PostgreSQL JDBC 接続
             try (Connection con = DriverManager.getConnection(DSN)) {
-                try (Statement stmt = con.createStatement()) {
-                    stmt.executeUpdate(sql);
+                try (PreparedStatement preSt = con.prepareStatement(preSql)) {
+                    //typeに応じて，セットする文字列を変える
+                    if (type.equals("Vote")) {
+                        preSt.setInt(1, Integer.parseInt(holder.get(0)));
+                        preSt.setInt(2, Integer.parseInt(holder.get(1)));
+                        
+                    } else if (type.equals("SendFormInfo")) {
+                        preSt.setString(1, holder.get(0));
+                        preSt.setString(2, holder.get(1));
+                        preSt.setInt(3, Integer.parseInt(holder.get(2)));
+                        preSt.setString(4, holder.get(3));
+                    }
+                    preSt.executeUpdate();
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {

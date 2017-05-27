@@ -8,6 +8,7 @@ package com.servlet;
 import com.dao.postgres.PostgresAccessor;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -44,10 +45,16 @@ public class SendFormInfoServlet extends HttpServlet {
             String inputOneComment = request.getParameter("one-comment");
 
             // PostgreSQL JDBC 問い合わせ SQL 作成
-            String sql = "INSERT INTO \"public\".enquete(name_kanji, name_hurigana, sex, short_comment) VALUES ('" + nameKanji + "','" + nameHurigana + "'," + sex + ",'" + inputOneComment + "')";
+            String preSql = "INSERT INTO \"public\".enquete(name_kanji, name_hurigana, sex, short_comment) VALUES (" + "?" + "," + "?" + "," + "?" + "," + "?" + ")";
 
+            ArrayList<String> holder = new ArrayList<>();
+            holder.add(nameKanji);
+            holder.add(nameHurigana);
+            holder.add(sex);
+            holder.add(inputOneComment);
+            
             PostgresAccessor pa = new PostgresAccessor();
-            pa.write(sql);
+            pa.write(preSql, holder, "SendFormInfo");
 
             // フォワード
             // TODO homeに戻っていいのか

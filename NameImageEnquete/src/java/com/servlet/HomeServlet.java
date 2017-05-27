@@ -51,7 +51,7 @@ public class HomeServlet extends HttpServlet {
             int offset = (Integer.parseInt(pageNumber) - 1) * RECORDS_PER_PAGE;
 
             // PostgreSQL JDBC 問い合わせ SQL 作成
-            String sql = "SELECT \n"
+            String preSql = "SELECT \n"
                     + "enquete.enquete_id\n"
                     + ", name_kanji\n"
                     + ", name_hurigana\n"
@@ -66,11 +66,15 @@ public class HomeServlet extends HttpServlet {
                     + "LEFT JOIN vote ON enquete.enquete_id=vote.enquete_id\n"
                     + "LEFT JOIN (SELECT enquete_id, count(comment) FROM comment GROUP BY comment.enquete_id) sub ON enquete.enquete_id = sub.enquete_id\n"
                     + "GROUP BY enquete.enquete_id, sub.count ORDER BY created DESC\n"
-                    + "LIMIT " + RECORDS_PER_PAGE + "\n"
-                    + "OFFSET " + offset;
+                    + "LIMIT " + "?" + "\n"
+                    + "OFFSET " + "?";
+
+            ArrayList<String> holder = new ArrayList<>();
+            holder.add(String.valueOf(RECORDS_PER_PAGE));
+            holder.add(String.valueOf(offset));
 
             PostgresAccessor pa = new PostgresAccessor();
-            ArrayList<String> array = pa.read(sql, false);
+            ArrayList<String> array = pa.read(preSql, holder, "Home", false);
 
             // 整形
             // 第1:enquete_id
