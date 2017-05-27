@@ -1,0 +1,243 @@
+@charset "shift-jis";
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+@font-face {
+    font-family: "RiiMonakaWRt";
+    src: url("../font/RiiMonakaWRt.woff2") format('woff2'),
+        url("../font/RiiMonakaWRt.woff")  format('woff');
+}
+
+/*============================================
+全般
+============================================*/
+* {
+    margin:0; padding:0;
+    line-height:1.5;
+    color:#333333; /* 黒 */
+} 
+
+body {
+    background-color:#ffffff; /* 白 */
+    background-repeat:repeat;
+    background-image:url("../images/body_01.gif");
+    text-align:center;
+    font-family: "Noto Sans JP", Lato, "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+#pagebody {
+    width:1000px; margin:0 auto;
+    text-align:left;
+    background-color:#ffffff; /* 白 */
+}
+
+/*============================================
+タイトル
+============================================*/
+#title {
+    height: 110px;
+    background-image:url("../images/title.jpg");
+    background-repeat:no-repeat;
+}
+
+h1{
+    padding:20px 20px 20px 20px;
+    font-size:400%;
+    text-align:center;
+    font-family: "RiiMonakaWRt", Lato, "Noto Sans JP";
+    text-decoration:none; 
+}
+
+h1 a {
+    text-decoration:none; /* リンクの下線を無くす */
+}
+
+/*============================================
+見出し
+============================================*/
+h2 {
+    position: relative;
+    padding-left: 25px;
+    margin:0px 0px 8px 0px;
+}
+
+h2:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px rgb(119, 195, 223);
+}
+h2:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 100%;
+    border-bottom: solid 3px rgb(119, 195, 223);
+}
+
+/*============================================
+トップメニュー
+============================================*/
+.topmenu-line {
+    width:1000px; margin:1px 0px 1px auto;
+    height: 2px;
+    background-image:url("../images/topmanu_line.png");
+    background-repeat:repeat;
+}
+
+#topmenu {
+    height:43px;
+    background-color:#eeeeee;
+    font-weight:bold;
+}
+
+#topmenu a {
+    display:block;
+    height:43px;
+    padding-top:10px;
+    text-align:center;
+    text-decoration:none;
+}
+
+#topmenu01 {
+    width:200px; height:43px;
+    background-image:url("../images/btn_01.png");
+    float:left;
+    display:inline;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}
+#topmenu02 {
+    width:200px; height:43px;
+    background-image:url("../images/btn_02.png");
+    float:left;
+    display:inline;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}
+#topmenu03 {
+    width:200px; height:43px;
+    background-image:url("../images/btn_03.png");
+    float:left;
+    display:inline;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}
+#topmenu04 {
+    width:200px; height:43px;
+    background-image:url("../images/btn_04.png");
+    float:left;
+    display:inline;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}
+
+#topmenu05 {
+    width:200px; height:43px;
+    background-image:url("../images/btn_05.png");
+    float:left;
+    display:inline;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}
+/*============================================
+左サブメニュー
+============================================*/
+#leftmenu {
+    width:200px;
+    margin:0px 0px 10px 10px;
+    display:inline;
+    float:left;
+}
+
+#leftmenu-header {
+    height:26px; padding:4px 0px 0px 0px;
+    background-repeat:no-repeat; background-position:top;
+    background-color:#cccccc;
+    font-size:90%; font-weight:bold; text-align:center;
+}
+
+#leftmenu-body {
+    padding-bottom:6px;
+    background-repeat:no-repeat; background-position:bottom;
+    background-color:#cccccc;
+}
+
+#leftmenu-body li {
+    font-size:90%;
+    list-style-type:none;
+    display:inline;
+}
+
+#leftmenu-body li a {
+    display:block;
+    margin:0px 4px 0px 4px;
+    padding:2px 0px 2px 20px;
+    background-color:#eeeeee;
+    text-decoration:none;
+}
+
+#leftmenu-_body li a:hover {
+    background-color:#ffffff;	/*リンクにマウスが乗ったら色を変える*/
+}
+
+/*============================================
+ページング
+============================================*/
+#paging{
+    width:745px;
+    height:40px;
+    margin:10px 5px 10px 5px;
+    float:right;
+    text-align: center;
+}
+.current-page-box {
+    width:30px;
+    height:30px;
+    margin:5px 10px 5px 10px;
+    border:1px outset;
+    display:inline-block;
+    background-color:#99FF99
+}
+
+.page-box {
+    width:30px;
+    height:30px;
+    margin:5px 10px 5px 10px;
+    border:1px outset;
+    display:inline-block;
+}
+
+.special-page-box {
+    width:70px;
+    height:30px;
+    margin:0px 10px 0px 10px;
+    display:inline-block;
+}
+
+.page-link {
+    text-decoration:none; 
+}
+
+/*============================================
+フッタ
+============================================*/
+#footer {
+    height:42px; text-align:center;
+    clear:both;					/*回り込みを解除する*/
+    background-image:url("images/bg_footer.jpg");	/*フッタ部分の背景画像*/
+    background-repeat:no-repeat;			/*背景画像を繰り返さない*/
+    background-color:#cccccc;			/*フッタ部分の背景色*/
+}
+
+address {
+    font-style:normal;			 /*フォントスタイルを標準にする*/
+    font-size:small;			 /*フォントサイズを小さくする*/
+    padding:5px 0px 5px 0px;		 /*要素内容の位置調整*/
+}
+
+

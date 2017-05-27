@@ -1,192 +1,5 @@
-@charset "shift-jis";
-@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
-@font-face {
-    font-family: "RiiMonakaWRt";
-    src: url("../font/RiiMonakaWRt.woff2") format('woff2'),
-        url("../font/RiiMonakaWRt.woff")  format('woff');
-}
-
 /*============================================
-全般
-============================================*/
-* {
-    margin:0; padding:0;
-    line-height:1.5;
-    color:#333333; /* 黒 */
-} 
-
-body {
-    background-color:#ffffff; /* 白 */
-    background-repeat:repeat;
-    background-image:url("../images/body_01.gif");
-    text-align:center;
-    font-family: "Noto Sans JP", Lato, "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-}
-
-#pagebody {
-    width:1000px; margin:0 auto;
-    text-align:left;
-    background-color:#ffffff; /* 白 */
-}
-
-/*============================================
-タイトル
-============================================*/
-#title {
-    height: 110px;
-    background-image:url("../images/title.jpg");
-    background-repeat:no-repeat;
-}
-
-h1{
-    padding:20px 20px 20px 20px;
-    font-size:400%;
-    text-align:center;
-    font-family: "RiiMonakaWRt", Lato, "Noto Sans JP";
-    text-decoration:none; 
-}
-
-h1 a {
-    text-decoration:none; /* リンクの下線を無くす */
-}
-
-/*============================================
-見出し
-============================================*/
-h2 {
-    position: relative;
-    padding-left: 25px;
-    margin:0px 0px 8px 0px;
-}
-
-h2:before {
-    position: absolute;
-    content: '';
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 0;
-    border: none;
-    border-left: solid 15px transparent;
-    border-bottom: solid 15px rgb(119, 195, 223);
-}
-h2:after {
-    position: absolute;
-    content: '';
-    bottom: -3px;
-    left: 10px;
-    width: 100%;
-    border-bottom: solid 3px rgb(119, 195, 223);
-}
-
-/*============================================
-トップメニュー
-============================================*/
-.topmenu-line {
-    width:1000px; margin:1px 0px 1px auto;
-    height: 2px;
-    background-image:url("../images/topmanu_line.png");
-    background-repeat:repeat;
-}
-
-#topmenu {
-    height:43px;
-    background-color:#eeeeee;
-    font-weight:bold;
-}
-
-#topmenu a {
-    display:block;
-    height:43px;
-    padding-top:10px;
-    text-align:center;
-    text-decoration:none;
-}
-
-#topmenu01 {
-    width:200px; height:43px;
-    background-image:url("../images/btn_01.png");
-    float:left;
-    display:inline;
-    list-style-type:none;
-    background-repeat:no-repeat;
-}
-#topmenu02 {
-    width:200px; height:43px;
-    background-image:url("../images/btn_02.png");
-    float:left;
-    display:inline;
-    list-style-type:none;
-    background-repeat:no-repeat;
-}
-#topmenu03 {
-    width:200px; height:43px;
-    background-image:url("../images/btn_03.png");
-    float:left;
-    display:inline;
-    list-style-type:none;
-    background-repeat:no-repeat;
-}
-#topmenu04 {
-    width:200px; height:43px;
-    background-image:url("../images/btn_04.png");
-    float:left;
-    display:inline;
-    list-style-type:none;
-    background-repeat:no-repeat;
-}
-
-#topmenu05 {
-    width:200px; height:43px;
-    background-image:url("../images/btn_05.png");
-    float:left;
-    display:inline;
-    list-style-type:none;
-    background-repeat:no-repeat;
-}
-/*============================================
-左サブメニュー
-============================================*/
-#leftmenu {
-    width:200px;
-    margin:0px 0px 10px 10px;
-    display:inline;
-    float:left;
-}
-
-#leftmenu-header {
-    height:26px; padding:4px 0px 0px 0px;
-    background-repeat:no-repeat; background-position:top;
-    background-color:#cccccc;
-    font-size:90%; font-weight:bold; text-align:center;
-}
-
-#leftmenu-body {
-    padding-bottom:6px;
-    background-repeat:no-repeat; background-position:bottom;
-    background-color:#cccccc;
-}
-
-#leftmenu-body li {
-    font-size:90%;
-    list-style-type:none;
-    display:inline;
-}
-
-#leftmenu-body li a {
-    display:block;
-    margin:0px 4px 0px 4px;
-    padding:2px 0px 2px 20px;
-    background-color:#eeeeee;
-    text-decoration:none;
-}
-
-#leftmenu-_body li a:hover {
-    background-color:#ffffff;	/*リンクにマウスが乗ったら色を変える*/
-}
-
-/*============================================
-中央コンテンツ(home)
+中央コンテンツ(home.jsp)
 ============================================*/
 #overview {
     width:770px;
@@ -298,97 +111,6 @@ h2:after {
 }
 
 /*============================================
-入力フォーム
-============================================*/
-#input-form {
-    width:770px;			/*幅の指定*/
-    height: 480px;
-    margin:10px 10px 10px 0px;	/*位置調整（IE6のバグに注意）*/
-    float:right;
-}
-/* --- フォームエリア --- */
-form.contact {
-    width: 700px; /* フォームエリアの幅 */
-    margin-left: auto;
-    margin-right: auto;
-}
-/* --- フォームエリア内の段落 --- */
-form.contact p {
-    line-height: 130%;
-}
-/* --- 段落内の「必須」画像 --- */
-form.contact p.attention img {
-    vertical-align: middle;
-}
-
-/* --- テーブル --- */
-form.contact table {
-    width: 100%; /* テーブルの幅 */
-    background-color: #f9f9f9; /* テーブルの背景色 */
-    border: 1px #c0c0c0 solid; /* テーブルの境界線 */
-}
-/* --- 見出しセル（th） --- */
-form.contact th {
-    width: 140px; /* 見出しセルの幅 */
-    padding: 10px 8px; /* 見出しセルのパディング（上下、左右） */
-    background-color: #f5f5f5; /* 見出しセルの背景色 */
-    border-bottom: 1px #c0c0c0 dotted; /* 見出しセルの下境界線 */
-    text-align: left;
-    line-height: 130%;
-}
-/* --- 見出しセル内の補足テキスト --- */
-form.contact th span.supplement {
-    font-weight: normal;
-}
-/* --- データセル（td） --- */
-form.contact td {
-    padding: 10px 5px 7px; /* データセルのパディング（上、左右、下） */
-    background-color: #ffffff; /* データセルの背景色 */
-    border-bottom: 1px #c0c0c0 dotted; /* データセルの下境界線 */
-}
-/* --- データセル内の補足テキスト --- */
-form.contact td span.supplement {
-    color: #808080;
-}
-/* --- 必須項目セル --- */
-form.contact td.required {
-    width: 26px; /* 必須項目セルの幅 */
-    padding: 10px 3px; /* 必須項目セルのパディング（上下、左右） */
-    background-color: #c4e6fa; /* 必須項目セルの背景色 */
-    text-align: center;
-}
-/* --- 任意項目セル --- */
-form.contact td.arbitrary {
-    background-color: #e0f1fc; /* 任意項目セルの背景色 */
-}
-
-/* --- フォーム部品 --- */
-form.contact input,
-form.contact select,
-form.contact textarea {
-    margin-bottom: 2px; /* フォーム部品の下マージン */
-}
-/* --- フォーム部品のサイズ --- */
-/* --- （長めのテキスト入力欄） --- */
-#namae-kanji, #name-hurigana{
-    width: 350px; /* フォーム部品の幅 */
-}
-
-/* --- （複数行のテキスト入力欄） --- */
-#input-one-comment {
-    width: 420px; /* フォーム部品の幅 */
-    height: 10em; /* フォーム部品の高さ */
-}
-
-/* --- ボタン --- */
-form.contact p.button {
-    width:123px;	
-    height: 50px;
-    border-width:2px;
-    margin: 20px 0 0; /* ボタンのマージン（上、左右、下） */
-    text-align: center;
-}
-/*============================================
 自己紹介
 ============================================*/
 table#intro {
@@ -455,10 +177,20 @@ table#one-comment tbody th {
 table#one-comment td {
     width: 350px;
     height:70px;
-    padding: 10px;
+    padding: 1px 0px 0px 0px;
     vertical-align: top;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+}
+
+textarea{
+    width: 100%;
+    height: 100px;
+    resize: none;  
+    padding:0px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Chrome, Safari */
 }
 
 /*============================================
@@ -486,60 +218,3 @@ dev#total {
     position: absolute;
     top: 0px;
 }
-
-/*============================================
-ページング
-============================================*/
-#paging{
-    width:745px;
-    height:40px;
-    margin:10px 5px 10px 5px;
-    float:right;
-    text-align: center;
-}
-.current-page-box {
-    width:30px;
-    height:30px;
-    margin:5px 10px 5px 10px;
-    border:1px outset;
-    display:inline-block;
-    background-color:#99FF99
-}
-
-.page-box {
-    width:30px;
-    height:30px;
-    margin:5px 10px 5px 10px;
-    border:1px outset;
-    display:inline-block;
-}
-
-.special-page-box {
-    width:70px;
-    height:30px;
-    margin:0px 10px 0px 10px;
-    display:inline-block;
-}
-
-.page-link {
-    text-decoration:none; 
-}
-
-/*============================================
-フッタ
-============================================*/
-div#footer {
-    height:42px; text-align:center;
-    clear:both;					/*回り込みを解除する*/
-    background-image:url("images/bg_footer.jpg");	/*フッタ部分の背景画像*/
-    background-repeat:no-repeat;			/*背景画像を繰り返さない*/
-    background-color:#cccccc;			/*フッタ部分の背景色*/
-}
-
-address {
-    font-style:normal;			 /*フォントスタイルを標準にする*/
-    font-size:small;			 /*フォントサイズを小さくする*/
-    padding:5px 0px 5px 0px;		 /*要素内容の位置調整*/
-}
-
-

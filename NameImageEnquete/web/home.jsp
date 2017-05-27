@@ -15,7 +15,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>title</title>
+        <link rel="stylesheet" type="text/css" href="./css/common.css" />
         <link rel="stylesheet" type="text/css" href="./css/home.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     </head>
 
@@ -139,7 +141,7 @@
                             </table>
                         </div>
                         <div id="vote-center-left-middle">
-                            <table id="one-comment" border="1">
+                            <table id="one-comment" border="1" >
                                 <thead>
                                     <tr>
                                         <th scope="cols">投稿者一言コメント</th>
@@ -147,7 +149,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><%= value[4]%></td>
+                                        <td><textarea cols="40" rows="3" readonly><%= value[4]%></textarea></td>
                                     </tr>
                                 </tbody>
                             </table>           

@@ -40,15 +40,15 @@ public class HomeServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String pageNumber = request.getParameter("pageNumber");
-        if (pageNumber == null || pageNumber.length() == 0) {
-            pageNumber = "1";
-        }
-        int offset = (Integer.parseInt(pageNumber) - 1) * RECORDS_PER_PAGE;
-
         try {
+            request.setCharacterEncoding("UTF-8");
             response.setContentType("text/html;charset=UTF-8");
+
+            String pageNumber = request.getParameter("pageNumber");
+            if (pageNumber == null || pageNumber.length() == 0) {
+                pageNumber = "1";
+            }
+            int offset = (Integer.parseInt(pageNumber) - 1) * RECORDS_PER_PAGE;
 
             // PostgreSQL JDBC 問い合わせ SQL 作成
             String sql = "SELECT \n"

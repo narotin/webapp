@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,9 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Naro
  */
-public class VoteServlet extends HttpServlet {
-
-    public static final String SEPARATOR = ",";
+@WebServlet(name = "SendFormInfoServle", urlPatterns = {"/SendFormInfoServle"})
+public class SendFormInfoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,11 +38,13 @@ public class VoteServlet extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             response.setContentType("text/html;charset=UTF-8");
 
-            String enqueteId = request.getParameter("enquete_id");
-            String number = request.getParameter("number");
+            String nameKanji = request.getParameter("name-kanji");
+            String nameHurigana = request.getParameter("name-hurigana");
+            String sex = request.getParameter("sex");
+            String inputOneComment = request.getParameter("one-comment");
 
             // PostgreSQL JDBC 問い合わせ SQL 作成
-            String sql = "INSERT INTO \"public\".vote(enquete_id, number) VALUES (" + enqueteId + "," + number + ")";
+            String sql = "INSERT INTO \"public\".enquete(name_kanji, name_hurigana, sex, short_comment) VALUES ('" + nameKanji + "','" + nameHurigana + "'," + sex + ",'" + inputOneComment + "')";
 
             PostgresAccessor pa = new PostgresAccessor();
             pa.write(sql);
