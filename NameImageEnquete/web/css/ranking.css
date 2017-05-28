@@ -1,0 +1,74 @@
+/*============================================
+中央コンテンツ(ranking.jsp)
+============================================*/
+#ranking {
+    width:770px;
+    height: 630px;
+    margin:10px 15px 10px 0px;
+    float:right;
+}
+
+.ranking-buttom {
+    width:770px;
+    height:40px;
+    font-weight:bold;
+    margin:10px 0px 0px 0px;
+    text-align: center;
+}
+
+.ranking-buttom a {
+    display:block;
+    height:50px;
+    padding-top:8px;
+    text-align:center;
+    font-size:85%;
+    text-decoration:none;
+}
+
+#ranking-buttom1 {
+    width:230px; height:50px;
+    background-image:url("../images/ranking_04.png");
+    display:inline-block;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}
+
+#ranking-buttom2 {
+    width:230px; height:50px;
+    background-image:url("../images/ranking_03.png");
+    display:inline-block;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}
+
+#ranking-buttom3 {
+    width:230px; height:50px;
+    background-image:url("../images/ranking_01.png");
+    display:inline-block;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}
+
+#ranking-buttom4{
+    width:230px; height:50px;
+    background-image:url("../images/ranking_05.png");
+    display:inline-block;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}
+
+#ranking-buttom5 {
+    width:230px; height:50px;
+    background-image:url("../images/ranking_05.png");
+    display:inline-block;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}
+
+#ranking-buttom6 {
+    width:230px; height:50px;
+    background-image:url("../images/ranking_05.png");
+    display:inline-block;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}

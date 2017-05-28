@@ -25,6 +25,10 @@
         <servlet-name>FormServlet</servlet-name>
         <servlet-class>com.servlet.FormServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RankingServlet</servlet-name>
+        <servlet-class>com.servlet.RankingServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -44,6 +48,10 @@
     <servlet-mapping>
         <servlet-name>FormServlet</servlet-name>
         <url-pattern>/FormServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RankingServlet</servlet-name>
+        <url-pattern>/RankingServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
