@@ -66,7 +66,8 @@ public class HomeServlet extends HttpServlet {
                     + "FROM enquete \n"
                     + "LEFT JOIN vote ON enquete.enquete_id=vote.enquete_id\n"
                     + "LEFT JOIN (SELECT enquete_id, count(comment) FROM comment GROUP BY comment.enquete_id) sub ON enquete.enquete_id = sub.enquete_id\n"
-                    + "GROUP BY enquete.enquete_id, sub.count ORDER BY created DESC\n"
+                    + "GROUP BY enquete.enquete_id, sub.count\n"
+                    + "ORDER BY created DESC\n"
                     + "LIMIT " + "?" + "\n"
                     + "OFFSET " + "?";
 

@@ -49,13 +49,9 @@ public class PostgresAccessor {
                 try (PreparedStatement preSt = con.prepareStatement(preSql)) {
 
                     //typeに応じて，セットする文字列を変える
-                    if (type.equals("Home")) {
+                    if (type.equals("Home") || type.equals("Ranking")) {
                         preSt.setInt(1, Integer.parseInt(holder.get(0)));
                         preSt.setInt(2, Integer.parseInt(holder.get(1)));
-                    } else if(type.equals("SelectRanking")){
-                        preSt.setString(1, holder.get(0));                        
-                        preSt.setInt(2, Integer.parseInt(holder.get(1)));
-                        preSt.setInt(3, Integer.parseInt(holder.get(2)));                        
                     }
 
                     // PostgreSQL JDBC レコードセットオープン

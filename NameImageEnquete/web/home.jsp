@@ -16,7 +16,7 @@
     <head>
         <title>title</title>
         <link rel="stylesheet" type="text/css" href="./css/common.css" />
-        <link rel="stylesheet" type="text/css" href="./css/home.css" />
+        <link rel="stylesheet" type="text/css" href="./css/graph.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     </head>
