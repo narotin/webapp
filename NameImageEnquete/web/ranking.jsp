@@ -76,7 +76,7 @@
                 <ul class="ranking-buttom">
                     <li id="ranking-buttom4"><a href="★">投票数が多い順</a></li>
                     <li id="ranking-buttom5"><a href="★">コメント数が多い順</a></li>
-                    <li id="ranking-buttom6"><a href="★">投稿日が古い順</a></li>
+                    <li id="ranking-buttom6"><a href="★">投稿日が新しい順</a></li>
                 </ul>
             </div>
             <!-- フッタ -->

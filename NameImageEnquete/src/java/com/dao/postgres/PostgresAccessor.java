@@ -52,6 +52,10 @@ public class PostgresAccessor {
                     if (type.equals("Home")) {
                         preSt.setInt(1, Integer.parseInt(holder.get(0)));
                         preSt.setInt(2, Integer.parseInt(holder.get(1)));
+                    } else if(type.equals("SelectRanking")){
+                        preSt.setString(1, holder.get(0));                        
+                        preSt.setInt(2, Integer.parseInt(holder.get(1)));
+                        preSt.setInt(3, Integer.parseInt(holder.get(2)));                        
                     }
 
                     // PostgreSQL JDBC レコードセットオープン
@@ -154,7 +158,6 @@ public class PostgresAccessor {
                     if (type.equals("Vote")) {
                         preSt.setInt(1, Integer.parseInt(holder.get(0)));
                         preSt.setInt(2, Integer.parseInt(holder.get(1)));
-                        
                     } else if (type.equals("SendFormInfo")) {
                         preSt.setString(1, holder.get(0));
                         preSt.setString(2, holder.get(1));

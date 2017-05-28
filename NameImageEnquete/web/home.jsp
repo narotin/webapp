@@ -102,7 +102,8 @@
                         // 第7:vote2
                         // 第8:vote3
                         // 第9:comment_count
-                        // 第10:created
+                        // 第10:vote_count
+                        // 第11:created
                         String[] value = array.get(i).split(",", 0);
                 %>
                 <div id="vote-center-contents">
@@ -145,7 +146,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">登録日</th>
-                                        <td><%= value[9]%></td>
+                                        <td><%= value[10]%></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -166,7 +167,7 @@
                         </div>
                         <div id="vote-center-left-lower">
                             <div id="comment-link">
-                                <a href="★サーブレット" target="_blank">コメントする(<%= value[8]%>件)</a>
+                                <a href="★サーブレット" target="_blank">コメントする(<%= value[9]%>件)</a>
                             </div>  
                         </div>
                     </div>
@@ -176,7 +177,7 @@
                         <div id="vote-center-right-upper">
                             <dev id="total">
                                 <div align="center">
-                                    <p><%= Integer.parseInt(value[5]) + Integer.parseInt(value[6]) + Integer.parseInt(value[7])%>票</p>
+                                    <p><%= Integer.parseInt(value[9])%>票</p>
                                 </div>
                             </dev>  
                             <canvas id=<%= "myChart" + (i + 1)%>></canvas>

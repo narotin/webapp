@@ -24,9 +24,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Naro
  */
-public class HomeServlet extends HttpServlet {
+public class SelectRankingServlet extends HttpServlet {
 
     public static final String SEPARATOR = ",";
+    public static final String COLUMN_NAME_VOTE1 = "vote1";
+    public static final String COLUMN_NAME_VOTE2 = "vote2";
+    public static final String COLUMN_NAME_VOTE3 = "vote3";
+    public static final String COLUMN_NAME_COMMENT_COUNT = "comment_count";
+    public static final String COLUMN_NAME_VOTE_COUNT = "vote_count";
+    public static final String COLUMN_NAME_CREATED = "created";
     public static final int RECORDS_PER_PAGE = 10;
 
     /**
@@ -48,6 +54,12 @@ public class HomeServlet extends HttpServlet {
             if (pageNumber == null || pageNumber.length() == 0) {
                 pageNumber = "1";
             }
+            // rankingType=0はランキングは表示しない。
+            String rankingType = request.getParameter("rankingType");
+            if (pageNumber == null || pageNumber.length() == 0) {
+                rankingType = "0";
+            }
+
             int offset = (Integer.parseInt(pageNumber) - 1) * RECORDS_PER_PAGE;
 
             // PostgreSQL JDBC 問い合わせ SQL 作成
@@ -66,16 +78,40 @@ public class HomeServlet extends HttpServlet {
                     + "FROM enquete \n"
                     + "LEFT JOIN vote ON enquete.enquete_id=vote.enquete_id\n"
                     + "LEFT JOIN (SELECT enquete_id, count(comment) FROM comment GROUP BY comment.enquete_id) sub ON enquete.enquete_id = sub.enquete_id\n"
-                    + "GROUP BY enquete.enquete_id, sub.count ORDER BY created DESC\n"
+                    + "GROUP BY enquete.enquete_id, sub.count ORDER BY " + "?" + " DESC\n"
                     + "LIMIT " + "?" + "\n"
                     + "OFFSET " + "?";
 
             ArrayList<String> holder = new ArrayList<>();
+            //ここでランキングの種類によってセットするものを変える
+            // "1":キラキラでないが多い順
+            // "2":どちらともいえないが多い順
+            // "3":キラキラであるが多い順
+            // "4":投票数が多い順
+            // "5":コメント数が多い順
+            // "6":投稿日が新しい順
+            // その他:投稿日が新しい順           
+            if (rankingType.equals("1")) {
+                holder.add(COLUMN_NAME_VOTE1);
+            } else if (rankingType.equals("2")) {
+                holder.add(COLUMN_NAME_VOTE2);
+            } else if (rankingType.equals("3")) {
+                holder.add(COLUMN_NAME_VOTE3);
+            } else if (rankingType.equals("4")) {
+                holder.add(COLUMN_NAME_VOTE_COUNT);
+            } else if (rankingType.equals("5")) {
+                holder.add(COLUMN_NAME_COMMENT_COUNT);
+            } else if (rankingType.equals("6")) {
+                holder.add(COLUMN_NAME_CREATED);
+            } else {
+                holder.add(COLUMN_NAME_CREATED);
+            }
+
             holder.add(String.valueOf(RECORDS_PER_PAGE));
             holder.add(String.valueOf(offset));
 
             PostgresAccessor pa = new PostgresAccessor();
-            ArrayList<String> array = pa.read(preSql, holder, "Home", false);
+            ArrayList<String> array = pa.read(preSql, holder, "SelectRanking", false);
 
             // 整形
             // 第1:enquete_id
@@ -138,7 +174,7 @@ public class HomeServlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
