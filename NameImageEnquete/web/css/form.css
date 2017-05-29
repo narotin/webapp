@@ -59,17 +59,20 @@ form.contact td span.supplement {
     color: #808080;
 }
 /* --- 必須項目セル --- */
-form.contact td.required {
+form.contact td.required1 {
     width: 26px; /* 必須項目セルの幅 */
     padding: 10px 3px; /* 必須項目セルのパディング（上下、左右） */
     background-color: #c4e6fa; /* 必須項目セルの背景色 */
     text-align: center;
 }
+
 /* --- 任意項目セル --- */
 form.contact td.arbitrary {
     background-color: #e0f1fc; /* 任意項目セルの背景色 */
 }
-
+form.contact td.arbitrary2 {
+    background-color: #FFEEFF; /* 任意項目セルの背景色 */
+}
 /* --- フォーム部品 --- */
 form.contact input,
 form.contact select,

@@ -110,7 +110,7 @@
                 </form>
             </div>
             <!-- フッタ -->
-            <div id="footer"><address>Copyright (c) HTMQ All Rights Reserved.</address></div>
+            <div id="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>
         </div>
         <script>
             function checkInputForm() {

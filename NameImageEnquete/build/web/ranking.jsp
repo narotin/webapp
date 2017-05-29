@@ -305,50 +305,45 @@
             </div>
             <!-- rankingTypeが1以上6以下のみグラフ表示 end-->
             <% }%>
-
             <!-- フッタ -->
             <div id="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>
-
-            <script>
-                <%                    for (int i = 0; i < array.size(); i++) {
-                        String[] value = array.get(i).split(",", 0);
-                %>
-                var <%= "ctx" + (i + 1)%> = document.getElementById("<%= "myChart" + (i + 1)%>").getContext('2d');
-
-                <%= "ctx" + (i + 1)%>.canvas.width = 375;
-                <%= "ctx" + (i + 1)%>.canvas.height = 420;
-
-                var <%= "myChart" + (i + 1)%> = makeChart(<%= "ctx" + (i + 1)%>, <%= value[5]%>, <%= value[6]%>, <%= value[7]%>);
-                <% }%>
-
-                function makeChart(ctx, vote1, vote2, vote3) {
-                    return new Chart(ctx, {
-                        type: 'doughnut',
-                        data: {
-                            labels: ["キラキラネームでない", "どちらともいえない", "キラキラネームである"],
-                            datasets: [{
-                                    backgroundColor: [
-                                        "#6295bf",
-                                        "#E0E4CC",
-                                        "#FA6900"
-                                    ],
-                                    hoverBackgroundColor: [
-                                        "#6295bf",
-                                        "#E0E4CC",
-                                        "#FA6900"
-                                    ],
-                                    data: [vote1, vote2, vote3]
-                                }]
-                        },
-                        options: {
-                            responsive: false
-                        }
-                    });
-                }
-            </script>
         </div>
-        <!-- フッタ -->
-        <div id="footer"><address>Copyright (c) HTMQ All Rights Reserved.</address></div>
-        </div>
+        <script>
+            <%                    for (int i = 0; i < array.size(); i++) {
+                    String[] value = array.get(i).split(",", 0);
+            %>
+            var <%= "ctx" + (i + 1)%> = document.getElementById("<%= "myChart" + (i + 1)%>").getContext('2d');
+
+            <%= "ctx" + (i + 1)%>.canvas.width = 375;
+            <%= "ctx" + (i + 1)%>.canvas.height = 420;
+
+            var <%= "myChart" + (i + 1)%> = makeChart(<%= "ctx" + (i + 1)%>, <%= value[5]%>, <%= value[6]%>, <%= value[7]%>);
+            <% }%>
+
+            function makeChart(ctx, vote1, vote2, vote3) {
+                return new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ["キラキラネームでない", "どちらともいえない", "キラキラネームである"],
+                        datasets: [{
+                                backgroundColor: [
+                                    "#6295bf",
+                                    "#E0E4CC",
+                                    "#FA6900"
+                                ],
+                                hoverBackgroundColor: [
+                                    "#6295bf",
+                                    "#E0E4CC",
+                                    "#FA6900"
+                                ],
+                                data: [vote1, vote2, vote3]
+                            }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
