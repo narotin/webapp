@@ -35,7 +35,7 @@
                 <li id="topmenu01"><a href="./HomeServlet">ホーム</a></li>
                 <li id="topmenu02"><a href="./FormServlet">投稿フォーム</a></li>
                 <li id="topmenu03"><a href="./RankingServlet">ランキング</a></li>
-                <li id="topmenu04"><a href="★サーブレット">名前検索</a></li>
+                <li id="topmenu04"><a href="./NameSearchServlet">名前検索</a></li>
                 <li id="topmenu05"><a href="★サーブレット">最新コメント</a></li>
             </ul>
 

@@ -29,6 +29,10 @@
         <servlet-name>RankingServlet</servlet-name>
         <servlet-class>com.servlet.RankingServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NameSearchServlet</servlet-name>
+        <servlet-class>com.servlet.NameSearchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -52,6 +56,10 @@
     <servlet-mapping>
         <servlet-name>RankingServlet</servlet-name>
         <url-pattern>/RankingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NameSearchServlet</servlet-name>
+        <url-pattern>/NameSearchServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

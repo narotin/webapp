@@ -52,8 +52,14 @@ public class PostgresAccessor {
                     if (type.equals("Home") || type.equals("Ranking")) {
                         preSt.setInt(1, Integer.parseInt(holder.get(0)));
                         preSt.setInt(2, Integer.parseInt(holder.get(1)));
-                    }
+                    } else if (type.equals("NameSearch")) {
+                        preSt.setString(1, "%" + holder.get(0) + "%");
+                        preSt.setString(2, "%" + holder.get(1) + "%");
+                        preSt.setString(3, "%" + holder.get(2) + "%");
+                        preSt.setInt(4, Integer.parseInt(holder.get(3)));
+                        preSt.setInt(5, Integer.parseInt(holder.get(4)));
 
+                    }
                     // PostgreSQL JDBC レコードセットオープン
                     try (ResultSet rs = preSt.executeQuery()) {
                         contents = new ArrayList<>();

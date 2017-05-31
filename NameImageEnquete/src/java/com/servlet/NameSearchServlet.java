@@ -24,15 +24,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Naro
  */
-public class RankingServlet extends HttpServlet {
+public class NameSearchServlet extends HttpServlet {
 
     public static final String SEPARATOR = ",";
-    public static final String COLUMN_NAME_VOTE1 = "vote1";
-    public static final String COLUMN_NAME_VOTE2 = "vote2";
-    public static final String COLUMN_NAME_VOTE3 = "vote3";
-    public static final String COLUMN_NAME_COMMENT_COUNT = "comment_count";
-    public static final String COLUMN_NAME_VOTE_COUNT = "vote_count";
-    public static final String COLUMN_NAME_CREATED = "created";
     public static final int RECORDS_PER_PAGE = 10;
 
     /**
@@ -50,56 +44,34 @@ public class RankingServlet extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             response.setContentType("text/html;charset=UTF-8");
 
+            String nameKanji = request.getParameter("name-kanji");
+            if (nameKanji == null || nameKanji.length() == 0) {
+                nameKanji = "";
+            }
+            String nameHurigana = request.getParameter("name-hurigana");
+            if (nameHurigana == null || nameHurigana.length() == 0) {
+                nameHurigana = "";
+            }
+            String sex = request.getParameter("sex");
+            if (sex == null || sex.length() == 0) {
+                sex = "";
+            }
+            String resultType = request.getParameter("resultType");
+            if (resultType == null || resultType.length() == 0) {
+                resultType = "0";
+            }
             String pageNumber = request.getParameter("pageNumber");
             if (pageNumber == null || pageNumber.length() == 0) {
                 pageNumber = "1";
-            }
-            // rankingType=0はランキングは表示しない。
-            String rankingType = request.getParameter("rankingType");
-            if (rankingType == null || rankingType.length() == 0) {
-                rankingType = "0";
             }
 
             int offset = (Integer.parseInt(pageNumber) - 1) * RECORDS_PER_PAGE;
             int pages = 0;
             ArrayList<String> result = new ArrayList<>();
-            if (!rankingType.equals("0")) {
-
-                //ここでランキングの種類によってセットするものを変える
-                // "1":キラキラでないが多い順
-                // "2":どちらともいえないが多い順
-                // "3":キラキラであるが多い順
-                // "4":投票数が多い順
-                // "5":コメント数が多い順
-                // "6":投稿日が新しい順
-                // その他:投稿日が新しい順
-                String sort;
-                switch (rankingType) {
-                    case "1":
-                        sort = COLUMN_NAME_VOTE1;
-                        break;
-                    case "2":
-                        sort = COLUMN_NAME_VOTE2;
-                        break;
-                    case "3":
-                        sort = COLUMN_NAME_VOTE3;
-                        break;
-                    case "4":
-                        sort = COLUMN_NAME_VOTE_COUNT;
-                        break;
-                    case "5":
-                        sort = COLUMN_NAME_COMMENT_COUNT;
-                        break;
-                    case "6":
-                        sort = COLUMN_NAME_CREATED;
-                        break;
-                    default:
-                        sort = COLUMN_NAME_CREATED;
-                        break;
-                }
-
+            if (!resultType.equals("0")) {
                 // PostgreSQL JDBC 問い合わせ SQL 作成
-                String preSql = "SELECT \n"
+                String preSql
+                        = "SELECT \n"
                         + "enquete.enquete_id\n"
                         + ", name_kanji\n"
                         + ", name_hurigana\n"
@@ -114,18 +86,27 @@ public class RankingServlet extends HttpServlet {
                         + "FROM enquete \n"
                         + "LEFT JOIN vote ON enquete.enquete_id=vote.enquete_id\n"
                         + "LEFT JOIN (SELECT enquete_id, count(comment) FROM comment GROUP BY comment.enquete_id) sub ON enquete.enquete_id = sub.enquete_id\n"
+                        + "WHERE name_kanji LIKE " + "?" + " AND name_hurigana LIKE " + "?" + " AND CAST(sex AS varchar) LIKE " + "?" + " ESCAPE '\\'"
                         + "GROUP BY enquete.enquete_id, sub.count\n"
-                        + "ORDER BY " + sort + " DESC\n"
+                        + "ORDER BY created DESC\n"
                         + "LIMIT " + "?" + "\n"
                         + "OFFSET " + "?";
 
                 ArrayList<String> holder = new ArrayList<>();
 
+                // 第1:name_kanjiの値
+                // 第2:name_huriganaの値
+                // 第3:sexの値
+                // 第4:ページ毎のレコード
+                // 第5:オフセット
+                holder.add(nameKanji);
+                holder.add(nameHurigana);
+                holder.add(sex);
                 holder.add(String.valueOf(RECORDS_PER_PAGE));
                 holder.add(String.valueOf(offset));
 
                 PostgresAccessor pa = new PostgresAccessor();
-                ArrayList<String> array = pa.read(preSql, holder, "Ranking", false);
+                ArrayList<String> array = pa.read(preSql, holder, "NameSearch", false);
 
                 // 整形
                 // 第1:enquete_id
@@ -147,7 +128,6 @@ public class RankingServlet extends HttpServlet {
                         if (sb1.length() > 0) {
                             sb1.append(SEPARATOR);
                         }
-
                         //日付のフォーマット変更
                         if (i == 10) {
                             SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -165,22 +145,24 @@ public class RankingServlet extends HttpServlet {
                 }
 
                 pages = (int) Math.ceil((double) pa.count("enquete") / RECORDS_PER_PAGE);
+
             }
-            
             if (pages == 0) {
                 pages = 1;
             }
+            System.out.println(pages);
+            System.out.println(pageNumber);
             /* requestに設定 */
             // 全データ
             request.setAttribute("enqueteList", result);
+            // リザルトタイプ
+            request.setAttribute("resultType", Integer.parseInt(resultType));
             // ページ数
             request.setAttribute("pages", pages);
             // ページ番号
             request.setAttribute("pageNumber", Integer.parseInt(pageNumber));
-            // ランキング番号
-            request.setAttribute("rankingType", Integer.parseInt(rankingType));
             // フォワード
-            RequestDispatcher dispatch = request.getRequestDispatcher("ranking.jsp");
+            RequestDispatcher dispatch = request.getRequestDispatcher("namesearch.jsp");
             dispatch.forward(request, response);
 
         } catch (ParseException | ClassNotFoundException | SQLException ex) {

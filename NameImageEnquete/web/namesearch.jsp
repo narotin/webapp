@@ -9,6 +9,7 @@
     ArrayList<String> array = (ArrayList) request.getAttribute("enqueteList");
     int pages = (Integer) request.getAttribute("pages");
     int pageNumber = (Integer) request.getAttribute("pageNumber");
+    int resultType = (Integer) request.getAttribute("resultType");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -37,7 +38,7 @@
                 <li id="topmenu01"><a href="./HomeServlet">ホーム</a></li>
                 <li id="topmenu02"><a href="./FormServlet">投稿フォーム</a></li>
                 <li id="topmenu03"><a href="./RankingServlet">ランキング</a></li>
-                <li id="topmenu04"><a href="★サーブレット">名前検索</a></li>
+                <li id="topmenu04"><a href="./NameSearchServlet">名前検索</a></li>
                 <li id="topmenu05"><a href="★サーブレット">最新コメント</a></li>
             </ul>
 
@@ -82,7 +83,7 @@
                     <p>下記の入力フォームに検索したい名前を入力しよう！</p>
                     <p>入力していないフォームは絞り込み対象外です。</p>
                 </div>
-                <form name="form1" method="post" action="★サーブレット" class="contact" >
+                <form name="form1" method="post" action="./NameSearchServlet?resultType=1" class="contact" >
                     <table>
                         <tr>
                             <th><label for="name-kanji">名前(漢字)</label></th>
@@ -113,8 +114,249 @@
                     <p class="button"><input id="submit-botton" type="submit" value="検索" /></p>
                 </form>
             </div>
+
+            <!-- resultTypeが1以上のみグラフ表示 start-->
+            <% if (resultType >= 1) {%>
+            <div id="vote">
+                <%
+                    out.println("<p><h2>検索結果</h2></p>");
+
+                    for (int i = 0; i < array.size(); i++) {
+                        // 整形
+                        // 第1:enquete_id
+                        // 第2:name_kanji
+                        // 第3:name_hurigana
+                        // 第4:sex
+                        // 第5:short_comment
+                        // 第6:vote1
+                        // 第7:vote2
+                        // 第8:vote3
+                        // 第9:comment_count
+                        // 第10:vote_count
+                        // 第11:created
+                        String[] value = array.get(i).split(",", 0);
+                %>
+                <div id="vote-center-contents">
+                    <!-- 中央コンテンツ　左 -->
+                    <div id="vote-center-left">
+                        <div id="vote-center-left-upper">
+                            <table id="intro" border="1">
+                                <thead>
+                                    <tr>
+                                        <th scope="cols">項目</th>
+                                        <th scope="cols">内容</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">ID</th>
+                                        <td><%= value[0]%></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">名前</th>
+                                        <td><%= value[1]%></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">ふりがな</th>
+                                        <td><%= value[2]%></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">性別</th>
+                                        <td>
+                                            <%
+                                                if (value[3].equals("1")) {
+                                                    out.println("男");
+                                                } else if (value[3].equals("2")) {
+                                                    out.println("女");
+                                                } else {
+                                                    out.println("その他");
+                                                }
+                                            %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">登録日</th>
+                                        <td><%= value[10]%></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="vote-center-left-middle">
+                            <table id="one-comment" border="1" >
+                                <thead>
+                                    <tr>
+                                        <th scope="cols">投稿者一言コメント</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><textarea cols="40" rows="3" readonly><%= value[4]%></textarea></td>
+                                    </tr>
+                                </tbody>
+                            </table>           
+                        </div>
+                        <div id="vote-center-left-lower">
+                            <div id="comment-link">
+                                <a href="★サーブレット" target="_blank">コメントする(<%= value[9]%>件)</a>
+                            </div>  
+                        </div>
+                    </div>
+
+                    <!-- 中央コンテンツ 右 -->
+                    <div id="vote-center-right">
+                        <div id="vote-center-right-upper">
+                            <dev id="total">
+                                <div align="center">
+                                    <p><%= Integer.parseInt(value[9])%>票</p>
+                                </div>
+                            </dev>  
+                            <canvas id=<%= "myChart" + (i + 1)%>></canvas>
+                        </div>
+                        <div id="vote-center-right-lower">
+                            <dev id="btn">
+                                <form action="./VoteServlet" method="post">
+                                    <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
+                                    <input type="hidden" name="number" value=1></input>
+                                    <input type="submit" value="キラキラネームでない"></input>
+                                </form>
+                                <form action="./VoteServlet"method="post">
+                                    <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
+                                    <input type="hidden" name="number" value=2></input>
+                                    <input type="submit" value="どちらともいえない"></input>
+                                </form>
+                                <form action="./VoteServlet" method="post">
+                                    <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
+                                    <input type="hidden" name="number" value=3></input>
+                                    <input type="submit" value="キラキラネームである"></input>
+                                </form>
+                            </dev>
+                        </div>
+                    </div>
+                </div>
+                <% }%>
+
+                <div id="paging">
+                    <%
+                        int link1 = pageNumber - 2;
+                        int link2 = pageNumber - 1;
+                        int link3 = pageNumber;
+                        int link4 = pageNumber + 1;
+                        int link5 = pageNumber + 2;
+
+                        while (link1 <= 0) {
+                            link1++;
+                            link2++;
+                            link3++;
+                            link4++;
+                            link5++;
+                        }
+
+                        if (pageNumber != 1) {
+                            out.println("<div class=\"special-page-box\">");
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=1\" class=\"page-link\">" + "最初　<<" + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pages >= link1) {
+                            if (link1 == pageNumber) {
+                                out.println("<div class=\"current-page-box\">");
+                            } else {
+                                out.println("<div class=\"page-box\">");
+                            }
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + link1 + "\" class=\"page-link\">" + link1 + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pages >= link2) {
+                            if (link2 == pageNumber) {
+                                out.println("<div class=\"current-page-box\">");
+                            } else {
+                                out.println("<div class=\"page-box\">");
+                            }
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + link2 + "\" class=\"page-link\">" + link2 + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pages >= link3) {
+                            if (link3 == pageNumber) {
+                                out.println("<div class=\"current-page-box\">");
+                            } else {
+                                out.println("<div class=\"page-box\">");
+                            }
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + link3 + "\" class=\"page-link\">" + link3 + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pages >= link4) {
+                            if (link4 == pageNumber) {
+                                out.println("<div class=\"current-page-box\">");
+                            } else {
+                                out.println("<div class=\"page-box\">");
+                            }
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + link4 + "\" class=\"page-link\">" + link4 + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pages >= link5) {
+                            if (link5 == pageNumber) {
+                                out.println("<div class=\"current-page-box\">");
+                            } else {
+                                out.println("<div class=\"page-box\">");
+                            }
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + link5 + "\" class=\"page-link\">" + link5 + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pageNumber != pages) {
+                            out.println("<div class=\"special-page-box\">");
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + pages + "\" class=\"page-link\">" + ">>　最後" + "</a>");
+                            out.println("</div>");
+                        }
+                    %>
+                </div>
+            </div>
+            <!-- resultTypeが1以上のみグラフ表示 end-->
+            <% }%>
             <!-- フッタ -->
             <div id="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>
         </div>
+        <script>
+            <%
+                for (int i = 0; i < array.size(); i++) {
+                    String[] value = array.get(i).split(",", 0);
+            %>
+            var <%= "ctx" + (i + 1)%> = document.getElementById("<%= "myChart" + (i + 1)%>").getContext('2d');
+
+            <%= "ctx" + (i + 1)%>.canvas.width = 375;
+            <%= "ctx" + (i + 1)%>.canvas.height = 420;
+
+            var <%= "myChart" + (i + 1)%> = makeChart(<%= "ctx" + (i + 1)%>, <%= value[5]%>, <%= value[6]%>, <%= value[7]%>);
+            <% }%>
+
+            function makeChart(ctx, vote1, vote2, vote3) {
+                return new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ["キラキラネームでない", "どちらともいえない", "キラキラネームである"],
+                        datasets: [{
+                                backgroundColor: [
+                                    "#6295bf",
+                                    "#E0E4CC",
+                                    "#FA6900"
+                                ],
+                                hoverBackgroundColor: [
+                                    "#6295bf",
+                                    "#E0E4CC",
+                                    "#FA6900"
+                                ],
+                                data: [vote1, vote2, vote3]
+                            }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+                });
+            }
+        </script>
     </body>
 </html>

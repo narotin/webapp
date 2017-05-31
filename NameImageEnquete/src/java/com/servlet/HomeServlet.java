@@ -112,6 +112,7 @@ public class HomeServlet extends HttpServlet {
                         sb1.append(value[i]);
                     }
                 }
+                System.out.println(sb1.toString());
                 result.add(sb1.toString());
             }
 
