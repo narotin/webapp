@@ -79,7 +79,7 @@
                             <td class="required"><img src="./images/required.gif" alt="必須" width="26" height="15"></td>
                             <td><span class="supplement">例): 楓</span></br>
                                 <input type="text" name="name-kanji" id="name-kanji"></br>
-                                    <span class="supplement">※10文字以下で入力して下さい。</span></td>
+                                    <span class="supplement">※10文字以下で入力して下さい。'\'は使用できません。</span></td>
                         </tr>
 
                         <tr>
@@ -87,7 +87,7 @@
                             <td class="required"><img src="./images/required.gif" alt="必須" width="26" height="15"></td>
                             <td><span class="supplement">例): かえで</span></br>
                                 <input type="text" name="name-hurigana" id="name-hurigana"></br>
-                                    <span class="supplement">※10文字以下で入力して下さい。</span></td>
+                                    <span class="supplement">※10文字以下で入力して下さい。'\'は使用できません。</span></td>
                         </tr>
 
                         <tr>
@@ -116,8 +116,10 @@
             function checkInputForm() {
                 var NAME_LIMIT = 10;
                 var COMMENT_LIMIT = 100;
-                var kanji = document.getElementById('name-kanji').value.length;
-                var hurigana = document.getElementById('name-hurigana').value.length;
+                var kanji = document.getElementById('name-kanji').value;
+                var kanji_count = document.getElementById('name-kanji').value.length;
+                var hurigana = document.getElementById('name-hurigana').value;
+                var hurigana_count = document.getElementById('name-hurigana').value.length;
                 var sex = document.getElementById('sex').value;
                 var comment = document.getElementById('one-comment').value.length;
 
@@ -126,17 +128,23 @@
                 console.log(sex);
                 console.log(comment);
 
-                if (kanji == 0) {
+                if (kanji_count == 0) {
                     alert("名前(漢字)に入力して下さい。");
                     return false;
-                } else if (kanji > NAME_LIMIT) {
+                } else if (kanji_count > NAME_LIMIT) {
                     alert("名前(漢字)は10文字以下で入力して下さい。");
                     return false;
-                } else if (hurigana == 0) {
+                } else if (kanji.indexOf('\\') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (hurigana_count == 0) {
                     alert("名前(ふりがな)に入力して下さい。");
                     return false;
-                } else if (hurigana > NAME_LIMIT) {
+                } else if (hurigana_count > NAME_LIMIT) {
                     alert("名前(ふりがな)は10文字以下で入力して下さい。");
+                    return false;
+                } else if (hurigana.indexOf('\\') != -1) {
+                    alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
                 } else if ((sex != 1) && (sex != 2)) {
                     alert("性別を選択して下さい。");

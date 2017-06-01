@@ -142,9 +142,49 @@ public class PostgresAccessor {
         return numberOfRow;
     }
 
+    public int count(String preSql, List<String> holder, String type) throws SQLException, ClassNotFoundException {
+        ArrayList<String> contents = null;
+        try {
+            // PostgreSQL JDBC ドライバロード
+            Class.forName(DRIVER);
+
+            // PostgreSQL JDBC 接続
+            try (Connection con = DriverManager.getConnection(DSN)) {
+                try (PreparedStatement preSt = con.prepareStatement(preSql)) {
+
+                    //typeに応じて，セットする文字列を変える
+                    if (type.equals("NameSearch")) {
+                        preSt.setString(1, "%" + holder.get(0) + "%");
+                        preSt.setString(2, "%" + holder.get(1) + "%");
+                        preSt.setString(3, "%" + holder.get(2) + "%");
+                    }
+                    // PostgreSQL JDBC レコードセットオープン
+                    try (ResultSet rs = preSt.executeQuery()) {
+                        contents = new ArrayList<>();
+                        // 出力
+                        while (rs.next()) {
+                            // データ全取得(カラム名以外)
+                            StringBuilder sb1 = new StringBuilder();
+                            if (sb1.length() > 0) {
+                                sb1.append(SEPARATOR);
+                            }
+                            contents.add(sb1.toString());
+                        }
+                    }
+                }
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(PostgresAccessor.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        }
+        return contents.size();
+    }
+
     /**
      *
-     * @param sql sql文を指定
+     * @param preSql
+     * @param holder
+     * @param type
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
      */

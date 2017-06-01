@@ -6,6 +6,7 @@
 package com.servlet;
 
 import com.dao.postgres.PostgresAccessor;
+import com.util.EscapeString;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -53,7 +54,7 @@ public class NameSearchServlet extends HttpServlet {
                 nameHurigana = "";
             }
             String sex = request.getParameter("sex");
-            if (sex == null || sex.length() == 0) {
+            if (sex == null || sex.length() == 0 || sex.equals("0")) {
                 sex = "";
             }
             String resultType = request.getParameter("resultType");
@@ -99,11 +100,39 @@ public class NameSearchServlet extends HttpServlet {
                 // 第3:sexの値
                 // 第4:ページ毎のレコード
                 // 第5:オフセット
-                holder.add(nameKanji);
-                holder.add(nameHurigana);
+                System.out.println(EscapeString.escapeForLike(nameKanji));
+                System.out.println(EscapeString.escapeForLike(nameHurigana));
+                
+                holder.add(EscapeString.escapeForLike(nameKanji));
+                holder.add(EscapeString.escapeForLike(nameHurigana));
                 holder.add(sex);
                 holder.add(String.valueOf(RECORDS_PER_PAGE));
                 holder.add(String.valueOf(offset));
+
+                String preSqlCount
+                        = "SELECT \n"
+                        + "enquete.enquete_id\n"
+                        + ", name_kanji\n"
+                        + ", name_hurigana\n"
+                        + ", sex \n"
+                        + ", short_comment\n"
+                        + ", sum(case when number = 1 then 1 else 0 end) as vote1\n"
+                        + ", sum(case when number = 2 then 1 else 0 end) as vote2\n"
+                        + ", sum(case when number = 3 then 1 else 0 end) as vote3\n"
+                        + ", coalesce(sub.count,'0') as comment_count\n"
+                        + ", sum(case when number = 1 or number = 2 or number = 3 then 1 else 0 end) as vote_count\n"
+                        + ", enquete.created\n"
+                        + "FROM enquete \n"
+                        + "LEFT JOIN vote ON enquete.enquete_id=vote.enquete_id\n"
+                        + "LEFT JOIN (SELECT enquete_id, count(comment) FROM comment GROUP BY comment.enquete_id) sub ON enquete.enquete_id = sub.enquete_id\n"
+                        + "WHERE name_kanji LIKE " + "?" + " AND name_hurigana LIKE " + "?" + " AND CAST(sex AS varchar) LIKE " + "?" + " ESCAPE '\\'"
+                        + "GROUP BY enquete.enquete_id, sub.count\n"
+                        + "ORDER BY created DESC\n";
+
+                ArrayList<String> holder2 = new ArrayList<>();
+                holder2.add(EscapeString.escapeForLike(nameKanji));
+                holder2.add(EscapeString.escapeForLike(nameHurigana));
+                holder2.add(sex);
 
                 PostgresAccessor pa = new PostgresAccessor();
                 ArrayList<String> array = pa.read(preSql, holder, "NameSearch", false);
@@ -143,15 +172,12 @@ public class NameSearchServlet extends HttpServlet {
                     System.out.println(sb1.toString());
                     result.add(sb1.toString());
                 }
-
-                pages = (int) Math.ceil((double) pa.count("enquete") / RECORDS_PER_PAGE);
-
+                pages = (int) Math.ceil((double) pa.count(preSqlCount, holder2, "NameSearch") / RECORDS_PER_PAGE);
             }
             if (pages == 0) {
                 pages = 1;
             }
-            System.out.println(pages);
-            System.out.println(pageNumber);
+
             /* requestに設定 */
             // 全データ
             request.setAttribute("enqueteList", result);
