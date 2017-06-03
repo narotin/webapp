@@ -127,6 +127,7 @@ table#intro {
 table#intro thead th {
     padding: 10px;
     font-weight: bold;
+    text-align: center;
     border-top: 1px solid #ccc;
     border-right: 1px solid #ccc;
     border-bottom: 2px solid #c00;
@@ -152,7 +153,7 @@ table#intro td {
 /*============================================
 一言コメント
 ============================================*/
-table#one-comment {
+.one-comment {
     font-size:15px;
     border-collapse: collapse;
     text-align: left;
@@ -160,15 +161,16 @@ table#one-comment {
     border-left: 1px solid #ccc;
 }
 
-table#one-comment thead th {
+.one-comment thead th {
     padding: 10px;
     font-weight: bold;
+    text-align: center;
     border-top: 1px solid #ccc;
     border-right: 1px solid #ccc;
     border-bottom: 2px solid #036;
     background: #dcdcd1;
 }
-table#one-comment tbody th {
+.one-comment tbody th {
     width: 150px;
     padding: 10px;
     font-weight: bold;
@@ -177,7 +179,7 @@ table#one-comment tbody th {
     border-bottom: 1px solid #ccc;
     background: #ececec;
 }
-table#one-comment td {
+.one-comment td {
     width: 350px;
     height:70px;
     padding: 1px 0px 0px 0px;

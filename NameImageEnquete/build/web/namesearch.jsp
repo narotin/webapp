@@ -41,8 +41,8 @@
             <ul id="topmenu">
                 <li id="topmenu01"><a href="./HomeServlet">ホーム</a></li>
                 <li id="topmenu02"><a href="./FormServlet">投稿フォーム</a></li>
-                <li id="topmenu03"><a href="./RankingServlet">ランキング</a></li>
-                <li id="topmenu04"><a href="./NameSearchServlet">名前検索</a></li>
+                <li id="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
+                <li id="topmenu04"><a href="./RankingServlet">ランキング</a></li>
                 <li id="topmenu05"><a href="★サーブレット">最新コメント</a></li>
             </ul>
 
@@ -187,8 +187,9 @@
                                 </tbody>
                             </table>
                         </div>
+
                         <div id="vote-center-left-middle">
-                            <table id="one-comment" border="1" >
+                            <table class="one-comment" border="1" >
                                 <thead>
                                     <tr>
                                         <th scope="cols">投稿者一言コメント</th>
@@ -199,8 +200,9 @@
                                         <td><textarea cols="40" rows="3" readonly><%= value[4]%></textarea></td>
                                     </tr>
                                 </tbody>
-                            </table>           
+                            </table>
                         </div>
+
                         <div id="vote-center-left-lower">
                             <div id="comment-link">
                                 <a href="★サーブレット" target="_blank">コメントする(<%= value[8]%>件)</a>
@@ -225,7 +227,7 @@
                                     <input type="hidden" name="number" value=1></input>
                                     <input type="submit" value="キラキラネームでない"></input>
                                 </form>
-                                <form action="./VoteServlet"method="post">
+                                <form action="./VoteServlet" method="post">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=2></input>
                                     <input type="submit" value="どちらともいえない"></input>
@@ -363,7 +365,7 @@
                     }
                 });
             }
-            
+
             function checkInputForm() {
                 var NAME_LIMIT = 10;
                 var kanji = document.getElementById('name-kanji').value;

@@ -34,8 +34,8 @@
             <ul id="topmenu">
                 <li id="topmenu01"><a href="./HomeServlet">ホーム</a></li>
                 <li id="topmenu02"><a href="./FormServlet">投稿フォーム</a></li>
-                <li id="topmenu03"><a href="./RankingServlet">ランキング</a></li>
-                <li id="topmenu04"><a href="./NameSearchServlet">名前検索</a></li>
+                <li id="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
+                <li id="topmenu04"><a href="./RankingServlet">ランキング</a></li>
                 <li id="topmenu05"><a href="★サーブレット">最新コメント</a></li>
             </ul>
 
@@ -152,7 +152,7 @@
                             </table>
                         </div>
                         <div id="vote-center-left-middle">
-                            <table id="one-comment" border="1" >
+                            <table class="one-comment" border="1" >
                                 <thead>
                                     <tr>
                                         <th scope="cols">投稿者一言コメント</th>
@@ -189,7 +189,7 @@
                                     <input type="hidden" name="number" value=1></input>
                                     <input type="submit" value="キラキラネームでない"></input>
                                 </form>
-                                <form action="./VoteServlet"method="post">
+                                <form action="./VoteServlet" method="post">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=2></input>
                                     <input type="submit" value="どちらともいえない"></input>
