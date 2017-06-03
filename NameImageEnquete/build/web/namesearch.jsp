@@ -10,6 +10,10 @@
     int pages = (Integer) request.getAttribute("pages");
     int pageNumber = (Integer) request.getAttribute("pageNumber");
     int resultType = (Integer) request.getAttribute("resultType");
+    String nameKanji = (String) request.getAttribute("nameKanji");
+    String nameHurigana = (String) request.getAttribute("nameHurigana");
+    String sex = (String) request.getAttribute("sex");
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -83,13 +87,14 @@
                     <p>下記の入力フォームに検索したい名前を入力しよう！</p>
                     <p>入力していないフォームは絞り込み対象外です。</p>
                 </div>
-                <form name="form1" method="post" action="./NameSearchServlet?resultType=1" class="contact" >
+                <form name="form1" method="post" action="./NameSearchServlet?resultType=1" class="contact" onsubmit="return checkInputForm()">
                     <table>
                         <tr>
                             <th><label for="name-kanji">名前(漢字)</label></th>
                             <td class="arbitrary2"></td>
                             <td><span class="supplement">例): 楓</span></br>
                                 <input type="text" name="name-kanji" id="name-kanji"></br>
+                                    <span class="supplement">※10文字以下で入力して下さい。'\+*-_'は使用できません。</span></td>
                             </td>
                         </tr>
 
@@ -98,6 +103,7 @@
                             <td class="arbitrary2"></td>
                             <td><span class="supplement">例): かえで</span></br>
                                 <input type="text" name="name-hurigana" id="name-hurigana"></br>
+                                    <span class="supplement">※10文字以下で入力して下さい。'\+*-_'は使用できません。</span></td>
                             </td>
                         </tr>
 
@@ -197,7 +203,7 @@
                         </div>
                         <div id="vote-center-left-lower">
                             <div id="comment-link">
-                                <a href="★サーブレット" target="_blank">コメントする(<%= value[9]%>件)</a>
+                                <a href="★サーブレット" target="_blank">コメントする(<%= value[8]%>件)</a>
                             </div>  
                         </div>
                     </div>
@@ -253,7 +259,7 @@
 
                         if (pageNumber != 1) {
                             out.println("<div class=\"special-page-box\">");
-                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=1\" class=\"page-link\">" + "最初　<<" + "</a>");
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "name-kanji=" + nameKanji + "&" + "name-hurigana=" + nameHurigana + "&" + "sex=" + sex + "&" + "pageNumber=1" + "&" + "encode=on\"" + " class=\"page-link\">" + "最初　<<" + "</a>");
                             out.println("</div>");
                         }
 
@@ -263,7 +269,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + link1 + "\" class=\"page-link\">" + link1 + "</a>");
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "name-kanji=" + nameKanji + "&" + "name-hurigana=" + nameHurigana + "&" + "sex=" + sex + "&" + "pageNumber=" + link1 + "&" + "encode=on\"" + " class=\"page-link\">" + link1 + "</a>");
                             out.println("</div>");
                         }
 
@@ -273,7 +279,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + link2 + "\" class=\"page-link\">" + link2 + "</a>");
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "name-kanji=" + nameKanji + "&" + "name-hurigana=" + nameHurigana + "&" + "sex=" + sex + "&" + "pageNumber=" + link2 + "&" + "encode=on\"" + " class=\"page-link\">" + link2 + "</a>");
                             out.println("</div>");
                         }
 
@@ -283,7 +289,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + link3 + "\" class=\"page-link\">" + link3 + "</a>");
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "name-kanji=" + nameKanji + "&" + "name-hurigana=" + nameHurigana + "&" + "sex=" + sex + "&" + "pageNumber=" + link3 + "&" + "encode=on\"" + " class=\"page-link\">" + link3 + "</a>");
                             out.println("</div>");
                         }
 
@@ -293,7 +299,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + link4 + "\" class=\"page-link\">" + link4 + "</a>");
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "name-kanji=" + nameKanji + "&" + "name-hurigana=" + nameHurigana + "&" + "sex=" + sex + "&" + "pageNumber=" + link4 + "&" + "encode=on\"" + " class=\"page-link\">" + link4 + "</a>");
                             out.println("</div>");
                         }
 
@@ -303,13 +309,13 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + link5 + "\" class=\"page-link\">" + link5 + "</a>");
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "name-kanji=" + nameKanji + "&" + "name-hurigana=" + nameHurigana + "&" + "sex=" + sex + "&" + "pageNumber=" + link5 + "&" + "encode=on\"" + " class=\"page-link\">" + link5 + "</a>");
                             out.println("</div>");
                         }
 
                         if (pageNumber != pages) {
                             out.println("<div class=\"special-page-box\">");
-                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "pageNumber=" + pages + "\" class=\"page-link\">" + ">>　最後" + "</a>");
+                            out.println("<a href=\"./NameSearchServlet?resultType=" + resultType + "&" + "name-kanji=" + nameKanji + "&" + "name-hurigana=" + nameHurigana + "&" + "sex=" + sex + "&" + "pageNumber=" + pages + "&" + "encode=on\"" + " class=\"page-link\">" + ">>　最後" + "</a>");
                             out.println("</div>");
                         }
                     %>
@@ -356,6 +362,55 @@
                         responsive: false
                     }
                 });
+            }
+            
+            function checkInputForm() {
+                var NAME_LIMIT = 10;
+                var kanji = document.getElementById('name-kanji').value;
+                var kanji_count = document.getElementById('name-kanji').value.length;
+                var hurigana = document.getElementById('name-hurigana').value;
+                var hurigana_count = document.getElementById('name-hurigana').value.length;
+
+                console.log(kanji);
+                console.log(hurigana);
+
+                if (kanji_count > NAME_LIMIT) {
+                    alert("名前(漢字)は10文字以下で入力して下さい。");
+                    return false;
+                } else if (kanji.indexOf('\\') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (kanji.indexOf('+') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (kanji.indexOf('*') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (kanji.indexOf('-') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (kanji.indexOf('_') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (hurigana_count > NAME_LIMIT) {
+                    alert("名前(ふりがな)は10文字以下で入力して下さい。");
+                    return false;
+                } else if (hurigana.indexOf('\\') != -1) {
+                    alert("名前(ふりがな)に禁止文字が含まれています。");
+                    return false;
+                } else if (hurigana.indexOf('+') != -1) {
+                    alert("名前(ふりがな)に禁止文字が含まれています。");
+                    return false;
+                } else if (hurigana.indexOf('*') != -1) {
+                    alert("名前(ふりがな)に禁止文字が含まれています。");
+                    return false;
+                } else if (hurigana.indexOf('-') != -1) {
+                    alert("名前(ふりがな)に禁止文字が含まれています。");
+                    return false;
+                } else if (hurigana.indexOf('_') != -1) {
+                    alert("名前(ふりがな)に禁止文字が含まれています。");
+                    return false;
+                }
             }
         </script>
     </body>

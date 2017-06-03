@@ -8,6 +8,8 @@ package com.servlet;
 import com.dao.postgres.PostgresAccessor;
 import com.util.EscapeString;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +31,7 @@ public class NameSearchServlet extends HttpServlet {
 
     public static final String SEPARATOR = ",";
     public static final int RECORDS_PER_PAGE = 10;
+    public static final String UTF_8 = "UTF-8";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,6 +67,15 @@ public class NameSearchServlet extends HttpServlet {
             String pageNumber = request.getParameter("pageNumber");
             if (pageNumber == null || pageNumber.length() == 0) {
                 pageNumber = "1";
+            }
+
+            //　エンコード"on"だったらデコード
+            String encode = request.getParameter("endoce");
+            if (encode != null) {
+                if (encode.equals("on")) {
+                    nameKanji = URLDecoder.decode(nameKanji, UTF_8);
+                    nameHurigana = URLDecoder.decode(nameHurigana, UTF_8);
+                }
             }
 
             int offset = (Integer.parseInt(pageNumber) - 1) * RECORDS_PER_PAGE;
@@ -102,7 +114,7 @@ public class NameSearchServlet extends HttpServlet {
                 // 第5:オフセット
                 System.out.println(EscapeString.escapeForLike(nameKanji));
                 System.out.println(EscapeString.escapeForLike(nameHurigana));
-                
+
                 holder.add(EscapeString.escapeForLike(nameKanji));
                 holder.add(EscapeString.escapeForLike(nameHurigana));
                 holder.add(sex);
@@ -183,6 +195,12 @@ public class NameSearchServlet extends HttpServlet {
             request.setAttribute("enqueteList", result);
             // リザルトタイプ
             request.setAttribute("resultType", Integer.parseInt(resultType));
+            // 名前(漢字)_エンコード済み
+            request.setAttribute("nameKanji", URLEncoder.encode(nameKanji, UTF_8));
+            // 名前(ふりがな)_エンコード済み
+            request.setAttribute("nameHurigana", URLEncoder.encode(nameHurigana, UTF_8));
+            // 性別
+            request.setAttribute("sex", sex);
             // ページ数
             request.setAttribute("pages", pages);
             // ページ番号

@@ -79,7 +79,7 @@
                             <td class="required"><img src="./images/required.gif" alt="必須" width="26" height="15"></td>
                             <td><span class="supplement">例): 楓</span></br>
                                 <input type="text" name="name-kanji" id="name-kanji"></br>
-                                    <span class="supplement">※10文字以下で入力して下さい。'\'は使用できません。</span></td>
+                                    <span class="supplement">※10文字以下で入力して下さい。'\+*-_'は使用できません。</span></td>
                         </tr>
 
                         <tr>
@@ -87,7 +87,7 @@
                             <td class="required"><img src="./images/required.gif" alt="必須" width="26" height="15"></td>
                             <td><span class="supplement">例): かえで</span></br>
                                 <input type="text" name="name-hurigana" id="name-hurigana"></br>
-                                    <span class="supplement">※10文字以下で入力して下さい。'\'は使用できません。</span></td>
+                                    <span class="supplement">※10文字以下で入力して下さい。'\+*-_'は使用できません。</span></td>
                         </tr>
 
                         <tr>
@@ -137,6 +137,18 @@
                 } else if (kanji.indexOf('\\') != -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
+                } else if (kanji.indexOf('+') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (kanji.indexOf('*') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (kanji.indexOf('-') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (kanji.indexOf('_') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
                 } else if (hurigana_count == 0) {
                     alert("名前(ふりがな)に入力して下さい。");
                     return false;
@@ -144,6 +156,18 @@
                     alert("名前(ふりがな)は10文字以下で入力して下さい。");
                     return false;
                 } else if (hurigana.indexOf('\\') != -1) {
+                    alert("名前(ふりがな)に禁止文字が含まれています。");
+                    return false;
+                }else if (hurigana.indexOf('+') != -1) {
+                    alert("名前(ふりがな)に禁止文字が含まれています。");
+                    return false;
+                } else if (hurigana.indexOf('*') != -1) {
+                    alert("名前(ふりがな)に禁止文字が含まれています。");
+                    return false;
+                } else if (hurigana.indexOf('-') != -1) {
+                    alert("名前(ふりがな)に禁止文字が含まれています。");
+                    return false;
+                } else if (hurigana.indexOf('_') != -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
                 } else if ((sex != 1) && (sex != 2)) {

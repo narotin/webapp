@@ -185,7 +185,7 @@
                         </div>
                         <div id="vote-center-left-lower">
                             <div id="comment-link">
-                                <a href="★サーブレット" target="_blank">コメントする(<%= value[9]%>件)</a>
+                                <a href="★サーブレット" target="_blank">コメントする(<%= value[8]%>件)</a>
                             </div>  
                         </div>
                     </div>
