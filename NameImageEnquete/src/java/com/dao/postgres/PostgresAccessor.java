@@ -49,17 +49,31 @@ public class PostgresAccessor {
                 try (PreparedStatement preSt = con.prepareStatement(preSql)) {
 
                     //typeに応じて，セットする文字列を変える
-                    if (type.equals("Home") || type.equals("Ranking")) {
-                        preSt.setInt(1, Integer.parseInt(holder.get(0)));
-                        preSt.setInt(2, Integer.parseInt(holder.get(1)));
-                    } else if (type.equals("NameSearch")) {
-                        preSt.setString(1, "%" + holder.get(0) + "%");
-                        preSt.setString(2, "%" + holder.get(1) + "%");
-                        preSt.setString(3, "%" + holder.get(2) + "%");
-                        preSt.setInt(4, Integer.parseInt(holder.get(3)));
-                        preSt.setInt(5, Integer.parseInt(holder.get(4)));
-
+                    switch (type) {
+                        case "Home":
+                        case "Ranking":
+                            preSt.setInt(1, Integer.parseInt(holder.get(0)));
+                            preSt.setInt(2, Integer.parseInt(holder.get(1)));
+                            break;
+                        case "NameSearch":
+                            preSt.setString(1, "%" + holder.get(0) + "%");
+                            preSt.setString(2, "%" + holder.get(1) + "%");
+                            preSt.setString(3, "%" + holder.get(2) + "%");
+                            preSt.setInt(4, Integer.parseInt(holder.get(3)));
+                            preSt.setInt(5, Integer.parseInt(holder.get(4)));
+                            break;
+                        case "CommentL":
+                            preSt.setInt(1, Integer.parseInt(holder.get(0)));
+                            preSt.setInt(2, Integer.parseInt(holder.get(1)));
+                            preSt.setInt(3, Integer.parseInt(holder.get(2)));
+                            break;
+                        case "CommentG":
+                            preSt.setInt(1, Integer.parseInt(holder.get(0)));
+                            break;
+                        default:
+                            break;
                     }
+
                     // PostgreSQL JDBC レコードセットオープン
                     try (ResultSet rs = preSt.executeQuery()) {
                         contents = new ArrayList<>();
@@ -157,7 +171,10 @@ public class PostgresAccessor {
                         preSt.setString(1, "%" + holder.get(0) + "%");
                         preSt.setString(2, "%" + holder.get(1) + "%");
                         preSt.setString(3, "%" + holder.get(2) + "%");
+                    } else if (type.equals("Comment")) {
+                        preSt.setInt(1, Integer.parseInt(holder.get(0)));
                     }
+
                     // PostgreSQL JDBC レコードセットオープン
                     try (ResultSet rs = preSt.executeQuery()) {
                         contents = new ArrayList<>();

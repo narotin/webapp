@@ -7,6 +7,7 @@
     // Servletから取得するデータ
     request.setCharacterEncoding("UTF-8");
     ArrayList<String> array = (ArrayList) request.getAttribute("enqueteList");
+    ArrayList<String> array2 = (ArrayList) request.getAttribute("commentList");
     int pages = (Integer) request.getAttribute("pages");
     int pageNumber = (Integer) request.getAttribute("pageNumber");
 %>
@@ -17,6 +18,7 @@
         <title>title</title>
         <link rel="stylesheet" type="text/css" href="./css/common.css" />
         <link rel="stylesheet" type="text/css" href="./css/graph.css" />
+        <link rel="stylesheet" type="text/css" href="./css/comment.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     </head>
@@ -74,24 +76,11 @@
             </div>
 
             <!-- 中央コンテンツ -->
-            <div id="overview">
-                <p><h2>概要</h2></p>
-                <div id="overview-contents">
-                    <p>キラキラネーム(別名:DQNネーム)とは，一般常識から著しく外れているとされる珍しい名前に対する表現です。
-                        上記の説明からわかるように，あまり良い意味合いで使われていないため，生まれてくる子供の名前がキラキラネームとならないように配慮する親が増えています。</p>
-                    <p>しかし，キラキラネームの境界線が曖昧なため，実際に名づけようとした名前が第三者から見てキラキラネームと思われていないか心配になるケースがあります。</p>
-                    <br />
-                    <p>そこで，本サイトでは上記のケースを解決するサービスを提供します。</p>
-                    <p>名前を本サイトに投稿することで，投票やコメント形式で第三者からの意見を簡単に収集することができます。
-                        また，蓄積された情報を検索することで子供の名づけの際に参考にすることもできます。</p>
-                    <p>是非，この機会にご活用ください。</p>
-                </div>
-            </div>
 
             <div id="vote">
-                <p><h2>最新の投票</h2></p>
+                <p><h2>コメント対象の投票</h2></p>
                 <%
-                    for (int i = 0; i < array.size(); i++) {
+                    for (int i = 0; i < 1; i++) {
                         // 整形
                         // 第1:enquete_id
                         // 第2:name_kanji
@@ -167,7 +156,7 @@
                         </div>
                         <div id="vote-center-left-lower">
                             <div id="comment-link">
-                                <a href="./CommentServlet?enquete_id=<%= value[0]%>" target="_blank">コメントする(<%= value[8]%>件)</a>
+                                <a href="★サーブレット" target="_blank">コメントする(<%= value[8]%>件)</a>
                             </div>  
                         </div>
                     </div>
@@ -205,85 +194,32 @@
                 </div>
                 <% }%>
 
-                <div id="paging">
-                    <%
-                        int link1 = pageNumber - 2;
-                        int link2 = pageNumber - 1;
-                        int link3 = pageNumber;
-                        int link4 = pageNumber + 1;
-                        int link5 = pageNumber + 2;
-
-                        while (link1 <= 0) {
-                            link1++;
-                            link2++;
-                            link3++;
-                            link4++;
-                            link5++;
-                        }
-
-                        if (pageNumber != 1) {
-                            out.println("<div class=\"special-page-box\">");
-                            out.println("<a href=\"./HomeServlet?pageNumber=1\" class=\"page-link\">" + "最初　<<" + "</a>");
-                            out.println("</div>");
-                        }
-
-                        if (pages >= link1) {
-                            if (link1 == pageNumber) {
-                                out.println("<div class=\"current-page-box\">");
-                            } else {
-                                out.println("<div class=\"page-box\">");
-                            }
-                            out.println("<a href=\"./HomeServlet?pageNumber=" + link1 + "\" class=\"page-link\">" + link1 + "</a>");
-                            out.println("</div>");
-                        }
-
-                        if (pages >= link2) {
-                            if (link2 == pageNumber) {
-                                out.println("<div class=\"current-page-box\">");
-                            } else {
-                                out.println("<div class=\"page-box\">");
-                            }
-                            out.println("<a href=\"./HomeServlet?pageNumber=" + link2 + "\" class=\"page-link\">" + link2 + "</a>");
-                            out.println("</div>");
-                        }
-
-                        if (pages >= link3) {
-                            if (link3 == pageNumber) {
-                                out.println("<div class=\"current-page-box\">");
-                            } else {
-                                out.println("<div class=\"page-box\">");
-                            }
-                            out.println("<a href=\"./HomeServlet?pageNumber=" + link3 + "\" class=\"page-link\">" + link3 + "</a>");
-                            out.println("</div>");
-                        }
-
-                        if (pages >= link4) {
-                            if (link4 == pageNumber) {
-                                out.println("<div class=\"current-page-box\">");
-                            } else {
-                                out.println("<div class=\"page-box\">");
-                            }
-                            out.println("<a href=\"./HomeServlet?pageNumber=" + link4 + "\" class=\"page-link\">" + link4 + "</a>");
-                            out.println("</div>");
-                        }
-
-                        if (pages >= link5) {
-                            if (link5 == pageNumber) {
-                                out.println("<div class=\"current-page-box\">");
-                            } else {
-                                out.println("<div class=\"page-box\">");
-                            }
-                            out.println("<a href=\"./HomeServlet?pageNumber=" + link5 + "\" class=\"page-link\">" + link5 + "</a>");
-                            out.println("</div>");
-                        }
-
-                        if (pageNumber != pages) {
-                            out.println("<div class=\"special-page-box\">");
-                            out.println("<a href=\"./HomeServlet?pageNumber=" + pages + "\" class=\"page-link\">" + ">>　最後" + "</a>");
-                            out.println("</div>");
-                        }
-                    %>
+                <!-- ここからコメント -->
+                <%
+                    for (int i = 0; i < array2.size(); i++) {
+                        // 整形
+                        // 第1:comment_id
+                        // 第2:enquete_id
+                        // 第3:nickname
+                        // 第4:image
+                        // 第5:comment
+                        // 第6:created
+                        String[] value = array2.get(i).split(",", 0);
+                %>
+                <div class="kaiwa">
+                    <figure class="kaiwa-img-right">
+                        <img src="./images/risu.png" alt="img">
+                            <figcaption class="kaiwa-img-description">
+                                <%= value[2]%>
+                            </figcaption>
+                    </figure>
+                    <div class="kaiwa-text-left">
+                        <p class="kaiwa-text">
+                            <%= value[4]%>
+                        </p>
+                    </div>
                 </div>
+                <% }%>
             </div>
             <!-- フッタ -->
             <div id="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>

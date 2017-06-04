@@ -103,7 +103,7 @@
                             <th><label for="one-comment">一言コメント</label></th>
                             <td class="arbitrary"></td>
                             <td><br><textarea name="one-comment" id="one-comment" rows="5" cols="40"></textarea></br>
-                                <span class="supplement">※100文字以下で入力して下さい。</span></td>
+                                <span class="supplement">※200文字以下で入力して下さい。</span></td>
                         </tr>
                     </table>
                     <p class="button"><input id="submit-botton" type="submit" value="送信" /></p>
@@ -115,7 +115,7 @@
         <script>
             function checkInputForm() {
                 var NAME_LIMIT = 10;
-                var COMMENT_LIMIT = 100;
+                var COMMENT_LIMIT = 200;
                 var kanji = document.getElementById('name-kanji').value;
                 var kanji_count = document.getElementById('name-kanji').value.length;
                 var hurigana = document.getElementById('name-hurigana').value;

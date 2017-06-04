@@ -33,6 +33,10 @@
         <servlet-name>NameSearchServlet</servlet-name>
         <servlet-class>com.servlet.NameSearchServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CommentServlet</servlet-name>
+        <servlet-class>com.servlet.CommentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -60,6 +64,10 @@
     <servlet-mapping>
         <servlet-name>NameSearchServlet</servlet-name>
         <url-pattern>/NameSearchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentServlet</servlet-name>
+        <url-pattern>/CommentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
