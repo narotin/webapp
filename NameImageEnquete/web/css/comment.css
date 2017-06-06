@@ -2,7 +2,7 @@
 吹き出し
 ============================================*/
 .kaiwa {
-    margin: 0px 0px 40px 5px;
+    margin: 20px 0px 40px 5px;
 }
 
 /* 右画像 */
@@ -77,4 +77,8 @@ p.kaiwa-text:last-child {
     clear: both;
     content: "";
     display: block;
+}
+span.created {
+    color: #808080;
+    font-size:80%;
 }

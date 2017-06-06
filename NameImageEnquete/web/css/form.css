@@ -83,7 +83,7 @@ form.contact textarea {
 }
 /* --- フォーム部品のサイズ --- */
 /* --- （長めのテキスト入力欄） --- */
-#name-kanji, #name-hurigana{
+#name-kanji, #name-hurigana, #nickname, #icon{
     width: 200px; /* フォーム部品の幅 */
     height:30px;
     font-size:15px;
@@ -102,6 +102,13 @@ form.contact textarea {
     padding:0px;
 }
 
+#comment {
+    width: 420px; /* フォーム部品の幅 */
+    height: 10em; /* フォーム部品の高さ */
+    resize: none;  
+    padding:0px;
+}
+
 /* --- ボタン --- */
 form.contact p.button {
     margin: 20px 0 0; /* ボタンのマージン（上、左右、下） */
@@ -112,4 +119,19 @@ form.contact p.button {
     width:100px;	
     height: 40px;
     border-width:2px;
+}
+
+/* アイコンのラジオボックスの間隔   */
+.radio-interval{
+    margin: 0px 30px 0px 35px; 
+}
+
+/* アイコンの画像  */
+.img1{
+    background-image:url("../images/risu.png");
+    width:48px; height:48px;
+    margin: 5px 15px 3px 15px;
+    display:inline-block;
+    list-style-type:none;
+    background-repeat:no-repeat;
 }

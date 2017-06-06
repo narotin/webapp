@@ -205,7 +205,7 @@
                 </div>
                 <% }%>
 
-                <div id="paging">
+                <div class="paging">
                     <%
                         int link1 = pageNumber - 2;
                         int link2 = pageNumber - 1;
