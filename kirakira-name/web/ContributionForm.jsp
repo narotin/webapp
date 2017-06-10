@@ -113,7 +113,7 @@
             </div>
             
             <!-- フッタ -->
-            <div class="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>
+            <div class="footer"></div>
         </div>
         <script>
             function checkInputForm() {

@@ -234,15 +234,10 @@ h2:after {
 フッタ
 ============================================*/
 .footer {
-    height:42px; text-align:center;
+    height:86px;
     clear:both;
-    background-image:url("images/bg_footer.jpg");
+    background-image:url("../images/footer.jpg");
     background-repeat:no-repeat;
     background-color:#cccccc;
 }
 
-address {
-    font-style:normal;
-    font-size:small;
-    padding:5px 0px 5px 0px;
-}
