@@ -1,0 +1,236 @@
+/*============================================
+投票
+============================================*/
+.vote {
+    width:770px;
+    margin:10px 15px 10px 0px;
+    float:right;
+}
+
+.vote-center-contents {
+    width:760px;
+    height: 510px;
+    margin:10px 0px 10px 0px;
+    float:right;	
+    border-radius: 30px; 
+    border: 2px solid #BAD3FF;
+    background-color:#FFF0F5; /* 桃色 */
+}
+
+.vote-center-left {
+    width:350px;
+    height: 500px;
+    margin:10px 0px 10px 10px;
+    float:left;	
+    position:relative ;
+    border-radius: 30px; 
+    background-color:#FFF0F5; /* 桃色 */
+}
+
+.vote-center-left-upper {
+    width:330px;
+    height: 260px;
+    margin:10px 5px 10px 10px;
+    border:#EEEEEE  double 3px;
+    vertical-align: top;
+    background-color:#FFFFE0 /* 黄色 */
+}
+
+.vote-center-left-middle {
+    width:330px;
+    height: 135px;
+    margin:10px 5px 10px 10px;
+    position:absolute;
+    bottom:53px;
+    border:#EEEEEE  double 3px;
+    background-color:#FFFFE0 /* 黄色 */
+
+}
+
+.vote-center-left-middle-big {
+    width:330px;
+    height: 185px;
+    margin:10px 5px 10px 10px;
+    position:absolute;
+    border:#EEEEEE  double 3px;
+    background-color:#FFFFE0 /* 黄色 */
+
+}
+
+.vote-center-left-lower {
+    width:330px;
+    height: 30px;
+    margin:10px 5px 10px 10px;
+    position:absolute;
+    bottom:0px;
+    border:#EEEEEE  double 3px;
+    background-color:#FFFFFF
+
+}
+
+.vote-center-right {
+    width:400px;
+    height: 500px;
+    margin:10px 0px 10px 0px;
+    float:right;	
+    position:relative ;
+    border-radius: 30px; 
+    background-color:#FFF0F5; /* 桃色 */
+}
+
+.vote-center-right-upper {
+    width:375px;
+    height: 405px;
+    margin:10px 5px 10px 10px;
+    background-color:#FFF0F5; /* 桃色 */
+}
+
+.vote-center-right-lower {
+    width:390px;
+    height: 60px;
+    margin:10px 0px 10px 0px;
+    position:absolute;
+    bottom:0px;
+    background-color:#EEEEEE
+}
+
+.btn form{
+    display: inline;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.btn form input{
+    width:123px;	
+    height: 50px;
+    border-width:2px;
+    margin:5px 2px 5px 2px;
+    text-align: center;
+    font-size:9pt;
+}
+
+/*============================================
+自己紹介
+============================================*/
+.intro {
+    font-size:15px;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+}
+
+.intro thead th {
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #c00;
+    background: #dcdcd1;
+}
+
+.intro tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #ececec;
+}
+
+.intro td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+/*============================================
+一言コメント
+============================================*/
+.one-comment {
+    font-size:15px;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+}
+
+.one-comment thead th {
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #036;
+    background: #dcdcd1;
+}
+
+.one-comment tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #ececec;
+}
+
+.one-comment td {
+    width: 350px;
+    height:70px;
+    padding: 1px 0px 0px 0px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.vote-textarea{
+    width: 100%;
+    height: 100px;
+    resize: none;  
+    padding:4px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Chrome, Safari */
+}
+
+.vote-textarea-big{
+    width: 100%;
+    height: 140px;
+    resize: none;
+    padding:4px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Chrome, Safari */
+}
+
+/*============================================
+コメントリンク
+============================================*/
+.comment-link {
+    text-align: center;
+    vertical-align: middle;
+    font-size:18px;
+}
+
+/*============================================
+グラフ
+============================================*/
+.total {
+    position: relative;
+    margin: 0 auto;
+    top: 210px;
+    font-size:30px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+#myChart1, #myChart2, #myChart3, #myChart4, #myChart5, #myChart6, #myChart7, #myChart8, #myChart9, #myChart10 {
+    position: absolute;
+    top: 0px;
+}
