@@ -71,8 +71,7 @@ public class PostgresAccessor {
                             preSt.setInt(1, Integer.parseInt(holder.get(0)));
                             break;
                         case "RecentComment":
-                            preSt.setString(1, holder.get(0));
-                            preSt.setInt(2, Integer.parseInt(holder.get(1)));
+                            preSt.setInt(1, Integer.parseInt(holder.get(0)));
                         default:
                             break;
                     }

@@ -90,7 +90,7 @@
                 %>
                 <div class="kaiwa">
                     <figure class="kaiwa-img-right">
-                        <img src="./images/risu.png" alt="img">
+                        <img src="./images/icon_0<%= value[3]%>.jpeg" alt="img">
                             <figcaption class="kaiwa-img-description">
                                 <%= value[2]%>
                             </figcaption>
@@ -107,9 +107,9 @@
                 </div>
                 <% }%>
             </div>
-            
-        <!-- フッタ -->
-        <div class="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>
-        </script>
+
+            <!-- フッタ -->
+            <div class="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>
+            </script>
     </body>
 </html>

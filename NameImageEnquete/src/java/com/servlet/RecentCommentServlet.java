@@ -57,12 +57,11 @@ public class RecentCommentServlet extends HttpServlet {
                     + ", comment\n"
                     + ", created\n"
                     + "FROM comment\n"
-                    + "ORDER BY " + "?" + " DESC\n"
+                    + "ORDER BY created DESC\n"
                     + "LIMIT " + "?";
 
             PostgresAccessor pa = new PostgresAccessor();
             ArrayList<String> holder = new ArrayList<>();
-            holder.add("created");
             holder.add(String.valueOf(RECORDS_PER_PAGE));
 
             //　コメント情報取得

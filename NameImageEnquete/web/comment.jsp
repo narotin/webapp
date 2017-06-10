@@ -208,14 +208,15 @@
                         // 第1:comment_id
                         // 第2:enquete_id
                         // 第3:nickname
-                        // 第4:image
+                        // 第4:icon
                         // 第5:comment
                         // 第6:created
                         String[] value = array2.get(i).split(",", 0);
                 %>
                 <div class="kaiwa">
                     <figure class="kaiwa-img-right">
-                        <img src="./images/risu.png" alt="img">
+                        
+                        <img src="./images/icon_0<%= value[3]%>.jpeg" alt="img">
                             <figcaption class="kaiwa-img-description">
                                 <%= value[2]%>
                             </figcaption>
@@ -330,22 +331,21 @@
                             <th><label for="icon">アイコン</label></th>
                             <td class="required"><img src="./images/required.gif" alt="必須" width="26" height="15"></td>
                             <td>
-                                <span class="img1"></span>
-                                <span class="img1"></span>
-                                <span class="img1"></span>
-                                <span class="img1"></span>
-                                <span class="img1"></span>
-                                <span class="img1"></span>
+                                <span class="icon01"></span>
+                                <span class="icon02"></span>
+                                <span class="icon03"></span>
+                                <span class="icon04"></span>
+                                <span class="icon05"></span>
+                                <span class="icon06"></span>
                                 <br>
-                                    <span class="radio-interval"><input type="radio" name="icon" value="1"/></span>
-                                    <span class="radio-interval"><input type="radio" name="icon" value="2"/></span>
-                                    <span class="radio-interval"><input type="radio" name="icon" value="3"/></span>
-                                    <span class="radio-interval"><input type="radio" name="icon" value="4"/></span>
-                                    <span class="radio-interval"><input type="radio" name="icon" value="5"/></span>
-                                    <span class="radio-interval"><input type="radio" name="icon" value="6"/></span>
+                                    <span class="radio-interval01"><input type="radio" name="icon" value="1" checked required/></span>
+                                    <span class="radio-interval02"><input type="radio" name="icon" value="2"/></span>
+                                    <span class="radio-interval02"><input type="radio" name="icon" value="3"/></span>
+                                    <span class="radio-interval02"><input type="radio" name="icon" value="4"/></span>
+                                    <span class="radio-interval02"><input type="radio" name="icon" value="5"/></span>
+                                    <span class="radio-interval02"><input type="radio" name="icon" value="6"/></span>
                             </td>
                         </tr>
-
                         <tr>
                             <th><label for="comment">コメント</label></th>
                             <td class="required"><img src="./images/required.gif" alt="必須" width="26" height="15"></td>
