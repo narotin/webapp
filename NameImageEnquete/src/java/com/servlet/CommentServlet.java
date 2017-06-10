@@ -214,7 +214,7 @@ public class CommentServlet extends HttpServlet {
             // ページ番号
             request.setAttribute("pageNumber", Integer.parseInt(pageNumber));
             // フォワード
-            RequestDispatcher dispatch = request.getRequestDispatcher("comment.jsp");
+            RequestDispatcher dispatch = request.getRequestDispatcher("Comment.jsp");
             dispatch.forward(request, response);
 
         } catch (ParseException | ClassNotFoundException | SQLException ex) {

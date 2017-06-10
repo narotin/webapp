@@ -1,0 +1,123 @@
+/*============================================
+フォーム部品
+============================================*/
+.input-form {
+    width:770px;
+    height: 670px;
+    margin:10px 15px 10px 0px;
+    float:right;
+}
+
+.input-form-contents {
+    width:745px;
+    height: 70px;
+    float:right;
+}
+
+.contact {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact p {
+    line-height: 130%;
+}
+
+.contact p.attention img {
+    vertical-align: middle;
+}
+
+.contact table {
+    width: 100%;
+    background-color: #f9f9f9;
+    border: 1px #c0c0c0 solid;
+}
+
+.contact th {
+    width: 140px;
+    padding: 10px 8px;
+    background-color: #f5f5f5;
+    border-bottom: 1px #c0c0c0 dotted;
+    text-align: left;
+    line-height: 130%;
+}
+
+.contact th span.supplement {
+    font-weight: normal;
+}
+
+.contact td {
+    padding: 10px 5px 7px;
+    background-color: #ffffff;
+    border-bottom: 1px #c0c0c0 dotted;
+}
+
+.contact td span.supplement {
+    color: #808080;
+}
+
+.contact td.required {
+    width: 26px;
+    padding: 10px 3px;
+    background-color: #c4e6fa;
+    text-align: center;
+}
+
+.contact td.arbitrary {
+    width: 26px;
+    background-color: #e0f1fc;
+}
+
+.contact td.arbitrary2 {
+    width: 26px;
+    background-color: #FFEEFF;
+}
+
+.contact input,
+.contact select,
+.contact textarea {
+    margin-bottom: 2px;
+}
+
+#name-kanji, #name-hurigana, #nickname, #icon{
+    width: 200px;
+    height:30px;
+    font-size:15px;
+}
+
+#sex{
+    width: 100px;
+    height:30px;
+}
+
+#comment, #one-comment {
+    width: 420px;
+    height: 10em;
+    resize: none;  
+    padding:0px;
+}
+
+.contact p.button {
+    margin: 20px 0 0;
+    text-align: center;
+}
+
+.submit-botton  {
+    width:100px;	
+    height: 40px;
+    border-width:2px;
+}
+
+.radio-interval{
+    margin: 0px 30px 0px 35px; 
+}
+
+.img1{
+    background-image:url("../images/risu.png");
+    width:48px; height:48px;
+    margin: 5px 15px 3px 15px;
+    display:inline-block;
+    list-style-type:none;
+    background-repeat:no-repeat;
+}

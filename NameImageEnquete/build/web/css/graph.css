@@ -1,66 +1,53 @@
 /*============================================
-中央コンテンツ
+投票
 ============================================*/
-#overview {
-    width:770px;
-    height: 300px;
-    margin:10px 15px 10px 0px;
-    float:right;
-}
-
-#overview-contents {
-    width:745px;
-    height: 260px;
-    float:right;
-}
-
-#vote {
+.vote {
     width:770px;
     margin:10px 15px 10px 0px;
     float:right;
 }
 
-#vote-center-contents {
+.vote-center-contents {
     width:760px;
     height: 510px;
     margin:10px 0px 10px 0px;
     float:right;	
     border-radius: 30px; 
     border: 2px solid #BAD3FF;
-    background-color:#FFF0F5; /*桃色 */
+    background-color:#FFF0F5; /* 桃色 */
 }
 
-#vote-center-left {
+.vote-center-left {
     width:350px;
     height: 500px;
     margin:10px 0px 10px 10px;
     float:left;	
     position:relative ;
     border-radius: 30px; 
-    background-color:#FFF0F5; /*桃色 */
+    background-color:#FFF0F5; /* 桃色 */
 }
 
-#vote-center-left-upper {
+.vote-center-left-upper {
     width:330px;
     height: 260px;
     margin:10px 5px 10px 10px;
     border:#EEEEEE  double 3px;
     vertical-align: top;
-    background-color:#FFFFE0 /*黄色 */
+    background-color:#FFFFE0 /* 黄色 */
 }
 
-#vote-center-left-middle {
+.vote-center-left-middle {
     width:330px;
     height: 135px;
     margin:10px 5px 10px 10px;
     position:absolute;
     bottom:53px;
     border:#EEEEEE  double 3px;
-    background-color:#FFFFE0 /*黄色 */
+    background-color:#FFFFE0 /* 黄色 */
 
 }
 
-#vote-center-left-lower {
+.vote-center-left-lower {
     width:330px;
     height: 30px;
     margin:10px 5px 10px 10px;
@@ -71,24 +58,24 @@
 
 }
 
-#vote-center-right {
+.vote-center-right {
     width:400px;
     height: 500px;
     margin:10px 0px 10px 0px;
     float:right;	
     position:relative ;
     border-radius: 30px; 
-    background-color:#FFF0F5; /*桃色 */
+    background-color:#FFF0F5; /* 桃色 */
 }
 
-#vote-center-right-upper {
+.vote-center-right-upper {
     width:375px;
     height: 405px;
     margin:10px 5px 10px 10px;
-    background-color:#FFF0F5; /*桃色 */
+    background-color:#FFF0F5; /* 桃色 */
 }
 
-#vote-center-right-lower {
+.vote-center-right-lower {
     width:390px;
     height: 60px;
     margin:10px 0px 10px 0px;
@@ -97,14 +84,14 @@
     background-color:#EEEEEE
 }
 
-#btn form{
+.btn form{
     display: inline;
     border: none;
     margin: 0px;
     padding: 0px;
 }
 
-#btn form input{
+.btn form input{
     width:123px;	
     height: 50px;
     border-width:2px;
@@ -116,7 +103,7 @@
 /*============================================
 自己紹介
 ============================================*/
-table#intro {
+.intro {
     font-size:15px;
     border-collapse: collapse;
     text-align: left;
@@ -124,7 +111,7 @@ table#intro {
     border-left: 1px solid #ccc;
 }
 
-table#intro thead th {
+.intro thead th {
     padding: 10px;
     font-weight: bold;
     text-align: center;
@@ -133,7 +120,8 @@ table#intro thead th {
     border-bottom: 2px solid #c00;
     background: #dcdcd1;
 }
-table#intro tbody th {
+
+.intro tbody th {
     width: 150px;
     padding: 10px;
     font-weight: bold;
@@ -142,7 +130,8 @@ table#intro tbody th {
     border-bottom: 1px solid #ccc;
     background: #ececec;
 }
-table#intro td {
+
+.intro td {
     width: 350px;
     padding: 10px;
     vertical-align: top;
@@ -170,6 +159,7 @@ table#intro td {
     border-bottom: 2px solid #036;
     background: #dcdcd1;
 }
+
 .one-comment tbody th {
     width: 150px;
     padding: 10px;
@@ -179,6 +169,7 @@ table#intro td {
     border-bottom: 1px solid #ccc;
     background: #ececec;
 }
+
 .one-comment td {
     width: 350px;
     height:70px;
@@ -201,7 +192,7 @@ textarea{
 /*============================================
 コメントリンク
 ============================================*/
-#comment-link {
+.comment-link {
     text-align: center;
     vertical-align: middle;
     font-size:18px;
@@ -210,7 +201,7 @@ textarea{
 /*============================================
 グラフ
 ============================================*/
-div#total {
+.total {
     position: relative;
     margin: 0 auto;
     top: 210px;

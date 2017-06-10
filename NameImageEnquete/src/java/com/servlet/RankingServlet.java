@@ -180,7 +180,7 @@ public class RankingServlet extends HttpServlet {
             // ランキング番号
             request.setAttribute("rankingType", Integer.parseInt(rankingType));
             // フォワード
-            RequestDispatcher dispatch = request.getRequestDispatcher("ranking.jsp");
+            RequestDispatcher dispatch = request.getRequestDispatcher("Ranking.jsp");
             dispatch.forward(request, response);
 
         } catch (ParseException | ClassNotFoundException | SQLException ex) {

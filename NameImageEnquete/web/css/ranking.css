@@ -1,7 +1,7 @@
 /*============================================
-中央コンテンツ(ranking.jsp)
+ランキングボタン
 ============================================*/
-#ranking {
+.ranking {
     width:770px;
     height: 145px;
     margin:10px 15px 10px 0px;
@@ -25,7 +25,7 @@
     text-decoration:none;
 }
 
-#ranking-buttom1 {
+.ranking-buttom01 {
     width:230px; height:50px;
     background-image:url("../images/ranking_04.png");
     display:inline-block;
@@ -33,7 +33,7 @@
     background-repeat:no-repeat;
 }
 
-#ranking-buttom2 {
+.ranking-buttom02 {
     width:230px; height:50px;
     background-image:url("../images/ranking_03.png");
     display:inline-block;
@@ -41,7 +41,7 @@
     background-repeat:no-repeat;
 }
 
-#ranking-buttom3 {
+.ranking-buttom03 {
     width:230px; height:50px;
     background-image:url("../images/ranking_01.png");
     display:inline-block;
@@ -49,7 +49,7 @@
     background-repeat:no-repeat;
 }
 
-#ranking-buttom4{
+.ranking-buttom04{
     width:230px; height:50px;
     background-image:url("../images/ranking_05.png");
     display:inline-block;
@@ -57,7 +57,7 @@
     background-repeat:no-repeat;
 }
 
-#ranking-buttom5 {
+.ranking-buttom05 {
     width:230px; height:50px;
     background-image:url("../images/ranking_05.png");
     display:inline-block;
@@ -65,7 +65,7 @@
     background-repeat:no-repeat;
 }
 
-#ranking-buttom6 {
+.ranking-buttom06 {
     width:230px; height:50px;
     background-image:url("../images/ranking_05.png");
     display:inline-block;

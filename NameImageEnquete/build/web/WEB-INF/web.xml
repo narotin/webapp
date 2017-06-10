@@ -18,12 +18,12 @@
         <servlet-class>com.servlet.VoteServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SendFormInfoServle</servlet-name>
+        <servlet-name>SendFormInfoServlet</servlet-name>
         <servlet-class>com.servlet.SendFormInfoServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FormServlet</servlet-name>
-        <servlet-class>com.servlet.FormServlet</servlet-class>
+        <servlet-name>ContributionFormServlet</servlet-name>
+        <servlet-class>com.servlet.ContributionFormServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RankingServlet</servlet-name>
@@ -58,12 +58,12 @@
         <url-pattern>/VoteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SendFormInfoServle</servlet-name>
-        <url-pattern>/SendFormInfoServle</url-pattern>
+        <servlet-name>SendFormInfoServlet</servlet-name>
+        <url-pattern>/SendFormInfoServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FormServlet</servlet-name>
-        <url-pattern>/FormServlet</url-pattern>
+        <servlet-name>ContributionFormServlet</servlet-name>
+        <url-pattern>/ContributionFormServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RankingServlet</servlet-name>
@@ -91,6 +91,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index.jsp</welcome-file>
+        <welcome-file>faces/Index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

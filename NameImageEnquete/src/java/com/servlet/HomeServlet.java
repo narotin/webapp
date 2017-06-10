@@ -131,7 +131,7 @@ public class HomeServlet extends HttpServlet {
             request.setAttribute("pageNumber", Integer.parseInt(pageNumber));
 
             // フォワード
-            RequestDispatcher dispatch = request.getRequestDispatcher("home.jsp");
+            RequestDispatcher dispatch = request.getRequestDispatcher("Home.jsp");
             dispatch.forward(request, response);
 
         } catch (ParseException | ClassNotFoundException | SQLException ex) {

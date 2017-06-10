@@ -18,38 +18,40 @@
     <head>
         <title>title</title>
         <link rel="stylesheet" type="text/css" href="./css/common.css" />
-        <link rel="stylesheet" type="text/css" href="./css/graph.css" />
         <link rel="stylesheet" type="text/css" href="./css/comment.css" />
-        <link rel="stylesheet" type="text/css" href="./css/form.css" />
+        <link rel="stylesheet" type="text/css" href="./css/graph.css" />
+        <link rel="stylesheet" type="text/css" href="./css/ballooncomment.css" />
+        <link rel="stylesheet" type="text/css" href="./css/tablecomp.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     </head>
 
     <body>
         <!-- ページ全体 -->
-        <div id="pagebody">
+        <div class="pagebody">
+
             <!-- タイトル -->
-            <div id="title"><h1><a href="./HomeServlet">きらきらねーむ.net</a></h1></div>
+            <div class="title"><h1><a href="./HomeServlet">きらきらねーむ.net</a></h1></div>
 
             <!-- トップメニュー上ライン -->   
             <div class="topmenu-line"></div>
 
             <!-- トップメニュー -->
-            <ul id="topmenu">
-                <li id="topmenu01"><a href="./HomeServlet">ホーム</a></li>
-                <li id="topmenu02"><a href="./FormServlet">投稿フォーム</a></li>
-                <li id="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
-                <li id="topmenu04"><a href="./RankingServlet">ランキング</a></li>
-                <li id="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
+            <ul class="topmenu">
+                <li class="topmenu01"><a href="./HomeServlet">ホーム</a></li>
+                <li class="topmenu02"><a href="./ContributionFormServlet">投稿フォーム</a></li>
+                <li class="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
+                <li class="topmenu04"><a href="./RankingServlet">ランキング</a></li>
+                <li class="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
             </ul>
 
             <!-- トップメニュー下ライン -->   
             <div class="topmenu-line"></div>
 
             <!-- 左サブメニュー -->
-            <div id="leftmenu">
-                <div id="leftmenu-header">目的で探す</div>
-                <ul id="leftmenu-body">
+            <div class="leftmenu">
+                <div class="leftmenu-header">目的で探す</div>
+                <ul class="leftmenu-body">
                     <li><a href="xxx.html">何か</a></li>
                     <li><a href="xxx.html">何か</a></li>
                     <li><a href="xxx.html">何か</a></li>
@@ -78,9 +80,9 @@
             </div>
 
             <!-- 中央コンテンツ -->
-
-            <div id="vote">
-                <p><h2>対象の投票</h2></p>
+            <!-- 対象の投票 -->    
+            <div class="vote">
+                <h2>対象の投票</h2>
                 <%
                     for (int i = 0; i < 1; i++) {
                         // 整形
@@ -97,11 +99,11 @@
                         // 第11:created
                         String[] value = array.get(i).split(",", 0);
                 %>
-                <div id="vote-center-contents">
+                <div class="vote-center-contents">
                     <!-- 中央コンテンツ　左 -->
-                    <div id="vote-center-left">
-                        <div id="vote-center-left-upper">
-                            <table id="intro" border="1">
+                    <div class="vote-center-left">
+                        <div class="vote-center-left-upper">
+                            <table class="intro" border="1">
                                 <thead>
                                     <tr>
                                         <th scope="cols">項目</th>
@@ -142,7 +144,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div id="vote-center-left-middle">
+                        <div class="vote-center-left-middle">
                             <table class="one-comment" border="1" >
                                 <thead>
                                     <tr>
@@ -156,25 +158,25 @@
                                 </tbody>
                             </table>           
                         </div>
-                        <div id="vote-center-left-lower">
-                            <div id="comment-link">
+                        <div class="vote-center-left-lower">
+                            <div class="comment-link">
                                 <a href="./CommentServlet?enquete_id=<%= value[0]%>" target="_blank">コメントする(<%= value[8]%>件)</a>
                             </div>  
                         </div>
                     </div>
 
                     <!-- 中央コンテンツ 右 -->
-                    <div id="vote-center-right">
-                        <div id="vote-center-right-upper">
-                            <div id="total">
+                    <div class="vote-center-right">
+                        <div class="vote-center-right-upper">
+                            <div class="total">
                                 <div align="center">
                                     <p><%= Integer.parseInt(value[9])%>票</p>
                                 </div>
                             </div>  
                             <canvas id=<%= "myChart" + (i + 1)%>></canvas>
                         </div>
-                        <div id="vote-center-right-lower">
-                            <div id="btn">
+                        <div class="vote-center-right-lower">
+                            <div class="btn">
                                 <form action="./VoteServlet" method="post">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=1></input>
@@ -195,9 +197,11 @@
                     </div>
                 </div>
                 <% }%>
+            </div>
 
-                <!-- ここからコメント -->
-                <p><h2>コメント一覧</h2></p>
+            <!-- コメント一覧 -->
+            <div class="comment-list">
+                <h2>コメント一覧</h2>
                 <%
                     for (int i = 0; i < array2.size(); i++) {
                         // 整形
@@ -226,6 +230,7 @@
                 </div>
                 <% }%>
 
+                <!-- ページング -->
                 <div class="paging">
                     <%
                         int link1 = pageNumber - 2;
@@ -306,9 +311,9 @@
                     %>
                 </div>
             </div>
-            <div id="input-form">
+            <div class="input-form">
                 <p><h2>コメントする</h2></p>
-                <div id="input-form-contents">
+                <div class="input-form-contents">
                     <p>あとでここになにかいれる。</p>
                 </div>
                 <form name="form1" method="post" action="./SendCommentServlet" class="contact" onsubmit="return checkCommentForm()" >
@@ -348,13 +353,12 @@
                                 <span class="supplement">※1000文字以下で入力して下さい。</span></td>
                         </tr>
                     </table>
-                    <p class="button"><input id="submit-botton" type="submit" value="送信" /></p>
+                    <p class="button"><input class="submit-botton" type="submit" value="送信" /></p>
                 </form>
             </div>
 
-
             <!-- フッタ -->
-            <div id="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>
+            <div class="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>
         </div>
         <script>
             <%

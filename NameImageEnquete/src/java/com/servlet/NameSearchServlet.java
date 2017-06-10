@@ -206,7 +206,7 @@ public class NameSearchServlet extends HttpServlet {
             // ページ番号
             request.setAttribute("pageNumber", Integer.parseInt(pageNumber));
             // フォワード
-            RequestDispatcher dispatch = request.getRequestDispatcher("namesearch.jsp");
+            RequestDispatcher dispatch = request.getRequestDispatcher("NameSearch.jsp");
             dispatch.forward(request, response);
 
         } catch (ParseException | ClassNotFoundException | SQLException ex) {

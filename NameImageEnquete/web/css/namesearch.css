@@ -1,14 +1,14 @@
 /*============================================
-中央コンテンツ(namesearch.jsp)
+概要
 ============================================*/
-#name-search {
+.name-search {
     width:770px;
     height: 410px;
     margin:10px 15px 10px 0px;
     float:right;
 }
 
-#name-search-contents {
+.name-search-contents {
     width:745px;
     height: 70px;
     float:right;

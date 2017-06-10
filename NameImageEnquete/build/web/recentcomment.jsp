@@ -14,37 +14,38 @@
     <head>
         <title>title</title>
         <link rel="stylesheet" type="text/css" href="./css/common.css" />
+        <link rel="stylesheet" type="text/css" href="./css/ballooncomment.css" />
         <link rel="stylesheet" type="text/css" href="./css/recentcomment.css" />
-        <link rel="stylesheet" type="text/css" href="./css/comment.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     </head>
 
     <body>
         <!-- ページ全体 -->
-        <div id="pagebody">
+        <div class="pagebody">
+
             <!-- タイトル -->
-            <div id="title"><h1><a href="./HomeServlet">きらきらねーむ.net</a></h1></div>
+            <div class="title"><h1><a href="./HomeServlet">きらきらねーむ.net</a></h1></div>
 
             <!-- トップメニュー上ライン -->   
             <div class="topmenu-line"></div>
 
             <!-- トップメニュー -->
-            <ul id="topmenu">
-                <li id="topmenu01"><a href="./HomeServlet">ホーム</a></li>
-                <li id="topmenu02"><a href="./FormServlet">投稿フォーム</a></li>
-                <li id="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
-                <li id="topmenu04"><a href="./RankingServlet">ランキング</a></li>
-                <li id="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
+            <ul class="topmenu">
+                <li class="topmenu01"><a href="./HomeServlet">ホーム</a></li>
+                <li class="topmenu02"><a href="./ContributionFormServlet">投稿フォーム</a></li>
+                <li class="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
+                <li class="topmenu04"><a href="./RankingServlet">ランキング</a></li>
+                <li class="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
             </ul>
 
             <!-- トップメニュー下ライン -->   
             <div class="topmenu-line"></div>
 
             <!-- 左サブメニュー -->
-            <div id="leftmenu">
-                <div id="leftmenu-header">目的で探す</div>
-                <ul id="leftmenu-body">
+            <div class="leftmenu">
+                <div class="leftmenu-header">目的で探す</div>
+                <ul class="leftmenu-body">
                     <li><a href="xxx.html">何か</a></li>
                     <li><a href="xxx.html">何か</a></li>
                     <li><a href="xxx.html">何か</a></li>
@@ -73,8 +74,9 @@
             </div>
 
             <!-- 中央コンテンツ -->
-            <div id="recent-comment">
-                <p><h2>最新のコメント一覧</h2></p>
+            <!-- 最新のコメント一覧 -->
+            <div class="recent-comment">
+                <h2>最新のコメント一覧</h2>
                 <%
                     for (int i = 0; i < array.size(); i++) {
                         // 整形
@@ -105,10 +107,9 @@
                 </div>
                 <% }%>
             </div>
-        </div>
+            
         <!-- フッタ -->
-        <div id="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>
-        </div>
+        <div class="footer"><small>Copyright (C) 2017 kirakira-name.net All Rights Reserved.</small></div>
         </script>
     </body>
 </html>

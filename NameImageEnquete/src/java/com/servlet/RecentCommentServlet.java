@@ -104,7 +104,7 @@ public class RecentCommentServlet extends HttpServlet {
             request.setAttribute("commentList", result);
 
             // フォワード
-            RequestDispatcher dispatch = request.getRequestDispatcher("recentcomment.jsp");
+            RequestDispatcher dispatch = request.getRequestDispatcher("RecentComment.jsp");
             dispatch.forward(request, response);
 
         } catch (ParseException | ClassNotFoundException | SQLException ex) {
