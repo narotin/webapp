@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.servlet;
 
 import com.dao.postgres.PostgresAccessor;
@@ -19,16 +14,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.common.Constants;
 
-/**
- *
- * @author Naro
- */
 public class CommentServlet extends HttpServlet {
-
-    public static final String SEPARATOR = ",";
-    public static final int RECORDS_PER_PAGE = 10;
-    public static final String UTF_8 = "UTF-8";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,7 +30,7 @@ public class CommentServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            request.setCharacterEncoding("UTF-8");
+            request.setCharacterEncoding(Constants.UTF_8);
             response.setContentType("text/html;charset=UTF-8");
 
             String enquete_id = request.getParameter("enquete_id");
@@ -54,7 +42,7 @@ public class CommentServlet extends HttpServlet {
                 pageNumber = "1";
             }
 
-            int offset = (Integer.parseInt(pageNumber) - 1) * RECORDS_PER_PAGE;
+            int offset = (Integer.parseInt(pageNumber) - 1) * Constants.RECORDS_PER_PAGE;
             int pages;
             ArrayList<String> result = new ArrayList<>();
             ArrayList<String> result2 = new ArrayList<>();
@@ -104,7 +92,7 @@ public class CommentServlet extends HttpServlet {
             // 第2:ページ毎のレコード
             // 第3:オフセット
             holder2.add(enquete_id);
-            holder2.add(String.valueOf(RECORDS_PER_PAGE));
+            holder2.add(String.valueOf(Constants.RECORDS_PER_PAGE));
             holder2.add(String.valueOf(offset));
 
             // PostgreSQL JDBC 問い合わせ SQL 作成
@@ -147,7 +135,7 @@ public class CommentServlet extends HttpServlet {
                 for (int i = 0; i < 11; i++) {
                     // カンマ区切り
                     if (sb1.length() > 0) {
-                        sb1.append(SEPARATOR);
+                        sb1.append(Constants.SEPARATOR);
                     }
                     //日付のフォーマット変更
                     if (i == 10) {
@@ -181,7 +169,7 @@ public class CommentServlet extends HttpServlet {
                 for (int i = 0; i < 6; i++) {
                     // カンマ区切り
                     if (sb1.length() > 0) {
-                        sb1.append(SEPARATOR);
+                        sb1.append(Constants.SEPARATOR);
                     }
                     //日付のフォーマット変更
                     if (i == 5) {
@@ -198,7 +186,7 @@ public class CommentServlet extends HttpServlet {
                 System.out.println(sb1.toString());
                 result2.add(sb1.toString());
             }
-            pages = (int) Math.ceil((double) pa.count(preSql2Count, holder3, "Comment") / RECORDS_PER_PAGE);
+            pages = (int) Math.ceil((double) pa.count(preSql2Count, holder3, "Comment") / Constants.RECORDS_PER_PAGE);
 
             if (pages == 0) {
                 pages = 1;
@@ -219,7 +207,6 @@ public class CommentServlet extends HttpServlet {
 
         } catch (ParseException | ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeServlet.class.getName()).log(Level.SEVERE, null, ex);
-            // TODO エラー時はエラー用のページに飛ばしたい
         }
     }
 

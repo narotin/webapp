@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.servlet;
 
+import com.common.Constants;
 import com.dao.postgres.PostgresAccessor;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,10 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Naro
- */
 public class SendCommentServlet extends HttpServlet {
 
     /**
@@ -34,7 +26,7 @@ public class SendCommentServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            request.setCharacterEncoding("UTF-8");
+            request.setCharacterEncoding(Constants.UTF_8);
             response.setContentType("text/html;charset=UTF-8");
 
             String enqueteId = request.getParameter("enquete-id");
@@ -55,12 +47,10 @@ public class SendCommentServlet extends HttpServlet {
             pa.write(preSql, holder, "SendComment");
 
             // フォワード
-            // TODO homeに戻っていいのか
             response.sendRedirect("/NameImageEnquete");
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(VoteServlet.class.getName()).log(Level.SEVERE, null, ex);
-            // TODO　エラー時はエラー用のページに飛ばしたい
         }
     }
 

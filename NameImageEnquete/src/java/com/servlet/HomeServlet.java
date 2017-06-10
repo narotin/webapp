@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.servlet;
 
+import com.common.Constants;
 import com.dao.postgres.PostgresAccessor;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,14 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Naro
- */
 public class HomeServlet extends HttpServlet {
-
-    public static final String SEPARATOR = ",";
-    public static final int RECORDS_PER_PAGE = 10;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,14 +30,15 @@ public class HomeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            request.setCharacterEncoding("UTF-8");
+            request.setCharacterEncoding(Constants.UTF_8);
             response.setContentType("text/html;charset=UTF-8");
 
             String pageNumber = request.getParameter("pageNumber");
             if (pageNumber == null || pageNumber.length() == 0) {
                 pageNumber = "1";
             }
-            int offset = (Integer.parseInt(pageNumber) - 1) * RECORDS_PER_PAGE;
+            
+            int offset = (Integer.parseInt(pageNumber) - 1) * Constants.RECORDS_PER_PAGE;
 
             // PostgreSQL JDBC 問い合わせ SQL 作成
             String preSql = "SELECT \n"
@@ -72,7 +62,7 @@ public class HomeServlet extends HttpServlet {
                     + "OFFSET " + "?";
 
             ArrayList<String> holder = new ArrayList<>();
-            holder.add(String.valueOf(RECORDS_PER_PAGE));
+            holder.add(String.valueOf(Constants.RECORDS_PER_PAGE));
             holder.add(String.valueOf(offset));
 
             PostgresAccessor pa = new PostgresAccessor();
@@ -97,7 +87,7 @@ public class HomeServlet extends HttpServlet {
                 for (int i = 0; i < 11; i++) {
                     // カンマ区切り
                     if (sb1.length() > 0) {
-                        sb1.append(SEPARATOR);
+                        sb1.append(Constants.SEPARATOR);
                     }
 
                     //日付のフォーマット変更
@@ -116,7 +106,7 @@ public class HomeServlet extends HttpServlet {
                 result.add(sb1.toString());
             }
 
-            int pages = (int) Math.ceil((double) pa.count("enquete") / RECORDS_PER_PAGE);
+            int pages = (int) Math.ceil((double) pa.count("enquete") / Constants.RECORDS_PER_PAGE);
 
             if (pages == 0) {
                 pages = 1;
@@ -136,7 +126,6 @@ public class HomeServlet extends HttpServlet {
 
         } catch (ParseException | ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeServlet.class.getName()).log(Level.SEVERE, null, ex);
-            // TODO エラー時はエラー用のページに飛ばしたい
         }
     }
 

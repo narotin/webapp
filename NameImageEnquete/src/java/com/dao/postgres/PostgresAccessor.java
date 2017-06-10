@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dao.postgres;
 
 import java.sql.Connection;
@@ -16,24 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.common.Constants;
 
-/**
- *
- * @author Naro
- */
 public class PostgresAccessor {
-
-    public static final String SEPARATOR = ",";
-    public static final String DRIVER = "org.postgresql.Driver";
-    public static final String DSN = "jdbc:postgresql://192.168.130.104:5432/postgres?user=postgres&password=postgres";
 
     /**
      *
      * @param preSql sql文を指定
-     * @param holder
+     * @param holder preparestatementに格納する文字列
+     * @param type sqlの種類
      * @param headerExist hedaderをreturnのListに含めるかの判定
-     * @param type
-     * @return
+     * @return 検索レコード
      * @throws java.sql.SQLException
      * @throws java.lang.ClassNotFoundException
      */
@@ -42,13 +30,13 @@ public class PostgresAccessor {
         ArrayList<String> contents = null;
         try {
             // PostgreSQL JDBC ドライバロード
-            Class.forName(DRIVER);
+            Class.forName(Constants.DRIVER);
 
             // PostgreSQL JDBC 接続
-            try (Connection con = DriverManager.getConnection(DSN)) {
+            try (Connection con = DriverManager.getConnection(Constants.DSN)) {
                 try (PreparedStatement preSt = con.prepareStatement(preSql)) {
 
-                    //typeに応じて，セットする文字列を変える
+                    // typeに応じて，セットする文字列を変える
                     switch (type) {
                         case "Home":
                         case "Ranking":
@@ -68,10 +56,9 @@ public class PostgresAccessor {
                             preSt.setInt(3, Integer.parseInt(holder.get(2)));
                             break;
                         case "CommentG":
-                            preSt.setInt(1, Integer.parseInt(holder.get(0)));
-                            break;
                         case "RecentComment":
                             preSt.setInt(1, Integer.parseInt(holder.get(0)));
+                            break;
                         default:
                             break;
                     }
@@ -94,7 +81,7 @@ public class PostgresAccessor {
                                     StringBuilder sb1 = new StringBuilder();
                                     for (String str : header) {
                                         if (sb1.length() > 0) {
-                                            sb1.append(SEPARATOR);
+                                            sb1.append(Constants.SEPARATOR);
                                         }
                                         sb1.append(str);
                                     }
@@ -107,7 +94,7 @@ public class PostgresAccessor {
                             StringBuilder sb2 = new StringBuilder();
                             for (String str : header) {
                                 if (sb2.length() > 0) {
-                                    sb2.append(SEPARATOR);
+                                    sb2.append(Constants.SEPARATOR);
                                 }
                                 sb2.append(rs.getObject(str));
                             }
@@ -125,8 +112,8 @@ public class PostgresAccessor {
 
     /**
      *
-     * @param tableName
-     * @return
+     * @param tableName テーブル名
+     * @return 検索レコード数
      * @throws java.sql.SQLException
      * @throws java.lang.ClassNotFoundException
      */
@@ -135,10 +122,10 @@ public class PostgresAccessor {
         int numberOfRow;
         try {
             // PostgreSQL JDBC ドライバロード
-            Class.forName(DRIVER);
+            Class.forName(Constants.DRIVER);
 
             // PostgreSQL JDBC 接続
-            try (Connection con = DriverManager.getConnection(DSN)) {
+            try (Connection con = DriverManager.getConnection(Constants.DSN)) {
                 try (Statement st = con.createStatement(
                         ResultSet.TYPE_SCROLL_INSENSITIVE,
                         ResultSet.CONCUR_READ_ONLY)) {
@@ -158,23 +145,37 @@ public class PostgresAccessor {
         return numberOfRow;
     }
 
+    /**
+     *
+     * @param preSql sql文を指定
+     * @param holder preparestatementに格納する文字列
+     * @param type sqlの種類
+     * @return 検索レコード数
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
+     */
     public int count(String preSql, List<String> holder, String type) throws SQLException, ClassNotFoundException {
         ArrayList<String> contents = null;
         try {
             // PostgreSQL JDBC ドライバロード
-            Class.forName(DRIVER);
+            Class.forName(Constants.DRIVER);
 
             // PostgreSQL JDBC 接続
-            try (Connection con = DriverManager.getConnection(DSN)) {
+            try (Connection con = DriverManager.getConnection(Constants.DSN)) {
                 try (PreparedStatement preSt = con.prepareStatement(preSql)) {
 
                     //typeに応じて，セットする文字列を変える
-                    if (type.equals("NameSearch")) {
-                        preSt.setString(1, "%" + holder.get(0) + "%");
-                        preSt.setString(2, "%" + holder.get(1) + "%");
-                        preSt.setString(3, "%" + holder.get(2) + "%");
-                    } else if (type.equals("Comment")) {
-                        preSt.setInt(1, Integer.parseInt(holder.get(0)));
+                    switch (type) {
+                        case "NameSearch":
+                            preSt.setString(1, "%" + holder.get(0) + "%");
+                            preSt.setString(2, "%" + holder.get(1) + "%");
+                            preSt.setString(3, "%" + holder.get(2) + "%");
+                            break;
+                        case "Comment":
+                            preSt.setInt(1, Integer.parseInt(holder.get(0)));
+                            break;
+                        default:
+                            break;
                     }
 
                     // PostgreSQL JDBC レコードセットオープン
@@ -185,7 +186,7 @@ public class PostgresAccessor {
                             // データ全取得(カラム名以外)
                             StringBuilder sb1 = new StringBuilder();
                             if (sb1.length() > 0) {
-                                sb1.append(SEPARATOR);
+                                sb1.append(Constants.SEPARATOR);
                             }
                             contents.add(sb1.toString());
                         }
@@ -201,19 +202,19 @@ public class PostgresAccessor {
 
     /**
      *
-     * @param preSql
-     * @param holder
-     * @param type
+     * @param preSql sql文を指定
+     * @param holder preparestatementに格納する文字列
+     * @param type sqlの種類
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
      */
     public void write(String preSql, List<String> holder, String type) throws SQLException, ClassNotFoundException {
         try {
             // PostgreSQL JDBC ドライバロード
-            Class.forName(DRIVER);
+            Class.forName(Constants.DRIVER);
 
             // PostgreSQL JDBC 接続
-            try (Connection con = DriverManager.getConnection(DSN)) {
+            try (Connection con = DriverManager.getConnection(Constants.DSN)) {
                 try (PreparedStatement preSt = con.prepareStatement(preSql)) {
                     //typeに応じて，セットする文字列を変える
                     switch (type) {

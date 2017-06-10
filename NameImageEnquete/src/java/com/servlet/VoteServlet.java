@@ -5,6 +5,7 @@
  */
 package com.servlet;
 
+import com.common.Constants;
 import com.dao.postgres.PostgresAccessor;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,13 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Naro
- */
 public class VoteServlet extends HttpServlet {
-
-    public static final String SEPARATOR = ",";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +31,7 @@ public class VoteServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            request.setCharacterEncoding("UTF-8");
+            request.setCharacterEncoding(Constants.UTF_8);
             response.setContentType("text/html;charset=UTF-8");
 
             String enqueteId = request.getParameter("enquete_id");
@@ -53,12 +48,10 @@ public class VoteServlet extends HttpServlet {
             pa.write(preSql, holder, "Vote");
 
             // フォワード
-            // TODO homeに戻っていいのか
             response.sendRedirect("/NameImageEnquete");
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(VoteServlet.class.getName()).log(Level.SEVERE, null, ex);
-            // TODO　エラー時はエラー用のページに飛ばしたい
         }
     }
 

@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.servlet;
 
+import com.common.Constants;
 import com.dao.postgres.PostgresAccessor;
 import com.util.EscapeString;
 import java.io.IOException;
@@ -23,15 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Naro
- */
 public class NameSearchServlet extends HttpServlet {
-
-    public static final String SEPARATOR = ",";
-    public static final int RECORDS_PER_PAGE = 10;
-    public static final String UTF_8 = "UTF-8";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,7 +33,7 @@ public class NameSearchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            request.setCharacterEncoding("UTF-8");
+            request.setCharacterEncoding(Constants.UTF_8);
             response.setContentType("text/html;charset=UTF-8");
 
             String nameKanji = request.getParameter("name-kanji");
@@ -73,12 +61,12 @@ public class NameSearchServlet extends HttpServlet {
             String encode = request.getParameter("endoce");
             if (encode != null) {
                 if (encode.equals("on")) {
-                    nameKanji = URLDecoder.decode(nameKanji, UTF_8);
-                    nameHurigana = URLDecoder.decode(nameHurigana, UTF_8);
+                    nameKanji = URLDecoder.decode(nameKanji, Constants.UTF_8);
+                    nameHurigana = URLDecoder.decode(nameHurigana, Constants.UTF_8);
                 }
             }
 
-            int offset = (Integer.parseInt(pageNumber) - 1) * RECORDS_PER_PAGE;
+            int offset = (Integer.parseInt(pageNumber) - 1) * Constants.RECORDS_PER_PAGE;
             int pages = 0;
             ArrayList<String> result = new ArrayList<>();
             if (!resultType.equals("0")) {
@@ -118,7 +106,7 @@ public class NameSearchServlet extends HttpServlet {
                 holder.add(EscapeString.escapeForLike(nameKanji));
                 holder.add(EscapeString.escapeForLike(nameHurigana));
                 holder.add(sex);
-                holder.add(String.valueOf(RECORDS_PER_PAGE));
+                holder.add(String.valueOf(Constants.RECORDS_PER_PAGE));
                 holder.add(String.valueOf(offset));
 
                 String preSqlCount
@@ -167,7 +155,7 @@ public class NameSearchServlet extends HttpServlet {
                     for (int i = 0; i < 11; i++) {
                         // カンマ区切り
                         if (sb1.length() > 0) {
-                            sb1.append(SEPARATOR);
+                            sb1.append(Constants.SEPARATOR);
                         }
                         //日付のフォーマット変更
                         if (i == 10) {
@@ -184,7 +172,7 @@ public class NameSearchServlet extends HttpServlet {
                     System.out.println(sb1.toString());
                     result.add(sb1.toString());
                 }
-                pages = (int) Math.ceil((double) pa.count(preSqlCount, holder2, "NameSearch") / RECORDS_PER_PAGE);
+                pages = (int) Math.ceil((double) pa.count(preSqlCount, holder2, "NameSearch") / Constants.RECORDS_PER_PAGE);
             }
             if (pages == 0) {
                 pages = 1;
@@ -196,9 +184,9 @@ public class NameSearchServlet extends HttpServlet {
             // リザルトタイプ
             request.setAttribute("resultType", Integer.parseInt(resultType));
             // 名前(漢字)_エンコード済み
-            request.setAttribute("nameKanji", URLEncoder.encode(nameKanji, UTF_8));
+            request.setAttribute("nameKanji", URLEncoder.encode(nameKanji, Constants.UTF_8));
             // 名前(ふりがな)_エンコード済み
-            request.setAttribute("nameHurigana", URLEncoder.encode(nameHurigana, UTF_8));
+            request.setAttribute("nameHurigana", URLEncoder.encode(nameHurigana, Constants.UTF_8));
             // 性別
             request.setAttribute("sex", sex);
             // ページ数
@@ -211,7 +199,6 @@ public class NameSearchServlet extends HttpServlet {
 
         } catch (ParseException | ClassNotFoundException | SQLException ex) {
             Logger.getLogger(HomeServlet.class.getName()).log(Level.SEVERE, null, ex);
-            // TODO エラー時はエラー用のページに飛ばしたい
         }
     }
 
