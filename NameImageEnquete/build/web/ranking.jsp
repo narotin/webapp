@@ -38,7 +38,7 @@
                 <li id="topmenu02"><a href="./FormServlet">投稿フォーム</a></li>
                 <li id="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
                 <li id="topmenu04"><a href="./RankingServlet">ランキング</a></li>
-                <li id="topmenu05"><a href="★サーブレット">最新コメント</a></li>
+                <li id="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
             </ul>
 
             <!-- トップメニュー下ライン -->   
@@ -185,7 +185,7 @@
                         </div>
                         <div id="vote-center-left-lower">
                             <div id="comment-link">
-                                <a href="★サーブレット" target="_blank">コメントする(<%= value[8]%>件)</a>
+                                <a href="./CommentServlet?enquete_id=<%= value[0]%>" target="_blank">コメントする(<%= value[8]%>件)</a>
                             </div>  
                         </div>
                     </div>
@@ -223,7 +223,7 @@
                 </div>
                 <% }%>
 
-                <div id="paging">
+                <div class="paging">
                     <%
                         int link1 = pageNumber - 2;
                         int link2 = pageNumber - 1;

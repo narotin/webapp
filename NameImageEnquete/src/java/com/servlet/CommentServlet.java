@@ -89,12 +89,12 @@ public class CommentServlet extends HttpServlet {
                     + "comment_id\n"
                     + ", enquete_id\n"
                     + ", nickname\n"
-                    + ", image\n"
+                    + ", icon\n"
                     + ", comment\n"
                     + ", created\n"
                     + "FROM comment\n"
                     + "WHERE enquete_id=" + "?" + "\n"
-                    + "ORDER By created ASC\n"
+                    + "ORDER By created DESC\n"
                     + "LIMIT " + "?" + "\n"
                     + "OFFSET " + "?";
 
@@ -113,7 +113,7 @@ public class CommentServlet extends HttpServlet {
                     + "comment_id\n"
                     + ", enquete_id\n"
                     + ", nickname\n"
-                    + ", image\n"
+                    + ", icon\n"
                     + ", comment\n"
                     + ", created\n"
                     + "FROM comment\n"

@@ -40,7 +40,7 @@
                 <li id="topmenu02"><a href="./FormServlet">投稿フォーム</a></li>
                 <li id="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
                 <li id="topmenu04"><a href="./RankingServlet">ランキング</a></li>
-                <li id="topmenu05"><a href="★サーブレット">最新コメント</a></li>
+                <li id="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
             </ul>
 
             <!-- トップメニュー下ライン -->   
@@ -158,7 +158,7 @@
                         </div>
                         <div id="vote-center-left-lower">
                             <div id="comment-link">
-                                <a href=./CommentServlet?enquete_id=<%= value[0]%>" target="_blank">コメントする(<%= value[8]%>件)</a>
+                                <a href="./CommentServlet?enquete_id=<%= value[0]%>" target="_blank">コメントする(<%= value[8]%>件)</a>
                             </div>  
                         </div>
                     </div>
@@ -166,15 +166,15 @@
                     <!-- 中央コンテンツ 右 -->
                     <div id="vote-center-right">
                         <div id="vote-center-right-upper">
-                            <dev id="total">
+                            <div id="total">
                                 <div align="center">
                                     <p><%= Integer.parseInt(value[9])%>票</p>
                                 </div>
-                            </dev>  
+                            </div>  
                             <canvas id=<%= "myChart" + (i + 1)%>></canvas>
                         </div>
                         <div id="vote-center-right-lower">
-                            <dev id="btn">
+                            <div id="btn">
                                 <form action="./VoteServlet" method="post">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=1></input>
@@ -190,7 +190,7 @@
                                     <input type="hidden" name="number" value=3></input>
                                     <input type="submit" value="キラキラネームである"></input>
                                 </form>
-                            </dev>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,93 +225,94 @@
                     </div>
                 </div>
                 <% }%>
+
+                <div class="paging">
+                    <%
+                        int link1 = pageNumber - 2;
+                        int link2 = pageNumber - 1;
+                        int link3 = pageNumber;
+                        int link4 = pageNumber + 1;
+                        int link5 = pageNumber + 2;
+
+                        while (link1 <= 0) {
+                            link1++;
+                            link2++;
+                            link3++;
+                            link4++;
+                            link5++;
+                        }
+
+                        if (pageNumber != 1) {
+                            out.println("<div class=\"special-page-box\">");
+                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=1\" class=\"page-link\">" + "最初　<<" + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pages >= link1) {
+                            if (link1 == pageNumber) {
+                                out.println("<div class=\"current-page-box\">");
+                            } else {
+                                out.println("<div class=\"page-box\">");
+                            }
+                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link1 + "\" class=\"page-link\">" + link1 + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pages >= link2) {
+                            if (link2 == pageNumber) {
+                                out.println("<div class=\"current-page-box\">");
+                            } else {
+                                out.println("<div class=\"page-box\">");
+                            }
+                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link2 + "\" class=\"page-link\">" + link2 + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pages >= link3) {
+                            if (link3 == pageNumber) {
+                                out.println("<div class=\"current-page-box\">");
+                            } else {
+                                out.println("<div class=\"page-box\">");
+                            }
+                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link3 + "\" class=\"page-link\">" + link3 + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pages >= link4) {
+                            if (link4 == pageNumber) {
+                                out.println("<div class=\"current-page-box\">");
+                            } else {
+                                out.println("<div class=\"page-box\">");
+                            }
+                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link4 + "\" class=\"page-link\">" + link4 + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pages >= link5) {
+                            if (link5 == pageNumber) {
+                                out.println("<div class=\"current-page-box\">");
+                            } else {
+                                out.println("<div class=\"page-box\">");
+                            }
+                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link5 + "\" class=\"page-link\">" + link5 + "</a>");
+                            out.println("</div>");
+                        }
+
+                        if (pageNumber != pages) {
+                            out.println("<div class=\"special-page-box\">");
+                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + pages + "\" class=\"page-link\">" + ">>　最後" + "</a>");
+                            out.println("</div>");
+                        }
+                    %>
+                </div>
             </div>
-            <div class="paging">
-                <%
-                    int link1 = pageNumber - 2;
-                    int link2 = pageNumber - 1;
-                    int link3 = pageNumber;
-                    int link4 = pageNumber + 1;
-                    int link5 = pageNumber + 2;
-
-                    while (link1 <= 0) {
-                        link1++;
-                        link2++;
-                        link3++;
-                        link4++;
-                        link5++;
-                    }
-
-                    if (pageNumber != 1) {
-                        out.println("<div class=\"special-page-box\">");
-                        out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=1\" class=\"page-link\">" + "最初　<<" + "</a>");
-                        out.println("</div>");
-                    }
-
-                    if (pages >= link1) {
-                        if (link1 == pageNumber) {
-                            out.println("<div class=\"current-page-box\">");
-                        } else {
-                            out.println("<div class=\"page-box\">");
-                        }
-                        out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link1 + "\" class=\"page-link\">" + link1 + "</a>");
-                        out.println("</div>");
-                    }
-
-                    if (pages >= link2) {
-                        if (link2 == pageNumber) {
-                            out.println("<div class=\"current-page-box\">");
-                        } else {
-                            out.println("<div class=\"page-box\">");
-                        }
-                        out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link2 + "\" class=\"page-link\">" + link2 + "</a>");
-                        out.println("</div>");
-                    }
-
-                    if (pages >= link3) {
-                        if (link3 == pageNumber) {
-                            out.println("<div class=\"current-page-box\">");
-                        } else {
-                            out.println("<div class=\"page-box\">");
-                        }
-                        out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link3 + "\" class=\"page-link\">" + link3 + "</a>");
-                        out.println("</div>");
-                    }
-
-                    if (pages >= link4) {
-                        if (link4 == pageNumber) {
-                            out.println("<div class=\"current-page-box\">");
-                        } else {
-                            out.println("<div class=\"page-box\">");
-                        }
-                        out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link4 + "\" class=\"page-link\">" + link4 + "</a>");
-                        out.println("</div>");
-                    }
-
-                    if (pages >= link5) {
-                        if (link5 == pageNumber) {
-                            out.println("<div class=\"current-page-box\">");
-                        } else {
-                            out.println("<div class=\"page-box\">");
-                        }
-                        out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link5 + "\" class=\"page-link\">" + link5 + "</a>");
-                        out.println("</div>");
-                    }
-
-                    if (pageNumber != pages) {
-                        out.println("<div class=\"special-page-box\">");
-                        out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + pages + "\" class=\"page-link\">" + ">>　最後" + "</a>");
-                        out.println("</div>");
-                    }
-                %>
-            </div>
-
             <div id="input-form">
                 <p><h2>コメントする</h2></p>
                 <div id="input-form-contents">
                     <p>あとでここになにかいれる。</p>
                 </div>
-                <form name="form1" method="post" action="★" class="contact" onsubmit="return checkCommentForm()">
+                <form name="form1" method="post" action="./SendCommentServlet" class="contact" onsubmit="return checkCommentForm()" >
+                    <input type="hidden" name="enquete-id" value="<%= enquete_id%>" />
                     <table>
                         <tr>
                             <th><label for="nickname">ニックネーム</label></th>
@@ -324,13 +325,13 @@
                             <th><label for="icon">アイコン</label></th>
                             <td class="required"><img src="./images/required.gif" alt="必須" width="26" height="15"></td>
                             <td>
-                                    <span class="img1"></span>
-                                    <span class="img1"></span>
-                                    <span class="img1"></span>
-                                    <span class="img1"></span>
-                                    <span class="img1"></span>
-                                    <span class="img1"></span>
-                                    <br>
+                                <span class="img1"></span>
+                                <span class="img1"></span>
+                                <span class="img1"></span>
+                                <span class="img1"></span>
+                                <span class="img1"></span>
+                                <span class="img1"></span>
+                                <br>
                                     <span class="radio-interval"><input type="radio" name="icon" value="1"/></span>
                                     <span class="radio-interval"><input type="radio" name="icon" value="2"/></span>
                                     <span class="radio-interval"><input type="radio" name="icon" value="3"/></span>
@@ -342,7 +343,7 @@
 
                         <tr>
                             <th><label for="comment">コメント</label></th>
-                            <td class="arbitrary"></td>
+                            <td class="required"><img src="./images/required.gif" alt="必須" width="26" height="15"></td>
                             <td><br><textarea name="comment" id="comment" rows="5" cols="40"></textarea></br>
                                 <span class="supplement">※1000文字以下で入力して下さい。</span></td>
                         </tr>
@@ -391,6 +392,53 @@
                         responsive: false
                     }
                 });
+            }
+
+            function checkCommentForm() {
+                var NAME_LIMIT = 10;
+                var COMMENT_LIMIT = 1000;
+                var nickname = document.getElementById('nickname').value;
+                var nickname_count = document.getElementById('nickname').value.length;
+                var comment = document.getElementById('comment').value.length;
+
+                console.log(nickname);
+                console.log(nickname_count);
+                console.log(comment);
+
+                if (nickname_count == 0) {
+                    alert("名前(漢字)に入力して下さい。");
+                    return false;
+                } else if (nickname_count > NAME_LIMIT) {
+                    alert("名前(漢字)は10文字以下で入力して下さい。");
+                    return false;
+                } else if (nickname.indexOf('\\') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (nickname.indexOf('+') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (nickname.indexOf('*') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (nickname.indexOf('-') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (nickname.indexOf('_') != -1) {
+                    alert("名前(漢字)に禁止文字が含まれています。");
+                    return false;
+                } else if (comment == 0) {
+                    alert("コメントを入力して下さい。");
+                    return false;
+                } else if (comment > COMMENT_LIMIT) {
+                    alert("コメントは1000文字以下で入力して下さい。");
+                    return false;
+                }
+
+                if (window.confirm('コメントしますか?')) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         </script>
     </body>

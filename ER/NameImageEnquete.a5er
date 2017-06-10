@@ -111,14 +111,14 @@ Top=50
 Field="コメントID","comment_id","bigserial","NOT NULL",0,"","",$000000FF,""
 Field="アンケートID","enquete_id","bigint","NOT NULL",,"","",$FFFFFFFF,""
 Field="ニックネーム","nickname","@VARCHAR(20)","NOT NULL",,"","",$FFFFFFFF,""
-Field="イメージ","image","smallint","NOT NULL",,"","",$FFFFFFFF,""
+Field="アイコン","icon","smallint","NOT NULL",,"","",$FFFFFFFF,""
 Field="コメント","comment","@VARCHAR(2000)","NOT NULL",,"","",$FFFFFFFF,""
 Field="作成日","created","@DATETIME","NOT NULL",,"","",$FFFFFFFF,"DEFAULT CURRENT_TIMESTAMP"
 Field="削除日","deleted","@DATETIME",,,"","",$FFFFFFFF,""
 EffectMode=None
 Color=$000000
 BkColor=$FFFFFF
-ModifiedDateTime=20170604095740
+ModifiedDateTime=20170607222818
 Position="MAIN",1600,50,754,249
 
 [Entity]

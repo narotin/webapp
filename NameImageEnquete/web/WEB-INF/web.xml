@@ -37,6 +37,14 @@
         <servlet-name>CommentServlet</servlet-name>
         <servlet-class>com.servlet.CommentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SendCommentServlet</servlet-name>
+        <servlet-class>com.servlet.SendCommentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RecentCommentServlet</servlet-name>
+        <servlet-class>com.servlet.RecentCommentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -68,6 +76,14 @@
     <servlet-mapping>
         <servlet-name>CommentServlet</servlet-name>
         <url-pattern>/CommentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendCommentServlet</servlet-name>
+        <url-pattern>/SendCommentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RecentCommentServlet</servlet-name>
+        <url-pattern>/RecentCommentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

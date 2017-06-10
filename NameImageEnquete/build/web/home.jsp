@@ -36,7 +36,7 @@
                 <li id="topmenu02"><a href="./FormServlet">投稿フォーム</a></li>
                 <li id="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
                 <li id="topmenu04"><a href="./RankingServlet">ランキング</a></li>
-                <li id="topmenu05"><a href="★サーブレット">最新コメント</a></li>
+                <li id="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
             </ul>
 
             <!-- トップメニュー下ライン -->   
@@ -175,15 +175,15 @@
                     <!-- 中央コンテンツ 右 -->
                     <div id="vote-center-right">
                         <div id="vote-center-right-upper">
-                            <dev id="total">
+                            <div id="total">
                                 <div align="center">
                                     <p><%= Integer.parseInt(value[9])%>票</p>
                                 </div>
-                            </dev>  
+                            </div>  
                             <canvas id=<%= "myChart" + (i + 1)%>></canvas>
                         </div>
                         <div id="vote-center-right-lower">
-                            <dev id="btn">
+                            <div id="btn">
                                 <form action="./VoteServlet" method="post">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=1></input>
@@ -199,7 +199,7 @@
                                     <input type="hidden" name="number" value=3></input>
                                     <input type="submit" value="キラキラネームである"></input>
                                 </form>
-                            </dev>
+                            </div>
                         </div>
                     </div>
                 </div>

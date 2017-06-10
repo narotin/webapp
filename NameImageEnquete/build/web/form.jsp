@@ -28,7 +28,7 @@
                 <li id="topmenu02"><a href="./FormServlet">投稿フォーム</a></li>
                 <li id="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
                 <li id="topmenu04"><a href="./RankingServlet">ランキング</a></li>
-                <li id="topmenu05"><a href="★サーブレット">最新コメント</a></li>
+                <li id="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
             </ul>
 
             <!-- トップメニュー下ライン -->   
@@ -174,7 +174,7 @@
                     alert("性別を選択して下さい。");
                     return false;
                 } else if (comment > COMMENT_LIMIT) {
-                    alert("一言コメントは100文字以下で入力して下さい。");
+                    alert("一言コメントは200文字以下で入力して下さい。");
                     return false;
                 }
 

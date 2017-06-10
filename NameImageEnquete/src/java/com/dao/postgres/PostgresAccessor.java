@@ -70,6 +70,9 @@ public class PostgresAccessor {
                         case "CommentG":
                             preSt.setInt(1, Integer.parseInt(holder.get(0)));
                             break;
+                        case "RecentComment":
+                            preSt.setString(1, holder.get(0));
+                            preSt.setInt(2, Integer.parseInt(holder.get(1)));
                         default:
                             break;
                     }
@@ -214,14 +217,25 @@ public class PostgresAccessor {
             try (Connection con = DriverManager.getConnection(DSN)) {
                 try (PreparedStatement preSt = con.prepareStatement(preSql)) {
                     //typeに応じて，セットする文字列を変える
-                    if (type.equals("Vote")) {
-                        preSt.setInt(1, Integer.parseInt(holder.get(0)));
-                        preSt.setInt(2, Integer.parseInt(holder.get(1)));
-                    } else if (type.equals("SendFormInfo")) {
-                        preSt.setString(1, holder.get(0));
-                        preSt.setString(2, holder.get(1));
-                        preSt.setInt(3, Integer.parseInt(holder.get(2)));
-                        preSt.setString(4, holder.get(3));
+                    switch (type) {
+                        case "Vote":
+                            preSt.setInt(1, Integer.parseInt(holder.get(0)));
+                            preSt.setInt(2, Integer.parseInt(holder.get(1)));
+                            break;
+                        case "SendFormInfo":
+                            preSt.setString(1, holder.get(0));
+                            preSt.setString(2, holder.get(1));
+                            preSt.setInt(3, Integer.parseInt(holder.get(2)));
+                            preSt.setString(4, holder.get(3));
+                            break;
+                        case "SendComment":
+                            preSt.setInt(1, Integer.parseInt(holder.get(0)));
+                            preSt.setString(2, holder.get(1));
+                            preSt.setInt(3, Integer.parseInt(holder.get(2)));
+                            preSt.setString(4, holder.get(3));
+                            break;
+                        default:
+                            break;
                     }
                     preSt.executeUpdate();
                 }
