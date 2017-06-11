@@ -223,17 +223,17 @@
                         </div>
                         <div class="vote-center-right-lower">
                             <dev class="btn">
-                                <form action="./VoteServlet" method="post">
+                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=1></input>
                                     <input type="submit" value="キラキラネームでない"></input>
                                 </form>
-                                <form action="./VoteServlet" method="post">
+                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=2></input>
                                     <input type="submit" value="どちらともいえない"></input>
                                 </form>
-                                <form action="./VoteServlet" method="post">
+                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=3></input>
                                     <input type="submit" value="キラキラネームである"></input>
@@ -414,6 +414,14 @@
                     return false;
                 } else if (hurigana.indexOf('_') != -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
+                    return false;
+                }
+            }
+
+            function checkVote() {
+                if (window.confirm('投票しますか?')) {
+                    return true;
+                } else {
                     return false;
                 }
             }

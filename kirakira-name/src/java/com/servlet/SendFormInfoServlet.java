@@ -42,12 +42,14 @@ public class SendFormInfoServlet extends HttpServlet {
             holder.add(nameHurigana);
             holder.add(sex);
             holder.add(inputOneComment);
-            
+
             PostgresAccessor pa = new PostgresAccessor();
             pa.write(preSql, holder, "SendFormInfo");
+            
+            String path = Constants.DOMAIN;
 
-            // フォワード
-            response.sendRedirect("/kirakira-name");
+            // リダイレクト 
+            response.sendRedirect(path);
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(VoteServlet.class.getName()).log(Level.SEVERE, null, ex);

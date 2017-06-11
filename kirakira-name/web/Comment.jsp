@@ -172,17 +172,17 @@
                         </div>
                         <div class="vote-center-right-lower">
                             <div class="btn">
-                                <form action="./VoteServlet" method="post">
+                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=1></input>
                                     <input type="submit" value="キラキラネームでない"></input>
                                 </form>
-                                <form action="./VoteServlet" method="post">
+                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=2></input>
                                     <input type="submit" value="どちらともいえない"></input>
                                 </form>
-                                <form action="./VoteServlet" method="post">
+                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=3></input>
                                     <input type="submit" value="キラキラネームである"></input>
@@ -207,10 +207,14 @@
                         // 第5:comment
                         // 第6:created
                         String[] value = array2.get(i).split(",", 0);
+                        String message = null;
+                        if ( value[4] != null) {
+                            message= value[4].replaceAll("\n", "<br/>").replaceAll(" ", "&nbsp;");		
+                        }
                 %>
                 <div class="kaiwa">
                     <figure class="kaiwa-img-right">
-                        
+
                         <img src="./images/icon_0<%= value[3]%>.jpeg" alt="img">
                             <figcaption class="kaiwa-img-description">
                                 <%= value[2]%>
@@ -218,7 +222,7 @@
                     </figure>
                     <div class="kaiwa-text-left">
                         <p class="kaiwa-text">
-                            <%= value[4]%>
+                            <%= message%>
                             <br>
                                 <span class="created"><%= value[5]%></span>
                         </p>
@@ -434,6 +438,14 @@
                 }
 
                 if (window.confirm('コメントしますか?')) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function checkVote() {
+                if (window.confirm('投票しますか?')) {
                     return true;
                 } else {
                     return false;

@@ -81,7 +81,11 @@
     display: block;
 }
 
-span.created {
+.created {
     color: #808080;
-    font-size:80%;
+    font-size:75%;
+}
+
+.recent-comment-link{
+    font-size:75%;
 }

@@ -47,8 +47,10 @@ public class VoteServlet extends HttpServlet {
             PostgresAccessor pa = new PostgresAccessor();
             pa.write(preSql, holder, "Vote");
 
-            // フォワード
-            response.sendRedirect("/kirakira-name");
+            String path = Constants.DOMAIN;
+
+            // リダイレクト 
+            response.sendRedirect(path);
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(VoteServlet.class.getName()).log(Level.SEVERE, null, ex);

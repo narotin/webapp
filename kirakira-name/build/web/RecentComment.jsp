@@ -87,6 +87,10 @@
                         // 第5:comment
                         // 第6:created
                         String[] value = array.get(i).split(",", 0);
+                        String message = null;
+                        if (value[4] != null) {
+                            message = value[4].replaceAll("\n", "<br/>").replaceAll(" ", "&nbsp;");
+                        }
                 %>
                 <div class="kaiwa">
                     <figure class="kaiwa-img-right">
@@ -97,11 +101,11 @@
                     </figure>
                     <div class="kaiwa-text-left">
                         <p class="kaiwa-text">
-                            <%= value[4]%>
+                            <%= message%>
                             <br/>
                             <span class="created"><%= value[5]%></span>
                             <br/>
-                            <a href="./CommentServlet?enquete_id=<%= value[1]%>" target="_blank">この投票へ飛ぶ</a>
+                            <span class="recent-comment-link"><a href="./CommentServlet?enquete_id=<%= value[1]%>" target="_blank">この投票へ飛ぶ</a></span>
                         </p>
                     </div>
                 </div>

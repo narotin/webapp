@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class SendCommentServlet extends HttpServlet {
 
@@ -46,10 +48,12 @@ public class SendCommentServlet extends HttpServlet {
             PostgresAccessor pa = new PostgresAccessor();
             pa.write(preSql, holder, "SendComment");
 
-            // フォワード
-            response.sendRedirect("/kirakira-name");
+            String path = Constants.DOMAIN + Constants.COMMENT_SERVLET + "?enquete_id=" + enqueteId;
 
-        } catch (ClassNotFoundException | SQLException ex) {
+            // 元の場所にリダイレクト
+            response.sendRedirect(path);
+
+        } catch (ClassNotFoundException | SQLException ex ) {
             Logger.getLogger(VoteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
