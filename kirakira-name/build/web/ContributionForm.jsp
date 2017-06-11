@@ -18,20 +18,20 @@
         <div class="pagebody">
             
             <!-- タイトル -->
-            <div class="title"><h1><a href="./HomeServlet">きらきらねーむ.net</a></h1></div>
+            <div class="title"><h1><a href="home">きらきらねーむ.net</a></h1></div>
 
             <!-- トップメニュー上ライン -->   
             <div class="topmenu-line"></div>
 
             <!-- トップメニュー -->
             <ul class="topmenu">
-                <li class="topmenu01"><a href="./HomeServlet">ホーム</a></li>
-                <li class="topmenu02"><a href="./ContributionFormServlet">投稿フォーム</a></li>
-                <li class="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
-                <li class="topmenu04"><a href="./RankingServlet">ランキング</a></li>
-                <li class="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
+                <li class="topmenu01"><a href="home">ホーム</a></li>
+                <li class="topmenu02"><a href="contributionform">投稿フォーム</a></li>
+                <li class="topmenu03"><a href="namesearch">名前検索</a></li>
+                <li class="topmenu04"><a href="ranking">ランキング</a></li>
+                <li class="topmenu05"><a href="recentcomment">最新コメント</a></li>
             </ul>
-
+            
             <!-- トップメニュー下ライン -->   
             <div class="topmenu-line"></div>
 
@@ -74,7 +74,7 @@
                     <p>下記の入力フォームに子供に名付けたい名前を書いて投稿しよう！</p>
                     <p>第三者からの意見を簡単に収集できます。</p>
                 </div>
-                <form name="form1" method="post" action="./SendFormInfoServlet" class="contact" onsubmit="return checkInputForm()">
+                <form name="form1" method="post" action="sendforminfo" class="contact" onsubmit="return checkInputForm()">
                     <table>
                         <tr>
                             <th><label for="name-kanji">名前(漢字)</label></th>

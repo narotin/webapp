@@ -28,14 +28,14 @@ public final class Constants {
     public static final String UTF_8 = "UTF-8";
 
     /* サーブレット名 */
-    public static final String COMMENT_SERVLET = "/CommentServlet";
-    public static final String CONTRIBUTION_SERVLET = "/ContributionFormServlet";
-    public static final String HOME_SERVLET = "/HomeServlet";
-    public static final String NAME_SEARCH_SERVLET = "/NameSearchServlet";
-    public static final String RANKING_SERVLET = "/RankingServlet";
-    public static final String RECENT_COMMENT_SERVLET = "/RecentCommentServlet";
-    public static final String SEND_COMMENT_SERVLET = "/SendCommentServlet";
-    public static final String SEND_FORM_INFO_SERVLET = "/SendFormInfoServlet";
-    public static final String VOTE_SERVLET = "/VoteServlet";
+    public static final String COMMENT_SERVLET = "comment";
+    public static final String CONTRIBUTION_SERVLET = "contributionformt";
+    public static final String HOME_SERVLET = "home";
+    public static final String NAME_SEARCH_SERVLET = "namesearch";
+    public static final String RANKING_SERVLET = "ranking";
+    public static final String RECENT_COMMENT_SERVLET = "recentcomment";
+    public static final String SEND_COMMENT_SERVLET = "sendcomment";
+    public static final String SEND_FORM_INFO_SERVLET = "sendforminfo";
+    public static final String VOTE_SERVLET = "vote";
 
 }

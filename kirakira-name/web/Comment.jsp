@@ -31,18 +31,18 @@
         <div class="pagebody">
 
             <!-- タイトル -->
-            <div class="title"><h1><a href="./HomeServlet">きらきらねーむ.net</a></h1></div>
+            <div class="title"><h1><a href="home">きらきらねーむ.net</a></h1></div>
 
             <!-- トップメニュー上ライン -->   
             <div class="topmenu-line"></div>
 
             <!-- トップメニュー -->
             <ul class="topmenu">
-                <li class="topmenu01"><a href="./HomeServlet">ホーム</a></li>
-                <li class="topmenu02"><a href="./ContributionFormServlet">投稿フォーム</a></li>
-                <li class="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
-                <li class="topmenu04"><a href="./RankingServlet">ランキング</a></li>
-                <li class="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
+                <li class="topmenu01"><a href="home">ホーム</a></li>
+                <li class="topmenu02"><a href="contributionform">投稿フォーム</a></li>
+                <li class="topmenu03"><a href="namesearch">名前検索</a></li>
+                <li class="topmenu04"><a href="ranking">ランキング</a></li>
+                <li class="topmenu05"><a href="recentcomment">最新コメント</a></li>
             </ul>
 
             <!-- トップメニュー下ライン -->   
@@ -172,17 +172,17 @@
                         </div>
                         <div class="vote-center-right-lower">
                             <div class="btn">
-                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
+                                <form action="vote" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=1></input>
                                     <input type="submit" value="キラキラネームでない"></input>
                                 </form>
-                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
+                                <form action="vote" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=2></input>
                                     <input type="submit" value="どちらともいえない"></input>
                                 </form>
-                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
+                                <form action="vote" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=3></input>
                                     <input type="submit" value="キラキラネームである"></input>
@@ -249,7 +249,7 @@
 
                         if (pageNumber != 1) {
                             out.println("<div class=\"special-page-box\">");
-                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=1\" class=\"page-link\">" + "最初　<<" + "</a>");
+                            out.println("<a href=\"comment?enquete_id=" + enquete_id + "&" + "pageNumber=1\" class=\"page-link\">" + "最初　<<" + "</a>");
                             out.println("</div>");
                         }
 
@@ -259,7 +259,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link1 + "\" class=\"page-link\">" + link1 + "</a>");
+                            out.println("<a href=\"comment?enquete_id=" + enquete_id + "&" + "pageNumber=" + link1 + "\" class=\"page-link\">" + link1 + "</a>");
                             out.println("</div>");
                         }
 
@@ -269,7 +269,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link2 + "\" class=\"page-link\">" + link2 + "</a>");
+                            out.println("<a href=\"comment?enquete_id=" + enquete_id + "&" + "pageNumber=" + link2 + "\" class=\"page-link\">" + link2 + "</a>");
                             out.println("</div>");
                         }
 
@@ -279,7 +279,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link3 + "\" class=\"page-link\">" + link3 + "</a>");
+                            out.println("<a href=\"comment?enquete_id=" + enquete_id + "&" + "pageNumber=" + link3 + "\" class=\"page-link\">" + link3 + "</a>");
                             out.println("</div>");
                         }
 
@@ -289,7 +289,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link4 + "\" class=\"page-link\">" + link4 + "</a>");
+                            out.println("<a href=\"comment?enquete_id=" + enquete_id + "&" + "pageNumber=" + link4 + "\" class=\"page-link\">" + link4 + "</a>");
                             out.println("</div>");
                         }
 
@@ -299,13 +299,13 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + link5 + "\" class=\"page-link\">" + link5 + "</a>");
+                            out.println("<a href=\"comment?enquete_id=" + enquete_id + "&" + "pageNumber=" + link5 + "\" class=\"page-link\">" + link5 + "</a>");
                             out.println("</div>");
                         }
 
                         if (pageNumber != pages) {
                             out.println("<div class=\"special-page-box\">");
-                            out.println("<a href=\"./CommentServlet?enquete_id=" + enquete_id + "&" + "pageNumber=" + pages + "\" class=\"page-link\">" + ">>　最後" + "</a>");
+                            out.println("<a href=\"comment?enquete_id=" + enquete_id + "&" + "pageNumber=" + pages + "\" class=\"page-link\">" + ">>　最後" + "</a>");
                             out.println("</div>");
                         }
                     %>
@@ -316,7 +316,7 @@
                 <div class="input-form-contents">
                     <p>あとでここになにかいれる。</p>
                 </div>
-                <form name="form1" method="post" action="./SendCommentServlet" class="contact" onsubmit="return checkCommentForm()" >
+                <form name="form1" method="post" action="sendcomment" class="contact" onsubmit="return checkCommentForm()" >
                     <input type="hidden" name="enquete-id" value="<%= enquete_id%>" />
                     <table>
                         <tr>

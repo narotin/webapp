@@ -25,18 +25,18 @@
         <div class="pagebody">
 
             <!-- タイトル -->
-            <div class="title"><h1><a href="./HomeServlet">きらきらねーむ.net</a></h1></div>
+            <div class="title"><h1><a href="home">きらきらねーむ.net</a></h1></div>
 
             <!-- トップメニュー上ライン -->   
             <div class="topmenu-line"></div>
 
             <!-- トップメニュー -->
             <ul class="topmenu">
-                <li class="topmenu01"><a href="./HomeServlet">ホーム</a></li>
-                <li class="topmenu02"><a href="./ContributionFormServlet">投稿フォーム</a></li>
-                <li class="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
-                <li class="topmenu04"><a href="./RankingServlet">ランキング</a></li>
-                <li class="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
+                <li class="topmenu01"><a href="home">ホーム</a></li>
+                <li class="topmenu02"><a href="contributionform">投稿フォーム</a></li>
+                <li class="topmenu03"><a href="namesearch">名前検索</a></li>
+                <li class="topmenu04"><a href="ranking">ランキング</a></li>
+                <li class="topmenu05"><a href="recentcomment">最新コメント</a></li>
             </ul>
 
             <!-- トップメニュー下ライン -->   
@@ -105,7 +105,7 @@
                             <br/>
                             <span class="created"><%= value[5]%></span>
                             <br/>
-                            <span class="recent-comment-link"><a href="./CommentServlet?enquete_id=<%= value[1]%>" target="_blank">この投票へ飛ぶ</a></span>
+                            <span class="recent-comment-link"><a href="comment?enquete_id=<%= value[1]%>" target="_blank">この投票へ飛ぶ</a></span>
                         </p>
                     </div>
                 </div>

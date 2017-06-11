@@ -28,18 +28,18 @@
         <div class="pagebody">
 
             <!-- タイトル -->
-            <div class="title"><h1><a href="./HomeServlet">きらきらねーむ.net</a></h1></div>
+            <div class="title"><h1><a href="home">きらきらねーむ.net</a></h1></div>
 
             <!-- トップメニュー上ライン -->   
             <div class="topmenu-line"></div>
 
             <!-- トップメニュー -->
             <ul class="topmenu">
-                <li class="topmenu01"><a href="./HomeServlet">ホーム</a></li>
-                <li class="topmenu02"><a href="./ContributionFormServlet">投稿フォーム</a></li>
-                <li class="topmenu03"><a href="./NameSearchServlet">名前検索</a></li>
-                <li class="topmenu04"><a href="./RankingServlet">ランキング</a></li>
-                <li class="topmenu05"><a href="./RecentCommentServlet">最新コメント</a></li>
+                <li class="topmenu01"><a href="home">ホーム</a></li>
+                <li class="topmenu02"><a href="contributionform">投稿フォーム</a></li>
+                <li class="topmenu03"><a href="namesearch">名前検索</a></li>
+                <li class="topmenu04"><a href="ranking">ランキング</a></li>
+                <li class="topmenu05"><a href="recentcomment">最新コメント</a></li>
             </ul>
 
             <!-- トップメニュー下ライン -->   
@@ -81,14 +81,14 @@
             <div class="ranking">
                 <h2>ランキング</h2>
                 <ul class="ranking-buttom">
-                    <li class="ranking-buttom01"><a href="./RankingServlet?rankingType=1">キラキラでないが多い順</a></li>
-                    <li class="ranking-buttom02"><a href="./RankingServlet?rankingType=2">どちらともいえないが多い順</a></li>
-                    <li class="ranking-buttom03"><a href="./RankingServlet?rankingType=3">キラキラであるが多い順</a></li>
+                    <li class="ranking-buttom01"><a href="ranking?rankingType=1">キラキラでないが多い順</a></li>
+                    <li class="ranking-buttom02"><a href="ranking?rankingType=2">どちらともいえないが多い順</a></li>
+                    <li class="ranking-buttom03"><a href="ranking?rankingType=3">キラキラであるが多い順</a></li>
                 </ul>
                 <ul class="ranking-buttom">
-                    <li class="ranking-buttom04"><a href="./RankingServlet?rankingType=4">投票数が多い順</a></li>
-                    <li class="ranking-buttom05"><a href="./RankingServlet?rankingType=5">コメント数が多い順</a></li>
-                    <li class="ranking-buttom06"><a href="./RankingServlet?rankingType=6">投稿日が新しい順</a></li>
+                    <li class="ranking-buttom04"><a href="ranking?rankingType=4">投票数が多い順</a></li>
+                    <li class="ranking-buttom05"><a href="ranking?rankingType=5">コメント数が多い順</a></li>
+                    <li class="ranking-buttom06"><a href="ranking?rankingType=6">投稿日が新しい順</a></li>
                 </ul>
             </div>
 
@@ -187,7 +187,7 @@
                         </div>
                         <div class="vote-center-left-lower">
                             <div class="comment-link">
-                                <a href="./CommentServlet?enquete_id=<%= value[0]%>" target="_blank">コメントする(<%= value[8]%>件)</a>
+                                <a href="comment?enquete_id=<%= value[0]%>" target="_blank">コメントする(<%= value[8]%>件)</a>
                             </div>  
                         </div>
                     </div>
@@ -204,17 +204,17 @@
                         </div>
                         <div class="vote-center-right-lower">
                             <dev class="btn">
-                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
+                                <form action="vote" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=1></input>
                                     <input type="submit" value="キラキラネームでない"></input>
                                 </form>
-                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
+                                <form action="vote" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=2></input>
                                     <input type="submit" value="どちらともいえない"></input>
                                 </form>
-                                <form action="./VoteServlet" method="post" onsubmit="return checkVote()">
+                                <form action="vote" method="post" onsubmit="return checkVote()">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=3></input>
                                     <input type="submit" value="キラキラネームである"></input>
@@ -243,7 +243,7 @@
 
                         if (pageNumber != 1) {
                             out.println("<div class=\"special-page-box\">");
-                            out.println("<a href=\"./RankingServlet?rankingType=" + rankingType + "&" + "pageNumber=1\" class=\"page-link\">" + "最初　<<" + "</a>");
+                            out.println("<a href=\"ranking?rankingType=" + rankingType + "&" + "pageNumber=1\" class=\"page-link\">" + "最初　<<" + "</a>");
                             out.println("</div>");
                         }
 
@@ -253,7 +253,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./RankingServlet?rankingType=" + rankingType + "&" + "pageNumber=" + link1 + "\" class=\"page-link\">" + link1 + "</a>");
+                            out.println("<a href=\"ranking?rankingType=" + rankingType + "&" + "pageNumber=" + link1 + "\" class=\"page-link\">" + link1 + "</a>");
                             out.println("</div>");
                         }
 
@@ -263,7 +263,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./RankingServlet?rankingType=" + rankingType + "&" + "pageNumber=" + link2 + "\" class=\"page-link\">" + link2 + "</a>");
+                            out.println("<a href=\"ranking?rankingType=" + rankingType + "&" + "pageNumber=" + link2 + "\" class=\"page-link\">" + link2 + "</a>");
                             out.println("</div>");
                         }
 
@@ -273,7 +273,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./RankingServlet?rankingType=" + rankingType + "&" + "pageNumber=" + link3 + "\" class=\"page-link\">" + link3 + "</a>");
+                            out.println("<a href=\"ranking?rankingType=" + rankingType + "&" + "pageNumber=" + link3 + "\" class=\"page-link\">" + link3 + "</a>");
                             out.println("</div>");
                         }
 
@@ -283,7 +283,7 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./RankingServlet?rankingType=" + rankingType + "&" + "pageNumber=" + link4 + "\" class=\"page-link\">" + link4 + "</a>");
+                            out.println("<a href=\"ranking?rankingType=" + rankingType + "&" + "pageNumber=" + link4 + "\" class=\"page-link\">" + link4 + "</a>");
                             out.println("</div>");
                         }
 
@@ -293,13 +293,13 @@
                             } else {
                                 out.println("<div class=\"page-box\">");
                             }
-                            out.println("<a href=\"./RankingServlet?rankingType=" + rankingType + "&" + "pageNumber=" + link5 + "\" class=\"page-link\">" + link5 + "</a>");
+                            out.println("<a href=\"ranking?rankingType=" + rankingType + "&" + "pageNumber=" + link5 + "\" class=\"page-link\">" + link5 + "</a>");
                             out.println("</div>");
                         }
 
                         if (pageNumber != pages) {
                             out.println("<div class=\"special-page-box\">");
-                            out.println("<a href=\"./RankingServlet?rankingType=" + rankingType + "&" + "pageNumber=" + pages + "\" class=\"page-link\">" + ">>　最後" + "</a>");
+                            out.println("<a href=\"ranking?rankingType=" + rankingType + "&" + "pageNumber=" + pages + "\" class=\"page-link\">" + ">>　最後" + "</a>");
                             out.println("</div>");
                         }
                     %>

@@ -51,39 +51,39 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/HomeServlet</url-pattern>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>VoteServlet</servlet-name>
-        <url-pattern>/VoteServlet</url-pattern>
+        <url-pattern>/vote</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SendFormInfoServlet</servlet-name>
-        <url-pattern>/SendFormInfoServlet</url-pattern>
+        <url-pattern>/sendforminfo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ContributionFormServlet</servlet-name>
-        <url-pattern>/ContributionFormServlet</url-pattern>
+        <url-pattern>/contributionform</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RankingServlet</servlet-name>
-        <url-pattern>/RankingServlet</url-pattern>
+        <url-pattern>/ranking</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>NameSearchServlet</servlet-name>
-        <url-pattern>/NameSearchServlet</url-pattern>
+        <url-pattern>/namesearch</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CommentServlet</servlet-name>
-        <url-pattern>/CommentServlet</url-pattern>
+        <url-pattern>/comment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SendCommentServlet</servlet-name>
-        <url-pattern>/SendCommentServlet</url-pattern>
+        <url-pattern>/sendcomment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RecentCommentServlet</servlet-name>
-        <url-pattern>/RecentCommentServlet</url-pattern>
+        <url-pattern>/recentcomment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
