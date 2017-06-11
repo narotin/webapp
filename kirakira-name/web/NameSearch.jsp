@@ -382,37 +382,37 @@
                 if (kanji_count > NAME_LIMIT) {
                     alert("名前(漢字)は10文字以下で入力して下さい。");
                     return false;
-                } else if (kanji.indexOf('\\') != -1) {
+                } else if (kanji.indexOf('\\') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (kanji.indexOf('+') != -1) {
+                } else if (kanji.indexOf('+') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (kanji.indexOf('*') != -1) {
+                } else if (kanji.indexOf('*') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (kanji.indexOf('-') != -1) {
+                } else if (kanji.indexOf('-') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (kanji.indexOf('_') != -1) {
+                } else if (kanji.indexOf('_') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
                 } else if (hurigana_count > NAME_LIMIT) {
                     alert("名前(ふりがな)は10文字以下で入力して下さい。");
                     return false;
-                } else if (hurigana.indexOf('\\') != -1) {
+                } else if (hurigana.indexOf('\\') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
-                } else if (hurigana.indexOf('+') != -1) {
+                } else if (hurigana.indexOf('+') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
-                } else if (hurigana.indexOf('*') != -1) {
+                } else if (hurigana.indexOf('*') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
-                } else if (hurigana.indexOf('-') != -1) {
+                } else if (hurigana.indexOf('-') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
-                } else if (hurigana.indexOf('_') != -1) {
+                } else if (hurigana.indexOf('_') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
                 }

@@ -131,49 +131,49 @@
                 console.log(sex);
                 console.log(comment);
 
-                if (kanji_count == 0) {
+                if (kanji_count === 0) {
                     alert("名前(漢字)に入力して下さい。");
                     return false;
                 } else if (kanji_count > NAME_LIMIT) {
                     alert("名前(漢字)は10文字以下で入力して下さい。");
                     return false;
-                } else if (kanji.indexOf('\\') != -1) {
+                } else if (kanji.indexOf('\\') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (kanji.indexOf('+') != -1) {
+                } else if (kanji.indexOf('+') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (kanji.indexOf('*') != -1) {
+                } else if (kanji.indexOf('*') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (kanji.indexOf('-') != -1) {
+                } else if (kanji.indexOf('-') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (kanji.indexOf('_') != -1) {
+                } else if (kanji.indexOf('_') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (hurigana_count == 0) {
+                } else if (hurigana_count === 0) {
                     alert("名前(ふりがな)に入力して下さい。");
                     return false;
                 } else if (hurigana_count > NAME_LIMIT) {
                     alert("名前(ふりがな)は10文字以下で入力して下さい。");
                     return false;
-                } else if (hurigana.indexOf('\\') != -1) {
+                } else if (hurigana.indexOf('\\') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
-                }else if (hurigana.indexOf('+') != -1) {
+                }else if (hurigana.indexOf('+') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
-                } else if (hurigana.indexOf('*') != -1) {
+                } else if (hurigana.indexOf('*') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
-                } else if (hurigana.indexOf('-') != -1) {
+                } else if (hurigana.indexOf('-') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
-                } else if (hurigana.indexOf('_') != -1) {
+                } else if (hurigana.indexOf('_') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
-                } else if ((sex != 1) && (sex != 2)) {
+                } else if ((sex !== "1") && (sex !== "2")) {
                     alert("性別を選択して下さい。");
                     return false;
                 } else if (comment > COMMENT_LIMIT) {

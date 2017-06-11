@@ -402,37 +402,37 @@
                 var COMMENT_LIMIT = 1000;
                 var nickname = document.getElementById('nickname').value;
                 var nickname_count = document.getElementById('nickname').value.length;
-                var comment = document.getElementById('comment').value.length;
+                var comment_count = document.getElementById('comment').value.length;
 
                 console.log(nickname);
                 console.log(nickname_count);
-                console.log(comment);
+                console.log(comment_count);
 
-                if (nickname_count == 0) {
+                if (nickname_count === 0) {
                     alert("名前(漢字)に入力して下さい。");
                     return false;
                 } else if (nickname_count > NAME_LIMIT) {
                     alert("名前(漢字)は10文字以下で入力して下さい。");
                     return false;
-                } else if (nickname.indexOf('\\') != -1) {
+                } else if (nickname.indexOf('\\') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (nickname.indexOf('+') != -1) {
+                } else if (nickname.indexOf('+') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (nickname.indexOf('*') != -1) {
+                } else if (nickname.indexOf('*') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (nickname.indexOf('-') != -1) {
+                } else if (nickname.indexOf('-') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (nickname.indexOf('_') != -1) {
+                } else if (nickname.indexOf('_') !== -1) {
                     alert("名前(漢字)に禁止文字が含まれています。");
                     return false;
-                } else if (comment == 0) {
+                } else if (comment_count === 0) {
                     alert("コメントを入力して下さい。");
                     return false;
-                } else if (comment > COMMENT_LIMIT) {
+                } else if (comment_count > COMMENT_LIMIT) {
                     alert("コメントは1000文字以下で入力して下さい。");
                     return false;
                 }
