@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,6 +47,13 @@ public class VoteServlet extends HttpServlet {
 
             PostgresAccessor pa = new PostgresAccessor();
             pa.write(preSql, holder, "Vote");
+
+            // クッキーの設定
+            Cookie cookie = new Cookie("enquete_id" + "_" + enqueteId, "voted");
+            // 一日限定
+            cookie.setMaxAge(60 * 60 * 24);
+            cookie.setPath("/");
+            response.addCookie(cookie);
 
             String path = Constants.DOMAIN;
 

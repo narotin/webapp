@@ -204,17 +204,17 @@
                         </div>
                         <div class="vote-center-right-lower">
                             <dev class="btn">
-                                <form action="vote" method="post" onsubmit="return checkVote()">
+                                <form action="vote" method="post" onsubmit="return checkVote(<%= value[0]%>)">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=1></input>
                                     <input type="submit" value="キラキラネームでない"></input>
                                 </form>
-                                <form action="vote" method="post" onsubmit="return checkVote()">
+                                <form action="vote" method="post" onsubmit="return checkVote(<%= value[0]%>)">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=2></input>
                                     <input type="submit" value="どちらともいえない"></input>
                                 </form>
-                                <form action="vote" method="post" onsubmit="return checkVote()">
+                                <form action="vote" method="post" onsubmit="return checkVote(<%= value[0]%>)">
                                     <input type="hidden" name="enquete_id" value=<%= value[0]%>></input>
                                     <input type="hidden" name="number" value=3></input>
                                     <input type="submit" value="キラキラネームである"></input>
@@ -349,12 +349,42 @@
                 });
             }
 
-            function checkVote() {
+            function checkVote(enquete_id) {
+
+                if (getCookie("enquete_id_" + enquete_id) === "voted") {
+                    alert("投票から24時間は再投票できません。");
+                    return false;
+                }
+
                 if (window.confirm('投票しますか?')) {
                     return true;
                 } else {
                     return false;
                 }
+            }
+
+            function getCookie(key) {
+                // Cookieから値を取得する
+                var cookieString = document.cookie;
+
+                // 要素ごとに ";" で区切られているので、";" で切り出しを行う
+                var cookieKeyArray = cookieString.split(";");
+
+                // 要素分ループを行う
+                for (var i = 0; i < cookieKeyArray.length; i++) {
+                    var targetCookie = cookieKeyArray[i];
+
+                    // 前後のスペースをカットする
+                    targetCookie = targetCookie.replace(/^\s+|\s+$/g, "");
+
+                    var valueIndex = targetCookie.indexOf("=");
+                    if (targetCookie.substring(0, valueIndex) === key) {
+                        // キーが引数と一致した場合、値を返す
+                        return unescape(targetCookie.slice(valueIndex + 1));
+                    }
+                }
+
+                return "";
             }
         </script>
     </body>
