@@ -151,44 +151,13 @@ h2:after {
 }
 
 /*============================================
-左サブメニュー
+左空白
 ============================================*/
 .leftmenu {
     width:200px;
     margin:0px 0px 10px 10px;
     display:inline;
     float:left;
-}
-
-.leftmenu-header {
-    height:26px; padding:4px 0px 0px 0px;
-    background-repeat:no-repeat; background-position:top;
-    background-color:#cccccc;
-    font-size:90%; font-weight:bold; text-align:center;
-}
-
-.leftmenu-body {
-    padding-bottom:6px;
-    background-repeat:no-repeat; background-position:bottom;
-    background-color:#cccccc;
-}
-
-.leftmenu-body li {
-    font-size:90%;
-    list-style-type:none;
-    display:inline;
-}
-
-.leftmenu-body li a {
-    display:block;
-    margin:0px 4px 0px 4px;
-    padding:2px 0px 2px 20px;
-    background-color:#eeeeee;
-    text-decoration:none;
-}
-
-.leftmenu-_body li a:hover {
-    background-color:#ffffff;	/*リンクにマウスが乗ったら色を変える*/
 }
 
 /*============================================

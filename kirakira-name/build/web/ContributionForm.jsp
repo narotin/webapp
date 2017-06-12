@@ -35,35 +35,8 @@
             <!-- トップメニュー下ライン -->   
             <div class="topmenu-line"></div>
 
-            <!-- 左サブメニュー -->
+            <!-- 左空白ー -->
             <div class="leftmenu">
-                <div class="leftmenu-header">目的で探す</div>
-                <ul class="leftmenu-body">
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                    <li><a href="xxx.html">何か</a></li>
-                </ul>
             </div>
 
             <!-- 中央コンテンツ -->
