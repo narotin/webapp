@@ -45,7 +45,7 @@
                 <h2>入力フォーム</h2>
                 <div class="input-form-contents">
                     <p>下記の入力フォームに子供に名付けたい名前を書いて投稿しよう！</p>
-                    <p>第三者からの意見を簡単に収集できます。</p>
+                    <p>投稿することで，第三者からの意見を簡単に収集できます。</p>
                 </div>
                 <form name="form1" method="post" action="sendforminfo" class="contact" onsubmit="return checkInputForm()">
                     <table>
