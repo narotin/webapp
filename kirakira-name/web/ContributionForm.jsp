@@ -52,7 +52,10 @@
             <div class="topmenu-line"></div>
 
             <!-- 左空白ー -->
-            <div class="leftmenu">
+            <div class="leftmenu02">
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4KBNQQ+2XUA+5Z6WX" target="_blank" rel="nofollow">
+                    <img border="0" width="160" height="600" alt="" src="https://www24.a8.net/svt/bgt?aid=170617930276&wid=001&eno=01&mid=s00000013717001004000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=2TKXMY+4KBNQQ+2XUA+5Z6WX" alt=""></img>
             </div>
 
             <!-- 中央コンテンツ -->

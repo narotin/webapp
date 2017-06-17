@@ -65,7 +65,14 @@
             <div class="topmenu-line"></div>
 
             <!-- 左空白ー -->
-            <div class="leftmenu">
+            <div class="leftmenu03">
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4SNQ7M+34VC+65U41" target="_blank" rel="nofollow">
+                    <img border="0" width="160" height="600" alt="" src="https://www24.a8.net/svt/bgt?aid=170617930290&wid=001&eno=01&mid=s00000014628001035000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=2TKXMY+4SNQ7M+34VC+65U41" alt=""></img>
+
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4KBNQQ+2XUA+5Z6WX" target="_blank" rel="nofollow">
+                    <img border="0" width="160" height="600" alt="" src="https://www24.a8.net/svt/bgt?aid=170617930276&wid=001&eno=01&mid=s00000013717001004000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=2TKXMY+4KBNQQ+2XUA+5Z6WX" alt=""></img>
             </div>
 
             <!-- 中央コンテンツ -->
@@ -300,7 +307,7 @@
                     %>
                 </div>
             </div>
-            <div class="input-form">
+            <div class="comment-form">
                 <p><h2>コメントする</h2></p>
                 <div class="input-form-contents">
                 </div>

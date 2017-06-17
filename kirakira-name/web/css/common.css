@@ -153,11 +153,30 @@ h2:after {
 /*============================================
 左空白
 ============================================*/
-.leftmenu {
+.leftmenu01 {
     width:200px;
-    height:500px;
-    margin:0px 0px 10px 10px;
+    height:5600px;
+    margin:20px 0px 10px 10px;
     display:inline;
+    text-align: center;
+    float:left;
+}
+
+.leftmenu02{
+    width:200px;
+    height:600px;
+    margin:20px 0px 10px 10px;
+    display:inline;
+    text-align: center;
+    float:left;
+}
+
+.leftmenu03{
+    width:200px;
+    height:1200px;
+    margin:20px 0px 10px 10px;
+    display:inline;
+    text-align: center;
     float:left;
 }
 

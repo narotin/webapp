@@ -67,7 +67,50 @@
             <div class="topmenu-line"></div>
 
             <!-- 左空白ー -->
-            <div class="leftmenu">
+            <div class="leftmenu01">
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4FK6WI+3RH8+61JSH" target="_blank" rel="nofollow">
+                    <img border="0" width="160" height="600" alt="" src="https://www27.a8.net/svt/bgt?aid=170617930268&wid=001&eno=01&mid=s00000017558001015000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=2TKXMY+4FK6WI+3RH8+61JSH" alt=""></img>
+
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4SNQ7M+34VC+65U41" target="_blank" rel="nofollow">
+                    <img border="0" width="160" height="600" alt="" src="https://www24.a8.net/svt/bgt?aid=170617930290&wid=001&eno=01&mid=s00000014628001035000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=2TKXMY+4SNQ7M+34VC+65U41" alt=""></img>
+
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4KBNQQ+2XUA+5Z6WX" target="_blank" rel="nofollow">
+                    <img border="0" width="160" height="600" alt="" src="https://www24.a8.net/svt/bgt?aid=170617930276&wid=001&eno=01&mid=s00000013717001004000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=2TKXMY+4KBNQQ+2XUA+5Z6WX" alt=""></img>
+
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4OHOZ6+3CDW+614CX" target="_blank" rel="nofollow">
+                    <img border="0" width="160" height="600" alt="" src="https://www25.a8.net/svt/bgt?aid=170617930283&wid=001&eno=01&mid=s00000015602001013000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=2TKXMY+4OHOZ6+3CDW+614CX" alt=""></img>
+
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4LIIYA+2VC0+I8PZ5" target="_blank" rel="nofollow">
+                    <img border="0" width="160" height="600" alt="" src="https://www22.a8.net/svt/bgt?aid=170617930278&wid=001&eno=01&mid=s00000013392003064000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=2TKXMY+4LIIYA+2VC0+I8PZ5" alt=""></img>
+
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4S2ALU+3LXI+HWAG1" target="_blank" rel="nofollow">
+                    <img border="0" width="120" height="60" alt="" src="https://www26.a8.net/svt/bgt?aid=170617930289&wid=001&eno=01&mid=s00000016839003006000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=2TKXMY+4S2ALU+3LXI+HWAG1" alt=""></img>
+
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4NATRM+3KRU+601S1" target="_blank" rel="nofollow">
+                    <img border="0" width="120" height="60" alt="" src="https://www28.a8.net/svt/bgt?aid=170617930281&wid=001&eno=01&mid=s00000016689001008000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=2TKXMY+4NATRM+3KRU+601S1" alt=""></img>
+
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4M3YK2+26YS+HWAG1" target="_blank" rel="nofollow">
+                    <img border="0" width="120" height="600" alt="" src="https://www26.a8.net/svt/bgt?aid=170617930279&wid=001&eno=01&mid=s00000010234003006000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=2TKXMY+4M3YK2+26YS+HWAG1" alt=""></img>
+
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4TULF6+38R2+614CX" target="_blank" rel="nofollow">
+                    <img border="0" width="120" height="600" alt="" src="https://www20.a8.net/svt/bgt?aid=170617930292&wid=001&eno=01&mid=s00000015131001013000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=2TKXMY+4TULF6+38R2+614CX" alt=""></img>
+
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4QVFEA+37X2+68U4X" target="_blank" rel="nofollow">
+                    <img border="0" width="120" height="600" alt="" src="https://www26.a8.net/svt/bgt?aid=170617930287&wid=001&eno=01&mid=s00000015023001049000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=2TKXMY+4QVFEA+37X2+68U4X" alt=""></img>
+
+                <a href="https://px.a8.net/svt/ejp?a8mat=2TKXMY+4NW9DE+3PXO+65U41" target="_blank" rel="nofollow">
+                    <img border="0" width="120" height="600" alt="" src="https://www23.a8.net/svt/bgt?aid=170617930282&wid=001&eno=01&mid=s00000017358001035000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=2TKXMY+4NW9DE+3PXO+65U41" alt=""></img>
             </div>
 
             <!-- 中央コンテンツ -->

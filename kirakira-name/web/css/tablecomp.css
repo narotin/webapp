@@ -8,6 +8,13 @@
     float:right;
 }
 
+.comment-form {
+    width:770px;
+    height: 570px;
+    margin:10px 15px 10px 0px;
+    float:right;
+}
+
 .input-form-contents {
     width:745px;
     height: 70px;

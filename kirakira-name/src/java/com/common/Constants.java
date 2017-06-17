@@ -7,6 +7,7 @@ public final class Constants {
 
     /* PostgreSQL接続 */
     public static final String DRIVER = "org.postgresql.Driver";
+    // 192.168.130.104がテストIP
     public static final String DSN = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres";
 
     /* テーブルカラム名 */
