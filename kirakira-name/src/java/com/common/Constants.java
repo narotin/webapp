@@ -2,8 +2,8 @@ package com.common;
 
 public final class Constants {
 
-    /* ドメイン名 */
-    public static final String DOMAIN = "/kirakira-name";
+    /* コンテキストルート */
+    public static final String DOMAIN = "";
 
     /* PostgreSQL接続 */
     public static final String DRIVER = "org.postgresql.Driver";
