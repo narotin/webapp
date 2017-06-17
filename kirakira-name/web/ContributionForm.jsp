@@ -11,12 +11,28 @@
         <link rel="stylesheet" type="text/css" href="./css/tablecomp.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-101190909-1', 'auto');
+            ga('send', 'pageview');
+        </script>
     </head>
 
     <body>
         <!-- ページ全体 -->
         <div class="pagebody">
-            
+
             <!-- タイトル -->
             <div class="title"><h1><a href="home">きらきらねーむ.net</a></h1></div>
 
@@ -31,7 +47,7 @@
                 <li class="topmenu04"><a href="ranking">ランキング</a></li>
                 <li class="topmenu05"><a href="recentcomment">最新コメント</a></li>
             </ul>
-            
+
             <!-- トップメニュー下ライン -->   
             <div class="topmenu-line"></div>
 
@@ -84,7 +100,7 @@
                     <p class="button"><input class="submit-botton" type="submit" value="送信" /></p>
                 </form>
             </div>
-            
+
             <!-- フッタ -->
             <div class="footer"></div>
         </div>
@@ -134,7 +150,7 @@
                 } else if (hurigana.indexOf('\\') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
-                }else if (hurigana.indexOf('+') !== -1) {
+                } else if (hurigana.indexOf('+') !== -1) {
                     alert("名前(ふりがな)に禁止文字が含まれています。");
                     return false;
                 } else if (hurigana.indexOf('*') !== -1) {

@@ -7,7 +7,7 @@ public final class Constants {
 
     /* PostgreSQL接続 */
     public static final String DRIVER = "org.postgresql.Driver";
-    public static final String DSN = "jdbc:postgresql://192.168.130.104:5432/postgres?user=postgres&password=postgres";
+    public static final String DSN = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres";
 
     /* テーブルカラム名 */
     public static final String COLUMN_NAME_VOTE1 = "vote1";

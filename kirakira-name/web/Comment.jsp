@@ -22,8 +22,24 @@
         <link rel="stylesheet" type="text/css" href="./css/graph.css" />
         <link rel="stylesheet" type="text/css" href="./css/ballooncomment.css" />
         <link rel="stylesheet" type="text/css" href="./css/tablecomp.css" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-101190909-1', 'auto');
+            ga('send', 'pageview');
+        </script>
     </head>
 
     <body>
@@ -431,7 +447,7 @@
             }
 
             function getCookie(key) {
-                
+
                 var cookieString = document.cookie;
                 var cookieKeyArray = cookieString.split(";");
 
